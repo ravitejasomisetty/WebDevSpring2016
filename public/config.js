@@ -20,6 +20,10 @@ app.config(function($routeProvider){
                 .when("/admin", {
                     templateUrl: "assignment/views/users/admin.view.html"
                 })
+                .when("/forms", {
+                    templateUrl: "assignment/views/forms/forms.view.html",
+                    controller: "FormController"
+                })
 
                 .otherwise({
                     redirectTo: "assignment/views/users/home.view.html"

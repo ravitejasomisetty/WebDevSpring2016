@@ -1,10 +1,9 @@
 (function(){
-    angular.module("FormBuilderApp")
+    angular
+        .module("FormBuilderApp")
         .controller("ProfileController", ProfileController);
 
-    function ProfileController($scope,UserService,$location,$rootScope) {
-
-
+    function ProfileController($scope,$location,$rootScope,UserService) {
        $scope.user.firstname=$rootScope.user.firstname;
         $scope.user.lastname=$rootScope.user.lastname;
         $scope.user.username=$rootScope.user.username;
