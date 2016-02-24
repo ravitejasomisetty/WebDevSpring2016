@@ -1,4 +1,4 @@
-angular.factory("UserService", function ($http, $location) {
+angular.module('FormBuilderApp').factory("UserService", function ($http, $location,$scope) {
     users = [
         {
             "_id": 123, "firstName": "Alice", "lastName": "Wonderland",
@@ -22,7 +22,7 @@ angular.factory("UserService", function ($http, $location) {
         }
     ];
 
-    var findUserByUsernameAndPassword = function (username, password, callback) {
+    var findUserByCredentials = function (username, password, callback) {
         for (var user in users) {
             if (user.username == username && user.password == password)
                 callback(user);
