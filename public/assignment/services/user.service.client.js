@@ -41,7 +41,7 @@
 
         var createUser = function (user, callback) {
             user._id = (new Date).getTime();
-            users.add(user);
+            users.push(user);
             callback(user);
         };
 
