@@ -2,9 +2,10 @@
     angular
         .module("FormBuilderApp")
         .controller("HeaderController", HeaderController);
-    function HeaderController($scope,$rootScope,$location) {
+    function HeaderController($scope,$location) {
         $scope.$location=$location;
-        console.log($rootScope.user);
-        $scope.currentUser=$rootScope.user;
+        $scope.logout=function (){
+            $rootScope.user=null;
+        }
     }
 })();

@@ -2,8 +2,7 @@
     angular
         .module("FormBuilderApp")
         .controller("SidebarController", SidebarController);
-    function SidebarController($scope,$rootScope,$location) {
+    function SidebarController($scope,$location) {
         $scope.$location=$location;
-        $scope.currentUser=$rootScope.user;
     }
 })();

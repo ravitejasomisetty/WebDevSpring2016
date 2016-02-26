@@ -59,7 +59,7 @@
             for (var i = 0; i < users.length; i++) {
                 if (userId == users[i]._id) {
                     users[i] = user;
-                    return callback(users[i]);
+                    return callback(user);
                 }
             }
         };

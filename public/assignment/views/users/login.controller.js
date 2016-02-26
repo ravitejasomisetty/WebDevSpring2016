@@ -10,7 +10,7 @@
                     $location.url("/profile");
                 }
                 else {
-                    console.log("User not found");
+                    alert("User not registered");
                 }
             });
         };
