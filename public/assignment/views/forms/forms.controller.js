@@ -3,6 +3,7 @@
         .module("FormBuilderApp")
         .controller("FormController", FormController);
     function FormController(FormService, $scope, $rootScope) {
+        var user=$rootScope.user;
         FormService.findAllFormsForUser(user._id, function (userForms) {
             $scope.forms = userForms;
         });
