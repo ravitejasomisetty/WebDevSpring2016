@@ -2,7 +2,8 @@
     angular
         .module("FormBuilderApp")
         .factory("UserService", UserService);
-    function UserService () {
+    function UserService($rootScope) {
+        $rootScope.user = null;
         var users = [
             {
                 "_id": 123, "firstName": "Alice", "lastName": "Wonderland",
@@ -27,12 +28,11 @@
         ];
 
         var findUserByCredentials = function (username, password, callback) {
-            for (var user in users) {
-                if (user.username == username && user.password == password)
-                    callback(user);
-                else
-                    callback(null);
+            for (var i = 0; i < users.length; i++) {
+                if (users[i].username == username && users[i].password == password)
+                    return callback(users[i]);
             }
+            callback(null);
         };
 
         var findAllUsers = function (callback) {
@@ -46,29 +46,22 @@
         };
 
         var deleteUserById = function (userId, callback) {
-            for (var user in users) {
-                if (user._id == userId) {
-                    users.remove(user);
+            var usersCopy=users;
+            for (var i = 0; i < usersCopy.length; i++) {
+                if (usersCopy[i]._id == userId) {
+                    users.splice(i,1);
                     callback(users);
                 }
             }
         };
 
         var updateUser = function (userId, user, callback) {
-
-            $.each(users,function(i,usr){
-                if (userId == usr._id) {
-                    usr= user;
-                    callback(usr);
+            for (var i = 0; i < users.length; i++) {
+                if (userId == users[i]._id) {
+                    users[i] = user;
+                    return callback(users[i]);
                 }
-            })
-
-            /*for (var u in users) {
-                if (userId == u._id) {
-                    u = user;
-                    callback(u);
-                }
-            }*/
+            }
         };
         return {
             findUserByCredentials: findUserByCredentials,

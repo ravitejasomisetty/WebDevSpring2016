@@ -11,7 +11,7 @@
         ];
 
         function createFormForUser(userId, form, callback) {
-            var newForm = {"_id": (new Date).getTime(), "title": form.name, "userId": userId};
+            var newForm = {"_id": (new Date).getTime(), "title": form.title, "userId": userId};
             forms.push(newForm);
             callback(newForm);
         }
@@ -36,7 +36,7 @@
         function updateFormById(formId, newForm, callback) {
             for (i = 0; i < forms.length; i++) {
                 if (forms[i]._id == formId) {
-                    forms[i].title = newForm.name;
+                    forms[i].title = newForm.title;
                     forms[i].userId = newForm.userId;
                 }
             }
