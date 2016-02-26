@@ -3,18 +3,21 @@
         .module("FormBuilderApp")
         .controller("LoginController", LoginController);
     function LoginController($scope,UserService,$location,$rootScope) {
-        $scope.Hello = "Hello from LoginController";
+                $scope.login = function(){
+                            UserService.findUserByCredentials($scope.user.username,$scope.user.password,function(res){
+                            if(res != undefined)
+                            {
 
-        $scope.user.firstname=$rootScope.user.firstname;
-        $scope.user.lastname=$rootScope.user.lastname;
-        $scope.user.username=$rootScope.user.username;
-        $scope.user.password=$rootScope.user.password;
+                             $location.url("#/profile");
+                            }
 
-        $scope.update=function(){
-            UserService.updateUser($rootScope.user._id,$rootScope.user,function(res){
 
-            });
-        };
-    }
+                                console.log("username found");
+
+                            });
+                        };
+
+
+        }
 })();
 

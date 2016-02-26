@@ -1,18 +1,31 @@
-(function(){
+(function () {
     angular
         .module("FormBuilderApp")
         .controller("FormController", FormController);
-    function FormController(FormService,$scope,$rootScope){
-        console.log("controller");
-        $scope.addForm= function (form){
-            console.log("AddForm");
-            FormService.createFormForUser($rootScope.user._id,form,function(newForm){
+    function FormController(FormService, $scope, $rootScope) {
+        var user={"userId":"123"};
+        FormService.findAllFormsForUser(user.userId,function(userForms)
+        {
+            $scope.forms=userForms;
+        });
+        $scope.addForm = function (form) {
+            FormService.createFormForUser($rootScope.user._id, form, function (newForm) {
                 $scope.forms.push(newForm);
-                console.log("AddForm callback");
             })
         }
-        function updateForm(){}
-        function deleteForm(){}
-        function selectForm(){}
+        function updateForm(updatedForm) {
+            console.log("updating");
+            var currentIndex = $scope.selectedIndex;
+            var form = $scope.forms[currentIndex];
+            FormService.updateFormById(form._id, updatedForm, function (res) {
+                console.log(res);
+            })
+        }
+
+        function deleteForm() {
+        }
+
+        function selectForm() {
+        }
     }
 })();

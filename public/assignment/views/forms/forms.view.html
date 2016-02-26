@@ -19,7 +19,7 @@
                 <th><span class="caret"></span>Action</th>
             </tr>
             <tr>
-                <td><input type="text" ng-model="form.name" class="form-control" placeholder="name"></td>
+                <td><input type="text" ng-model="form.title" class="form-control" placeholder="name"></td>
                 <td>
                     <button ng-click="addForm(form)" type="button">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -30,7 +30,7 @@
                 </td>
             </tr>
             <tr ng-repeat="form in forms">
-                <td>{{form.name}}</td>
+                <td>{{form.title}}</td>
                 <td>
                     <button ng-click="deleteForm($index)">
                         <span class="glyphicon glyphicon-remove"></span>

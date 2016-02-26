@@ -3,8 +3,9 @@ var app=angular.module('FormBuilderApp', ['ngRoute']);
 
 app.config(function($routeProvider){
             $routeProvider
-                .when("/", {
-                    templateUrl: "assignment/views/home/home.view.html"
+                .when("/home", {
+                    templateUrl: "assignment/views/home/home.view.html",
+                    controller: "HomeController"
                 })
                 .when("/register", {
                     templateUrl: "assignment/views/users/register.view.html",
@@ -18,7 +19,8 @@ app.config(function($routeProvider){
                     controller:"ProfileController"
                 })
                 .when("/admin", {
-                    templateUrl: "assignment/views/users/admin.view.html"
+                    templateUrl: "assignment/views/admin/admin.view.html"
+
                 })
                 .when("/forms", {
                     templateUrl: "assignment/views/forms/forms.view.html",
@@ -26,6 +28,6 @@ app.config(function($routeProvider){
                 })
 
                 .otherwise({
-                    redirectTo: "assignment/views/users/home.view.html"
+                    redirectTo: "/home"
                 });
         });

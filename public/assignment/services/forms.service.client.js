@@ -17,11 +17,12 @@
         }
 
         function findAllFormsForUser(userId, callback) {
+            var currentUserForms=[];
             for (i = 0; i < forms.length; i++) {
                 if (forms[i].userId == userId)
-                    callback(forms[i]);
+                    currentUserForms.push(forms[i]);
             }
-            callback([]);
+            callback(currentUserForms);
         }
 
         function deleteFormById(formId, callback) {
