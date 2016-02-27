@@ -11,7 +11,9 @@
                     $location.url("/profile");
                 }
                 else {
-                    alert("User not registered");
+                    alert("Unable to log you in because of the possible reason(s):\n" +
+                        "1. Insufficient or invalid credentials\n" +
+                        "2. You're not a registered user yet");
                 }
             });
         };

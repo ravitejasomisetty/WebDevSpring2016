@@ -23,7 +23,7 @@
                 <li ng-class="{'active': $location.url()=='/login'}">
                     <a href="#/login" ng-hide="user"> Login </a></li>
                 <li ng-class="{'active': $location.url()=='/profile'}">
-                    <a href="#/profile" ng-show="user"> {{user.firstName}} </a></li>
+                    <a href="#/profile" ng-show="user"> {{user.username}} </a></li>
                 <li ng-class="{'active': $location.url()=='/admin'}">
                     <a href="#/admin" ng-show="user.roles.indexOf('admin') >= 0"> Admin </a></li>
                 <li ng-class="{'active': $location.url()=='/forms'}"

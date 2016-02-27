@@ -18,7 +18,7 @@
         $scope.update = function () {
             UserService.updateUser($scope.user._id, $scope.user, function (res) {
                 $rootScope.user=res;
-                console.log("updated url");
+                alert("Profile information is successfully updated");
             });
         };
     }
