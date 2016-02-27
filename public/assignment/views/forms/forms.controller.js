@@ -3,6 +3,7 @@
         .module("FormBuilderApp")
         .controller("FormController", FormController);
     function FormController(FormService, $scope, $rootScope) {
+        'use strict';
         var user=$rootScope.user;
         FormService.findAllFormsForUser(user._id, function (userForms) {
             $scope.forms = userForms;
@@ -15,7 +16,6 @@
         }
         $scope.updateForm = function (updatedForm) {
             FormService.updateFormById(updatedForm._id, updatedForm, function (res) {
-                console.log("Updated successfully" + res);
                 $scope.form.title = null;
                 $scope.form._id = null;
             })

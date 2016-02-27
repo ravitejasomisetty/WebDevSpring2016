@@ -26,11 +26,11 @@
                     <a href="#/profile" ng-show="user"> {{user.firstName}} </a></li>
                 <li ng-class="{'active': $location.url()=='/admin'}">
                     <a href="#/admin" ng-show="user.roles.indexOf('admin') >= 0"> Admin </a></li>
-                <li>
-                    <a href="#/login" ng-click="logout()" ng-show="user"> Logout </a></li>
                 <li ng-class="{'active': $location.url()=='/forms'}"
                     ng-show="user">
                     <a href="#/forms"> Forms</a></li>
+                <li>
+                    <a href="#/login" ng-click="logout()" ng-show="user"> Logout </a></li>
             </ul>
         </div>
     </div>
