@@ -10,7 +10,7 @@
         });
         $scope.addForm = function (user) {
             UserService.createUser(user, function (user) {
-                $scope.users.push(user);
+                console.log("Added user");
             })
         }
         $scope.updateForm = function (user) {

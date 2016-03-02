@@ -32,7 +32,17 @@
         };
 
         var createUser = function (user, callback) {
-            user.id = (new Date).getTime();
+            user = {
+                "email": user.email,
+                "id": (new Date).getTime(),
+                "fullName": user.fullName,
+                "nationality": user.nationality,
+                "city": user.city,
+                "mobilenumber": user.mobilenumber,
+                "birthdate": user.birthdate,
+                "username": user.username,
+                "password": user.password
+            };
             users.push(user);
             callback(user);
         };
