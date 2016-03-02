@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="UserController">
+    <h1 class="page-header">User</h1>
+    <ul class="nav nav-tabs">
+        <li class="active" role="presentation"><a href="#">Forms</a></li>
+        <li role="presentation"><a href="#/fields">Fields</a></li>
+    </ul>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr>
+                <th><span class="caret"></span>Form</th>
+                <th><span class="caret"></span>Action</th>
+            </tr>
+            <tr>
+                <td><input type="text" ng-model="user.fullName" class="form-control" placeholder="name"></td>
+                <td><input type="text" ng-model="user.id" class="form-control" placeholder="Identifier Number"></td>
+                <td><input type="text" ng-model="user.nationality" class="form-control" placeholder="Nationality"></td>
+                <td><input type="text" ng-model="user.city" class="form-control" placeholder="City"></td>
+                <td><input type="text" ng-model="user.email" class="form-control" placeholder="Email"></td>
+                <td><input type="text" ng-model="user.mobilenumber" class="form-control" placeholder="Mobile Number"></td>
+                <td><input type="text" ng-model="user.birthdate" class="form-control" placeholder="BirthDate"></td>
+                <td><input type="text" ng-model="user.username" class="form-control" placeholder="BirthDate"></td>
+                <td><input type="text" ng-model="user.password" class="form-control" placeholder="BirthDate"></td>
+                <td>
+                    <button ng-click="addForm(user)" type="button">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+                    <button ng-click="updateForm(user)" type="button">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    </button>
+                </td>
+            </tr>
+            <tr ng-repeat="user in users">
+                <td>{{user.fullName}}</td>
+                <td>{{user.id}}</td>
+                <td>{{user.nationality}}</td>
+                <td>{{user.city}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.mobilenumber}}</td>
+                <td>{{user.birthdate}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.password}}</td>
+                <td>
+                    <button ng-click="deleteForm($index)">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                    <button ng-click="selectForm($index)">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

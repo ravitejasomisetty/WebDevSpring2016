@@ -1,0 +1,47 @@
+<!--<html>
+<a href="public/assignment/views/home/home.view.html">Assignment</a>
+<br />
+<a href="public/project">Project</a>
+<br />
+<a href="https://docs.google.com/document/d/11tXZmSqsDhJu2nN8UOxl6CY8U3Oib81pwOMU-D4pXxQ/edit?usp=sharing">Project Documentation</a>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en" ng-app="GrabACar">
+<head>
+    <meta charset="UTF-8">
+    <title>Grab A Car!</title>
+
+    <!--jquery,bootstrap, angular cdns-->
+
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-route.min.js"></script>
+    <!--end of cdns-->
+
+    <!--load css-->
+    <link href="client/css/dashboard.css" rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--load angular modules-->
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+    <script src="client/views/sidebar/sidebar.controller.js"></script>
+    <script src="client/views/header/header.controller.js"></script>
+    <script src="client/views/forms/users.controller.js"></script>
+    <script src="client/services/user.service.client.js"></script>
+    <script src="client/main/main.controller.js"></script>
+</head>
+<body ng-controller="MainController">
+
+<div ng-view>
+</div>
+
+<div id="header-panel" ng-include="'client/views/header/header.view.html'"></div>
+<div id="sidebar-panel" ng-include="'client/views/sidebar/sidebar.view.html'"></div>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome!</title>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid" ng-controller="HeaderController">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/home">Form Maker</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-class="{'active': $location.url()=='/register'}">
+                    <a href="#/register" ng-hide="user">Register</a></li>
+                <li ng-class="{'active': $location.url()=='/login'}">
+                    <a href="#/login" ng-hide="user"> Login </a></li>
+                <li ng-class="{'active': $location.url()=='/profile'}">
+                    <a href="#/profile" ng-show="user"> {{user.username}} </a></li>
+                <li ng-class="{'active': $location.url()=='/admin'}">
+                    <a href="#/admin" ng-show="user.roles.indexOf('admin') >= 0"> Admin </a></li>
+                <li ng-class="{'active': $location.url()=='/forms'}"
+                    ng-show="user">
+                    <a href="#/forms"> Forms</a></li>
+                <li>
+                    <a href="#/login" ng-click="logout()" ng-show="user"> Logout </a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+</body>
+</html>
