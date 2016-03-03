@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teller</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="TellerController">
+    <h1 class="page-header">Teller</h1>
+    <ul class="nav nav-tabs">
+        <li role="presentation"><a href="#/users">Renter</a></li>
+        <li role="presentation"><a href="#/vehicles">Vehicle</a></li>
+        <li role="presentation"><a href="#/reservations">Reservation</a></li>
+        <li class="active" role="presentation"><a href="#">Teller</a></li>
+        <li role="presentation"><a href="#/search">Search</a></li>
+    </ul>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr>
+                <th><span class="caret"></span>Form</th>
+                <th><span class="caret"></span>Action</th>
+            </tr>
+            <tr>
+                <td><input type="text" ng-model="teller.fullName" class="form-control" placeholder="Full Name"></td>
+                <td><input type="text" ng-model="teller.address" class="form-control" placeholder="Address"></td>
+                <td><input type="text" ng-model="teller.empid" class="form-control" placeholder="Employee ID"></td>
+                <td><input type="text" ng-model="teller.mgrid" class="form-control" placeholder="Manager Id"></td>
+                <td><input type="text" ng-model="teller.username" class="form-control" placeholder="BirthDate"></td>
+                <td><input type="text" ng-model="teller.password" class="form-control" placeholder="BirthDate"></td>
+                <td>
+                    <button ng-click="addForm(teller)" type="button">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+                    <button ng-click="updateForm(teller)" type="button">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    </button>
+                </td>
+            </tr>
+            <tr ng-repeat="teller in tellers">
+                <td>{{teller.fullName}}</td>
+                <td>{{teller.address}}</td>
+                <td>{{teller.empid}}</td>
+                <td>{{teller.mgrid}}</td>
+                <td>{{teller.username}}</td>
+                <td>{{teller.password}}</td>
+                <td>
+                    <button ng-click="deleteForm($index)">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                    <button ng-click="selectForm($index)">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

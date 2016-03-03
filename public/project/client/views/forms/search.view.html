@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search HOTWIRE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="SearchController">
+    <h1 class="page-header">Hotwire Rentals API Response</h1>
+    <ul class="nav nav-tabs">
+        <li role="presentation"><a href="#/users">Renter</a></li>
+        <li role="presentation"><a href="#/vehicles">Vehicle</a></li>
+        <li role="presentation"><a href="#/reservations">Reservation</a></li>
+        <li role="presentation"><a href="#/tellers">Teller</a></li>
+        <li class="active" role="presentation"><a href="#">Search</a></li>
+    </ul>
+    <div class="table-responsive">
+        <table class="table table-striped">
+
+            <tr>
+                <td><input type="text" ng-model="request.dest" class="form-control" placeholder="Location"></td>
+                <td><input type="text" ng-model="request.startdate" class="form-control" placeholder="Start Date"></td>
+                <td><input type="text" ng-model="request.enddate" class="form-control" placeholder="End Date">
+                </td>
+                <td><input type="text" ng-model="request.pickuptime" class="form-control" placeholder="Pickup Time">
+                </td>
+                <td><input type="text" ng-model="request.dropofftime" class="form-control" placeholder="Dropoff Time">
+                </td>
+
+            </tr>
+            <tr>
+                <button ng-click="pingAPI(request)" type="submit" class="form-control btn btn-primary btn-block ng-scope">Search</button>
+            </tr>
+            <tr ng-repeat="instance in instances">
+                <td>{{instance.fullName}}</td>
+                <td>{{instance.id}}</td>
+                <td>{{instance.nationality}}</td>
+                <td>{{instance.city}}</td>
+                <td>{{instance.email}}</td>
+                <td>{{instance.mobilenumber}}</td>
+                <td>{{instance.birthdate}}</td>
+                <td>{{instance.instancename}}</td>
+                <td>{{instance.password}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="ReservationController">
+    <h1 class="page-header">Reservation</h1>
+    <ul class="nav nav-tabs">
+        <li role="presentation"><a href="#/users">Renter</a></li>
+        <li role="presentation"><a href="#/vehicles">Vehicle</a></li>
+        <li class="active" role="presentation"><a href="#">Reservation</a></li>
+        <li role="presentation"><a href="#/tellers">Teller</a></li>
+        <li role="presentation"><a href="#/search">Search</a></li>
+
+    </ul>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr>
+                <th><span class="caret"></span>Form</th>
+                <th><span class="caret"></span>Action</th>
+            </tr>
+            <tr>
+                <td><input type="text" ng-model="reservation.platenumber" class="form-control" placeholder="Plate Number"></td>
+                <td><input type="text" ng-model="reservation.pickupdate" class="form-control" placeholder="Pickup Date"></td>
+                <td><input type="text" ng-model="reservation.returndate" class="form-control" placeholder="Return Date"></td>
+                <td><input type="text" ng-model="reservation.reservationdate" class="form-control" placeholder="Reservation Date"></td>
+                <td><input type="text" ng-model="reservation.id" class="form-control" placeholder="Identifier"></td>
+                <td><input type="text" ng-model="reservation.userid" class="form-control" placeholder="User id"></td>
+                <td>
+                    <button ng-click="addForm(reservation)" type="button">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+                    <button ng-click="updateForm(reservation)" type="button">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    </button>
+                </td>
+            </tr>
+            <tr ng-repeat="reservation in reservations">
+                <td>{{reservation.platenumber}}</td>
+                <td>{{reservation.pickupdate}}</td>
+                <td>{{reservation.returndate}}</td>
+                <td>{{reservation.reservationdate}}</td>
+                <td>{{reservation.id}}</td>
+                <td>{{reservation.userid}}</td>
+                <td>
+                    <button ng-click="deleteForm($index)">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                    <button ng-click="selectForm($index)">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

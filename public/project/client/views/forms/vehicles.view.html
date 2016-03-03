@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vehicle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="VehicleController">
+    <h1 class="page-header">Vehicle</h1>
+    <ul class="nav nav-tabs">
+        <li role="presentation"><a href="#/users">Renter</a></li>
+        <li class="active" role="presentation"><a href="#">Vehicle</a></li>
+        <li role="presentation"><a href="#/reservations">Reservation</a></li>
+        <li role="presentation"><a href="#/tellers">Teller</a></li>
+        <li role="presentation"><a href="#/search">Search</a></li>
+
+    </ul>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr>
+                <th><span class="caret"></span>Form</th>
+                <th><span class="caret"></span>Action</th>
+            </tr>
+            <tr>
+                <td><input type="text" ng-model="vehicle.brand" class="form-control" placeholder="brand"></td>
+                <td><input type="text" ng-model="vehicle.type" class="form-control" placeholder="type"></td>
+                <td><input type="text" ng-model="vehicle.model" class="form-control" placeholder="model"></td>
+                <td><input type="text" ng-model="vehicle.platenumber" class="form-control" placeholder="Plate Number"></td>
+                <td><input type="text" ng-model="vehicle.seatquantity" class="form-control" placeholder="seat quantity"></td>
+                <td><input type="text" ng-model="vehicle.fueltype" class="form-control" placeholder="Fuel Type"></td>
+                <td><input type="text" ng-model="vehicle.condition" class="form-control" placeholder="Condition"></td>
+                <td><input type="text" ng-model="vehicle.dailyprice" class="form-control" placeholder="Daily Price"></td>
+                <td><input type="text" ng-model="vehicle.id" class="form-control" placeholder="id"></td>
+                <td>
+                    <button ng-click="addForm(vehicle)" type="button">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+                    <button ng-click="updateForm(vehicle)" type="button">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    </button>
+                </td>
+            </tr>
+            <tr ng-repeat="vehicle in vehicles">
+                <td>{{vehicle.brand}}</td>
+                <td>{{vehicle.type}}</td>
+                <td>{{vehicle.model}}</td>
+                <td>{{vehicle.platenumber}}</td>
+                <td>{{vehicle.seatquantity}}</td>
+                <td>{{vehicle.fueltype}}</td>
+                <td>{{vehicle.condition}}</td>
+                <td>{{vehicle.dailyprice}}</td>
+                <td>{{vehicle.id}}</td>
+                <td>
+                    <button ng-click="deleteForm($index)">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                    <button ng-click="selectForm($index)">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
