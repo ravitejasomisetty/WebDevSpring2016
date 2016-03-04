@@ -15,37 +15,45 @@
         <li role="presentation"><a href="#/tellers">Teller</a></li>
         <li class="active" role="presentation"><a href="#">Search</a></li>
     </ul>
-    <div class="table-responsive">
+    <div class="table-responsive form-group">
         <table class="table table-striped">
 
             <tr>
-                <td><input type="text" ng-model="request.dest" class="form-control" placeholder="Location"></td>
-                <td><input type="text" ng-model="request.startdate" class="form-control" placeholder="Start Date"></td>
-                <td><input type="text" ng-model="request.enddate" class="form-control" placeholder="End Date">
+                <td><input type="text" ng-model="request.dest" class="form-control" placeholder="City" required></td>
+                <td><input type="text" ng-model="request.startdate" class="form-control" placeholder="Start: MM/DD/YYYY" required></td>
+                <td><input type="text" ng-model="request.enddate" class="form-control" placeholder="End: MM/DD/YYYY" required>
                 </td>
-                <td><input type="text" ng-model="request.pickuptime" class="form-control" placeholder="Pickup Time">
+                <td><input type="text" ng-model="request.pickuptime" class="form-control" placeholder="Pickup: HH:MM" required>
                 </td>
-                <td><input type="text" ng-model="request.dropofftime" class="form-control" placeholder="Dropoff Time">
+                <td><input type="text" ng-model="request.dropofftime" class="form-control" placeholder="Dropoff: HH:MM" required>
                 </td>
 
             </tr>
             <tr>
                 <button ng-click="pingAPI(request)" type="submit" class="form-control btn btn-primary btn-block ng-scope">Search</button>
             </tr>
+            <tr>
+                <th><span class="caret"></span>LocationDescription</th>
+                <th><span class="caret"></span>DailyRate</th>
+                <th><span class="caret"></span>CarTypeCode</th>
+                <th><span class="caret"></span>MileageDescription</th>
+                <th><span class="caret"></span>TotalPrice</th>
+                <th><span class="caret"></span>HotwireRef</th>
+            </tr>
             <tr ng-repeat="instance in instances">
-                <td>{{instance.fullName}}</td>
-                <td>{{instance.id}}</td>
-                <td>{{instance.nationality}}</td>
-                <td>{{instance.city}}</td>
-                <td>{{instance.email}}</td>
-                <td>{{instance.mobilenumber}}</td>
-                <td>{{instance.birthdate}}</td>
-                <td>{{instance.instancename}}</td>
-                <td>{{instance.password}}</td>
+                <td>{{instance.LocationDescription}}</td>
+                <td>{{instance.DailyRate}}</td>
+                <td>{{instance.CarTypeCode}}</td>
+                <td>{{instance.MileageDescription}}</td>
+                <td>{{instance.TotalPrice}}</td>
+                <td><a href="{{instance.DeepLink}}">Hotwire</a></td>
             </tr>
         </table>
+
+        <ul ng-repeat="error in errors">
+            <li>{{error.ErrorMessage}}</li>
+        </ul>
     </div>
 </div>
-
 </body>
 </html>
