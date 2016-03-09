@@ -10,7 +10,10 @@
         });
         $scope.addForm = function (user) {
             UserService.createUser(user, function (user) {
-                console.log("Added user");
+                var month=user.birthdate.getMonth()+1;
+                var date=user.birthdate.getDate();
+                var year=user.birthdate.getFullYear();
+                console.log(month+"/"+date+"/"+year);
             })
         }
         $scope.updateForm = function (user) {

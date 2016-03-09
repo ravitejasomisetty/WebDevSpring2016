@@ -33,14 +33,9 @@
             "SXAR": "Special car",
             "XXAR": "Special car"
         };
-
-        $scope.CarType=function(code){
-            return carTypes[code];
-        }
-
         $scope.pingAPI = function (request) {
             if (request.dest == "" || request.startdate == "" || request.enddate == "" || request.pickuptime == "" || request.dropofftime == "")
-                alert("R");
+                alert("All the fields are required");
             else {
                 var url = "http://api.hotwire.com/v1/search/car?apikey=" + $scope.request.apikey + "&dest=" +
                     $scope.request.dest + "&startdate=" + $scope.request.startdate + "&enddate=" + $scope.request.enddate + "&pickuptime=" + $scope.request.pickuptime +
@@ -50,6 +45,11 @@
                         $scope.errors = response.Errors;
                     }
                     else {
+                        for(var i=0;i< response.Result.length;i++) {
+                            var instance={"car":""};
+                            instance.car=carTypes[response.Result[i].CarTypeCode];
+                            response.Result[i].code=instance.car;
+                        }
                         $scope.instances = response.Result;
                     }
                 }).error(function (response, status, headers) {

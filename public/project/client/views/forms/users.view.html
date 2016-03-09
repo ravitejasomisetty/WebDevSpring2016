@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="UserController">
+<div class="container" ng-controller="UserController">
     <h1 class="page-header">Renter</h1>
     <ul class="nav nav-tabs">
         <li class="active" role="presentation"><a href="#">Renter</a></li>
@@ -18,22 +18,29 @@
     <div class="table-responsive">
         <table class="table table-striped">
             <tr>
-                <th><span class="caret"></span>Form</th>
-                <th><span class="caret"></span>Action</th>
+                <th><span class="caret"></span>Full Name</th>
+                <th><span class="caret"></span>Renter Id</th>
+                <th><span class="caret"></span>Nationality</th>
+                <th><span class="caret"></span>City</th>
+                <th><span class="caret"></span>Email</th>
+                <th><span class="caret"></span>Contact</th>
+                <th><span class="caret"></span>Birthdate</th>
+                <th><span class="caret"></span>Username</th>
+                <th><span class="caret"></span>Password</th>
             </tr>
             <tr>
                 <td><input type="text" ng-model="user.fullName" class="form-control" placeholder="name"></td>
                 <td><input type="text" ng-model="user.id" class="form-control" placeholder="Identifier Number"></td>
                 <td><input type="text" ng-model="user.nationality" class="form-control" placeholder="Nationality"></td>
                 <td><input type="text" ng-model="user.city" class="form-control" placeholder="City"></td>
-                <td><input type="text" ng-model="user.email" class="form-control" placeholder="Email"></td>
+                <td><input type="email" ng-model="user.email" class="form-control" placeholder="Email"></td>
                 <td><input type="text" ng-model="user.mobilenumber" class="form-control" placeholder="Mobile Number"></td>
-                <td><input type="text" ng-model="user.birthdate" class="form-control" placeholder="BirthDate"></td>
+                <td><input type="date" ng-model="user.birthdate" class="form-control" data-date-format="MM/DD/YYYY"placeholder="BirthDate"></td>
                 <td><input type="text" ng-model="user.username" class="form-control" placeholder="BirthDate"></td>
-                <td><input type="text" ng-model="user.password" class="form-control" placeholder="BirthDate"></td>
+                <td><input id="password" type="password" ng-model="user.password" class="form-control" placeholder="BirthDate"></td>
                 <td>
-                    <button ng-click="addForm(user)" type="button">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    <button ng-click="addForm(user)" type="submit" class="btn btn-primary">
+                        Add</span>
                     </button>
                     <button ng-click="updateForm(user)" type="button">
                         <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
