@@ -108,7 +108,7 @@ body {
 }
 
 .transparent-input {
-padding:40px;
+padding:20px;
     /*background-image: url("http://www.siyabona.com/images/budget-car-hire.jpg");*/
 }
 
@@ -116,8 +116,5 @@ padding:40px;
 
 }
 .transparent-input img{
-    height:30%;
-    position: absolute;
-    opacity: 0.4;
-    width:70%;
+
 }

@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<div class="container" ng-controller="VehicleController">
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="VehicleController">
     <h1 class="page-header">Vehicle</h1>
-    <ul class="nav nav-tabs">
+   <!-- <ul class="nav nav-tabs">
         <li role="presentation"><a href="#/users">Renter</a></li>
         <li class="active" role="presentation"><a href="#">Vehicle</a></li>
         <li role="presentation"><a href="#/reservations">Reservation</a></li>
         <li role="presentation"><a href="#/tellers">Teller</a></li>
         <li role="presentation"><a href="#/search">Search</a></li>
 
-    </ul>
+    </ul>-->
     <div class="table-responsive">
         <table class="table table-striped">
             <tr>
@@ -33,12 +33,13 @@
                 <td><input type="text" ng-model="vehicle.dailyprice" class="form-control" placeholder="Daily Price"></td>
                 <td><input type="text" ng-model="vehicle.id" class="form-control" placeholder="id"></td>
                 <td>
-                    <button ng-click="addForm(vehicle)" type="button">
+                   <div class="nowrap"> <button ng-click="addForm(vehicle)" type="button">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     </button>
                     <button ng-click="updateForm(vehicle)" type="button">
                         <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                     </button>
+                       </div>
                 </td>
             </tr>
             <tr ng-repeat="vehicle in vehicles">

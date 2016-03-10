@@ -56,7 +56,15 @@
                 }
             }
         };
+        var findUserByCredentials = function (username, password, callback) {
+            for (var i = 0; i < users.length; i++) {
+                if (users[i].username == username && users[i].password == password)
+                    return callback(users[i]);
+            }
+            callback(null);
+        };
         return {
+            findUserByCredentials: findUserByCredentials,
             findAllUsers: findAllUsers,
             createUser: createUser,
             updateUser: updateUser
