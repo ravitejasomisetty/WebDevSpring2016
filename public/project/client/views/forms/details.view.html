@@ -5,13 +5,14 @@
     <title>Details</title>
 </head>
 <body ng-controller="DetailsController">
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-<img ng-src="{{instance.carImage}}">
-<label>{{instance.MileageDescription}}</label>
-<label>{{instance.LocationDescription}}</label>
-<label>{{instance.DailyRate}}</label>
-<label>{{instance.PickupDay}}</label>
-<label>{{instance.DropoffDay}}</label>
+    <div id="cardetails" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+            <div id="mileage"><img src="../project/client/images/tick.jpg" height="35px" width="55px"> {{instance.MileageDescription}}</div>
+            <div id="location"><img src="../project/client/images/tick.jpg" height="35px" width="55px">{{instance.LocationDescription}}</div>
+            <div id="dailyrate">${{instance.DailyRate}} / day</div>
+            <div id="carimg"><img ng-src="{{instance.carImage}}"></div>
+            <div id="pickup">PickUp: {{instance.PickupDay}}</div>
+            <div id="dropoff">DropOff: {{instance.DropoffDay}}</div>
     </div>
 </body>
 </html>

@@ -2,7 +2,7 @@
     angular
         .module("GrabACar")
         .controller("SearchController", SearchController);
-    function SearchController($scope, $rootScope, $http, $location) {
+    function SearchController($scope, $rootScope, $http, $location,$window) {
         'use strict';
         $scope.request = {
             "apikey": "2vq5exzbspp2d33yp327vta8",
@@ -94,6 +94,7 @@
         $scope.open = function (path, instance) {
             $rootScope.instance = instance;
             $location.url(path);
+         /*   $window.open('/FFProject/public/project/index.html#' + path);*/
         }
     }
 })();

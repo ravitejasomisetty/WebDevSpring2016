@@ -118,3 +118,58 @@ padding:20px;
 .transparent-input img{
 
 }
+#cardetails{
+    background: rgba(212,228,239,1);
+    background: -moz-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(212,228,239,1)), color-stop(100%, rgba(134,174,204,1)));
+    background: -webkit-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+    background: -o-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+    background: -ms-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+    background: linear-gradient(to right, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', endColorstr='#86aecc', GradientType=1 );
+    height:616px;
+}
+#mileage{
+    margin-top: 7px;
+    font-family: "Segoe UI Historic";
+    font-size: 18px;
+    line-height: 16px;
+    color: grey;
+    font-weight: 400;
+}
+#location{
+    margin-top: 7px;
+    font-family: "Segoe UI Historic";
+    font-size: 18px;
+    line-height: 16px;
+    color: grey;
+    font-weight: 400;
+}
+#dailyrate{
+    font-size: 35px;
+    color: #cf0006;
+    font-weight: 400;
+    padding-right: 140px;
+    padding-top: 30px;
+    float: right;
+}
+
+#carimg{
+ padding-top: 20px;
+}
+#pickup{
+    font-size: 19px;
+    font-family: "Segoe UI Historic";
+    line-height: 18px;
+    color: firebrick;
+    font-weight: 500;
+    padding-top: 28px;
+}
+#dropoff{
+    font-size: 19px;
+    ont-family: "Segoe UI Historic";
+    line-height: 18px;
+    color: firebrick;
+    font-weight: 500;
+    padding-top: 28px;
+}
