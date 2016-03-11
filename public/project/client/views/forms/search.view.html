@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main ">
+<div class="search-form">
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main panel panel-info">
     <!--<img class="" ng-src="http://www.siyabona.com/images/budget-car-hire.jpg"/>-->
     <form class="">
         <div class="form-group">
@@ -43,6 +44,7 @@
         </button>
     </form>
 </div>
+    </div>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="SearchController">
     <!-- <h1 class="page-header">Hotwire Rentals API Response</h1>
      <ul class="nav nav-tabs">
@@ -55,45 +57,60 @@
     <!--<div class="table-responsive transparent-input">-->
     <div class="transparent-input">
         <!--<table class="table table-striped">-->
-            <!--<tr>
-                &lt;!&ndash;<th><span class="caret"></span>LocationDescription</th>
-                <th><span class="caret"></span>DailyRate</th>&ndash;&gt;
-                <th><span class="caret"></span>CarTypeCode</th>
-                <th><span class="caret"></span>RefNumber</th>
-               &lt;!&ndash; <th><span class="caret"></span>MileageDescription</th>
-                <th><span class="caret"></span>TotalPrice</th>
-                <th><span class="caret"></span>HotwireRef</th>&ndash;&gt;
-            </tr>-->
-            <ul ng-repeat="instance in instances" class="list-unstyled">
-                <!--<td>{{instance.LocationDescription}}</td>
-                <td>{{instance.DailyRate}}</td>-->
-                <li>
-                    <div class="panel panel-default"><div class="panel panel-body">
-                        <div class="col-md-6"> <img ng-src="{{instance.carImage}}"
-                                                       alt="{{instance.Metadata.CarTypeName}}">
+        <!--<tr>
+            &lt;!&ndash;<th><span class="caret"></span>LocationDescription</th>
+            <th><span class="caret"></span>DailyRate</th>&ndash;&gt;
+            <th><span class="caret"></span>CarTypeCode</th>
+            <th><span class="caret"></span>RefNumber</th>
+           &lt;!&ndash; <th><span class="caret"></span>MileageDescription</th>
+            <th><span class="caret"></span>TotalPrice</th>
+            <th><span class="caret"></span>HotwireRef</th>&ndash;&gt;
+        </tr>-->
+        <ul ng-repeat="instance in instances" class="list-unstyled">
+            <!--<td>{{instance.LocationDescription}}</td>
+            <td>{{instance.DailyRate}}</td>-->
+            <li>
+                <div class="panel panel-default">
+                    <div class="panel panel-body">
+                        <div class="col-md-6"><img ng-src="{{instance.carImage}}"
+                                                   title="{{instance.Metadata.CarTypeName}}">
                         </div>
 
-                <!--<td>{{instance.MileageDescription}}</td>
-                <td>{{instance.TotalPrice}}</td>-->
-                <!--<td><a href="{{instance.DeepLink}}">Hotwire</a></td>-->
+                        <!--<td>{{instance.MileageDescription}}</td>
+                        <td>{{instance.TotalPrice}}</td>-->
+                        <!--<td><a href="{{instance.DeepLink}}">Hotwire</a></td>-->
                         <div class="col-md-4">
-                <ul class="list-unstyled">
-                    <li>{{instance.Metadata.CarTypeName}}</li>
-                    <li>{{instance.Metadata.PossibleModels}}</li>
-                    <li>{{instance.LocationDescription}}</li>
-                    <li><img src="../project/client/images/5seater.png" height="42" width="20"> </li>
-                </ul></div>
-                <button ng-click="open('/details/'+instance.HWRefNumber,instance)" class="btn btn-success">
-                    <span class="glyphicon glyphicon-new-window"></span>Select Car
-                </button></div></div>
-    </li>
-    </ul>
-    <!--</table>-->
+                            <ul class="list-unstyled">
+                                <li>{{instance.Metadata.CarTypeName}}</li>
+                                <li>{{instance.Metadata.PossibleModels}}</li>
+                                <li>{{instance.LocationDescription}}</li>
+                                <ul class="list-inline">
+                                    <li><img
+                                            ng-src="../project/client/images/{{instance.Metadata.TypicalSeating | limitTo:1}}seater.png"
+                                            height="18" width="18"
+                                            title="{{instance.Metadata.TypicalSeating | limitTo:1}} seater"></li>
+                                    <li><img ng-if="instance.Metadata.PossibleFeatures.indexOf('Automatic')>-1"
+                                             ng-src="../project/client/images/autotransmission.png"
+                                             title="Auto Transmission"></li>
+                                    <li><img ng-if="instance.Metadata.PossibleFeatures.indexOf('Stereo')>-1"
+                                             ng-src="../project/client/images/radio.png"
+                                             title="AM/FM Stereo"></li>
+                                </ul>
+                            </ul>
+                        </div>
+                        <button ng-click="open('/details/'+instance.HWRefNumber,instance)" class="btn btn-success"  title="Click to view details">
+                            <span class="glyphicon glyphicon-new-window"></span>Select Car
+                        </button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <!--</table>-->
 
-    <ul ng-repeat="error in errors">
-        <li>{{error.ErrorMessage}}</li>
-    </ul>
-</div>
+        <ul ng-repeat="error in errors">
+            <li>{{error.ErrorMessage}}</li>
+        </ul>
+    </div>
 </div>
 </body>
 </html>
