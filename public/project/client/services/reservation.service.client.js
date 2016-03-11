@@ -6,8 +6,8 @@
     function ReservationService() {
         var reservations = [
             {
-                "id": 123, "platenumber": "Alice Wonderland", "pickupdate": "Indian",
-                "returndate": "Hyderabad", "reservationdate": "999999999", "userid": "9/9/1999"
+                "id": 123, "platenumber": "4HS821", "pickupdate": new Date("3/10/2016"),
+                "returndate": new Date("3/15/2016"), "reservationdate": new Date("3/8/2016"), "userid": "1234"
             }
         ];
 
@@ -17,10 +17,10 @@
 
         var createreservation = function (reservation, callback) {
             reservation = {
-                "platenumber": reservation.brand,
-                "pickupdate": reservation.type,
-                "returndate": reservation.model,
-                "reservationdate": reservation.platenumber,
+                "platenumber": reservation.platenumber,
+                "pickupdate": reservation.pickupdate,
+                "returndate": reservation.returndate,
+                "reservationdate": reservation.reservationdate,
                 "id": (new Date).getTime(),
                 "userid": reservation.userid
             };

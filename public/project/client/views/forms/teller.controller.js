@@ -4,7 +4,6 @@
         .controller("TellerController", TellerController);
     function TellerController(TellerService, $scope, $rootScope) {
         'use strict';
-        var teller = $rootScope.teller;
         TellerService.findAlltellers(function (tellers) {
             $scope.tellers = tellers;
         });

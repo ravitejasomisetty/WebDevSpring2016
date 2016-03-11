@@ -38,6 +38,9 @@ app.config(function ($routeProvider) {
         .when("/profile", {
             templateUrl: "client/views/users/profile.view.html",
             controller: "ProfileController"
+        }).when("/myReservations", {
+            templateUrl: "client/views/users/myreservations.view.html",
+            controller: "MyReservationsController"
         })
         .otherwise({
             redirectTo: "/search"

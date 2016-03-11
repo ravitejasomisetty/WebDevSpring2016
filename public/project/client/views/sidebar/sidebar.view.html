@@ -17,6 +17,8 @@
                     <a href="#/vehicles"> Car </a></li>
                 <li ng-class="{'active': $location.url()=='/search'}" >
                     <a href="#/search"> Find cars</a></li>
+                <li ng-class="{'active': $location.url()=='/myReservations'}" ng-show="user" >
+                    <a href="#/myReservations"> My Reservations</a></li>
             </ul>
         </div>
     </div>

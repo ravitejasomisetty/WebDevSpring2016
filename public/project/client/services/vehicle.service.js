@@ -6,9 +6,9 @@
     function VehicleService() {
         var vehicles = [
             {
-                "id": 123, "brand": "Alice Wonderland", "type": "Indian",
-                "model": "Hyderabad", "platenumber": "999999999", "seatquantity": "9/9/1999",
-                "fueltype": "alice", "condition": "alice", "dailyprice": "alicewonderland@gmail.com"
+                "id": 123, "brand": "Toyota", "type": "Economy",
+                "model": "Corolla", "platenumber": "4HS821", "seatquantity": "4",
+                "fueltype": "gas", "condition": "Good", "dailyprice": "30"
             }
         ];
 

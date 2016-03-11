@@ -6,8 +6,8 @@
     function TellerService() {
         var tellers = [
             {
-                "empid": 123, "fullName": "Alice Wonderland", "mgrid": "Indian",
-                "username": "Hyderabad", "password": "999999999", "address": "9/9/1999"
+                "empid": 123, "fullName": "Alice Wonderland", "mgrid": "234",
+                "username": "AliceAdmin", "password": "999999999", "address": "Roxbury Xing, MA"
             }
         ];
 

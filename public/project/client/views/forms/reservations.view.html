@@ -8,49 +8,51 @@
 <body>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="ReservationController">
     <h1 class="page-header">Reservation</h1>
-    <!--<ul class="nav nav-tabs">
-        <li role="presentation"><a href="#/users">Renter</a></li>
-        <li role="presentation"><a href="#/vehicles">Vehicle</a></li>
-        <li class="active" role="presentation"><a href="#">Reservation</a></li>
-        <li role="presentation"><a href="#/tellers">Teller</a></li>
-        <li role="presentation"><a href="#/search">Search</a></li>
-
-    </ul>-->
     <div class="table-responsive">
         <table class="table table-striped">
             <tr>
-                <th><span class="caret"></span>Form</th>
+                <th><span class="caret"></span>PlateNumber</th>
+                <th><span class="caret"></span>PickupDate</th>
+                <th><span class="caret"></span>DropoffDate</th>
+                <th><span class="caret"></span>ReservationDate</th>
+                <th><span class="caret"></span>Confirmation#</th>
+                <th><span class="caret"></span>Renter#</th>
                 <th><span class="caret"></span>Action</th>
             </tr>
             <tr>
-                <td><input type="text" ng-model="reservation.platenumber" class="form-control" placeholder="Plate Number"></td>
-                <td><input type="text" ng-model="reservation.pickupdate" class="form-control" placeholder="Pickup Date"></td>
-                <td><input type="text" ng-model="reservation.returndate" class="form-control" placeholder="Return Date"></td>
-                <td><input type="text" ng-model="reservation.reservationdate" class="form-control" placeholder="Reservation Date"></td>
-                <td><input type="text" ng-model="reservation.id" class="form-control" placeholder="Identifier"></td>
-                <td><input type="text" ng-model="reservation.userid" class="form-control" placeholder="User id"></td>
-                <td>
-                    <button ng-click="addForm(reservation)" type="button">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                <td><input type="text" ng-model="reservation.platenumber" class="form-control"
+                           placeholder="Plate Number"></td>
+                <td><input type="date" ng-model="reservation.pickupdate" class="form-control"
+                           data-date-format="MM/DD/YYYY"></td>
+                <td><input type="date" ng-model="reservation.returndate" class="form-control"
+                           data-date-format="MM/DD/YYYY"></td>
+                <td><input type="date" ng-model="reservation.reservationdate" class="form-control"
+                           data-date-format="MM/DD/YYYY"></td>
+                <td><input type="text" ng-model="reservation.id" class="form-control" placeholder="Confirmation"
+                           disabled title="Auto-Generated"></td>
+                <td><input type="text" ng-model="reservation.userid" class="form-control" placeholder="Renter"></td>
+                <td class="text-nowrap">
+                    <button ng-click="addForm(reservation)" type="button" class="btn btn-primary">
+                        Add</span>
                     </button>
-                    <button ng-click="updateForm(reservation)" type="button">
-                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    <button ng-click="updateForm(reservation)" type="button" class="btn btn-success">
+                        Done</span>
                     </button>
                 </td>
             </tr>
             <tr ng-repeat="reservation in reservations">
-                <td>{{reservation.platenumber}}</td>
-                <td>{{reservation.pickupdate}}</td>
-                <td>{{reservation.returndate}}</td>
-                <td>{{reservation.reservationdate}}</td>
-                <td>{{reservation.id}}</td>
-                <td>{{reservation.userid}}</td>
-                <td>
-                    <button ng-click="deleteForm($index)">
-                        <span class="glyphicon glyphicon-remove"></span>
+                <td class="text-left">{{reservation.platenumber}}</td>
+                <td class="text-right">{{reservation.pickupdate|date:'MM/dd/yyyy'}}</td>
+                <td class="text-right">{{reservation.returndate|date:'MM/dd/yyyy'}}</td>
+                <td class="text-right">{{reservation.reservationdate|date:'MM/dd/yyyy'}}</td>
+                <td class="text-right">{{reservation.id}}</td>
+                <td class="text-right">{{reservation.userid}}</td>
+                <td class="text-nowrap">
+                    <button ng-click="deleteForm($index)" class="btn btn-danger">
+                        Delete</span>
                     </button>
-                    <button ng-click="selectForm($index)">
-                        <span class="glyphicon glyphicon-pencil"></span>
+                    <button ng-click="selectForm($index)" class="btn btn-warning">
+                        Edit</span>
                     </button>
                 </td>
             </tr>
