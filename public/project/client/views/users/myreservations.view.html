@@ -39,6 +39,10 @@
                         <dt>TotalPrice</dt>
                         <dd>${{instance.TotalPrice}}</dd>
                     </dl>
+                    <div>
+                        <button class="btn btn-danger" ng-show="canBeCancelled" ng-click="cancel()">Cancel</button>
+                    </div>
+                    <label ng-show="!canBeCancelled">{{CancellationInfo}}</label>
                 </div>
             </div>
         </div>
