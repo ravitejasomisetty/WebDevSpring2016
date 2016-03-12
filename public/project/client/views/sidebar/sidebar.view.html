@@ -8,6 +8,12 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
+                <li ng-class="{'active': $location.url()=='/search'}">
+                    <a href="#/search"> Find cars</a></li>
+                <li ng-class="{'active': $location.url()=='/myReservations'}" ng-show="user">
+                    <a href="#/myReservations"> My Reservations</a></li>
+                <li ng-class="{'active': $location.url()=='/admin'}">
+                    <a href="#/admin" ng-show="user.roles.indexOf('admin') >= 0"> Approve New Renters </a></li>
                 <li ng-class="{'active' : $location.url()=='/users'}"><a href="#/users"> Renter </a></li>
                 <li ng-class="{'active': $location.url()=='/tellers'}">
                     <a href="#/tellers">Teller</a></li>
@@ -15,10 +21,6 @@
                     <a href="#/reservations"> Reservation </a></li>
                 <li ng-class="{'active': $location.url()=='/vehicles'}">
                     <a href="#/vehicles"> Car </a></li>
-                <li ng-class="{'active': $location.url()=='/search'}" >
-                    <a href="#/search"> Find cars</a></li>
-                <li ng-class="{'active': $location.url()=='/myReservations'}" ng-show="user" >
-                    <a href="#/myReservations"> My Reservations</a></li>
             </ul>
         </div>
     </div>

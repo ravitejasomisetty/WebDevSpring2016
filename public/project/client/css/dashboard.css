@@ -180,6 +180,22 @@ padding:20px;
     font-weight: 500;
     padding-top: 28px;
 }
+#pickuptime{
+    font-size: 19px;
+    font-family: "Segoe UI Historic";
+    line-height: 18px;
+    color: firebrick;
+    font-weight: 500;
+    padding-top: 28px;
+}
+#dropofftime{
+    font-size: 19px;
+    font-family: "Segoe UI Historic";
+    line-height: 18px;
+    color: firebrick;
+    font-weight: 500;
+    padding-top: 28px;
+}
 .search-form{
     padding:50px;
 }
@@ -188,4 +204,9 @@ padding:20px;
     background: -webkit-linear-gradient(#eee, #333);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+.approveUsersList{
+    font-size: 19px;
+    padding-top:50px;
+    font-family: "Segoe UI Historic"
 }

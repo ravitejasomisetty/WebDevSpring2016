@@ -2,24 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Search HOTWIRE</title>
+    <title>Search Cars</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 <div class="search-form">
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main panel panel-info">
-    <!--<img class="" ng-src="http://www.siyabona.com/images/budget-car-hire.jpg"/>-->
     <form class="">
         <div class="form-group">
-            <label for="location">Location:</label>
-            <input type="text" id="location" ng-model="request.dest" class="form-control" placeholder="Location"
+            <label for="search-location">Location:</label>
+            <input type="text" id="search-location" ng-model="request.dest" class="form-control" placeholder="Location"
                    required>
         </div>
         <div class="row">
             <div class="form-group col-md-6">
                 <label for="pickupDate">Pick up:</label>
-                <input type="text" id="pickupDate" ng-model="request.startdate" class="form-control"
-                       placeholder="Start: MM/DD/YYYY" required>
+                <input type="date" id="pickupDate" ng-model="request.startdate" data-date-format="MM/DD/YYYY" class="form-control" required>
             </div>
             <div class="form-group col-md-6">
                 <label for="pickupTime">at:</label>
@@ -30,8 +28,7 @@
         <div class="row">
             <div class="form-group col-md-6">
                 <label for="dropOffDate">Drop off:</label>
-                <input type="text" id="dropOffDate" ng-model="request.enddate" class="form-control"
-                       placeholder="End: MM/DD/YYYY" required>
+                <input type="date" id="dropOffDate" ng-model="request.enddate" data-date-format="MM/DD/YYYY" class="form-control" required>
             </div>
             <div class="form-group col-md-6">
                 <label for="dropoffTime">at:</label>
@@ -46,39 +43,14 @@
 </div>
     </div>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="SearchController">
-    <!-- <h1 class="page-header">Hotwire Rentals API Response</h1>
-     <ul class="nav nav-tabs">
-         <li role="presentation"><a href="#/users">Renter</a></li>
-         <li role="presentation"><a href="#/vehicles">Vehicle</a></li>
-         <li role="presentation"><a href="#/reservations">Reservation</a></li>
-         <li role="presentation"><a href="#/tellers">Teller</a></li>
-         <li class="active" role="presentation"><a href="#">Search</a></li>
-     </ul>-->
-    <!--<div class="table-responsive transparent-input">-->
     <div class="transparent-input">
-        <!--<table class="table table-striped">-->
-        <!--<tr>
-            &lt;!&ndash;<th><span class="caret"></span>LocationDescription</th>
-            <th><span class="caret"></span>DailyRate</th>&ndash;&gt;
-            <th><span class="caret"></span>CarTypeCode</th>
-            <th><span class="caret"></span>RefNumber</th>
-           &lt;!&ndash; <th><span class="caret"></span>MileageDescription</th>
-            <th><span class="caret"></span>TotalPrice</th>
-            <th><span class="caret"></span>HotwireRef</th>&ndash;&gt;
-        </tr>-->
         <ul ng-repeat="instance in instances" class="list-unstyled">
-            <!--<td>{{instance.LocationDescription}}</td>
-            <td>{{instance.DailyRate}}</td>-->
             <li>
                 <div class="panel panel-default">
                     <div class="panel panel-body">
                         <div class="col-md-6"><img ng-src="{{instance.carImage}}"
                                                    title="{{instance.Metadata.CarTypeName}}">
                         </div>
-
-                        <!--<td>{{instance.MileageDescription}}</td>
-                        <td>{{instance.TotalPrice}}</td>-->
-                        <!--<td><a href="{{instance.DeepLink}}">Hotwire</a></td>-->
                         <div class="col-md-4">
                             <ul class="list-unstyled">
                                 <li>{{instance.Metadata.CarTypeName}}</li>

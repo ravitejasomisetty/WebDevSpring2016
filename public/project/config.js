@@ -42,6 +42,10 @@ app.config(function ($routeProvider) {
             templateUrl: "client/views/users/myreservations.view.html",
             controller: "MyReservationsController"
         })
+        .when("/admin", {
+            templateUrl: "client/views/users/admin.view.html",
+            controller: "AdminController"
+        })
         .otherwise({
             redirectTo: "/search"
         });

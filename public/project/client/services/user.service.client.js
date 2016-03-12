@@ -8,7 +8,7 @@
             {
                 "id": 123, "fullName": "Alice Wonderland", "nationality": "Indian",
                 "city": "Hyderabad", "mobilenumber": "999999999", "birthdate": new Date("9/9/1999"),
-                "username": "alice", "password": "alice", "email": "alicewonderland@gmail.com"
+                "username": "alice", "password": "alice", "email": "alicewonderland@gmail.com","roles":"admin"
             },
             {
                 "id": 234, "fullName": "Bob Hope", "nationality": "Indian",
@@ -18,7 +18,7 @@
             {
                 "id": 345, "fullName": "Charlie Brown", "nationality": "Indian",
                 "city": "Hyderabad", "mobilenumber": "999999999", "birthdate": new Date("9/9/1999"),
-                "username": "charlie", "password": "charlie", "email": "charliebrown@gmail.com"
+                "username": "charlie", "password": "charlie", "email": "charliebrown@gmail.com","roles":"admin"
             },
             {
                 "id": 456, "fullName": "Dan Craig", "nationality": "Indian",
