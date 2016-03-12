@@ -25,14 +25,20 @@
                                 <dd>{{user.licenseNumber}}</dd>
                                 <dt>Issued</dt>
                                 <dd>{{user.licenseCountry}}</dd>
+                                <dt>Status</dt>
+                                <dd>{{user.status}}</dd>
                             </dl>
                         </div>
                         <button ng-click="approve(user)" class="btn btn-success"
+                                ng-show="user.status.indexOf('Waiting') >= 0"
                                 title="Approve">Approve
                         </button>
-                        <button ng-click="approve(user)" class="btn btn-danger"
+                        <label ng-show="user.approved">Approved</label>
+                        <button ng-click="decline(user)" class="btn btn-danger"
+                                ng-show="user.status.indexOf('Declined') == -1"
                                 title="Decline">Decline
                         </button>
+                        <label ng-show="user.declined">Declined</label>
                     </div>
                 </div>
             </li>
