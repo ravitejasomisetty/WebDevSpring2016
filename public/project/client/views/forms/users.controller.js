@@ -2,9 +2,9 @@
     angular
         .module("GrabACar")
         .controller("UserController", UserController);
-    function UserController(UserService, $scope, $rootScope) {
+    function UserController(UserService, $scope) {
         'use strict';
-        var user = $rootScope.user;
+        //var user = $rootScope.user;
         UserService.findAllUsers(function (users) {
             $scope.users = users;
         });

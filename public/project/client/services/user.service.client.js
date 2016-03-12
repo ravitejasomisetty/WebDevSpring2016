@@ -7,22 +7,22 @@
         var users = [
             {
                 "id": 123, "fullName": "Alice Wonderland", "nationality": "Indian",
-                "city": "Hyderabad", "mobilenumber": "999999999", "birthdate": new Date("9/9/1999"),
+                "city": "Boston", "mobilenumber": "999999999", "birthdate": new Date("6/8/1992"),
                 "username": "alice", "password": "alice", "email": "alicewonderland@gmail.com","roles":"admin"
             },
             {
-                "id": 234, "fullName": "Bob Hope", "nationality": "Indian",
-                "city": "Hyderabad", "mobilenumber": "999999999", "birthdate": new Date("9/9/1999"),
+                "id": 234, "fullName": "Bob Hope", "nationality": "American",
+                "city": "Phoenix", "mobilenumber": "999999999", "birthdate": new Date("4/25/1992"),
                 "username": "bob", "password": "bob", "email": "bobhope@gmail.com"
             },
             {
-                "id": 345, "fullName": "Charlie Brown", "nationality": "Indian",
-                "city": "Hyderabad", "mobilenumber": "999999999", "birthdate": new Date("9/9/1999"),
+                "id": 345, "fullName": "Charlie Brown", "nationality": "African",
+                "city": "New Jersey", "mobilenumber": "999999999", "birthdate": new Date("7/6/1992"),
                 "username": "charlie", "password": "charlie", "email": "charliebrown@gmail.com","roles":"admin"
             },
             {
-                "id": 456, "fullName": "Dan Craig", "nationality": "Indian",
-                "city": "Hyderabad", "mobilenumber": "999999999", "birthdate": new Date("9/9/1999"),
+                "id": 456, "fullName": "Dan Craig", "nationality": "African",
+                "city": "San Diego", "mobilenumber": "999999999", "birthdate": new Date("2/22/1992"),
                 "username": "dan", "password": "dan", "email": "dancraig@gmail.com"
             }
         ];

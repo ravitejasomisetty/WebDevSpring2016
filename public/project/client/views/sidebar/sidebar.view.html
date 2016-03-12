@@ -11,7 +11,7 @@
                 <li ng-class="{'active': $location.url()=='/search'}">
                     <a href="#/search"> Find cars</a></li>
                 <li ng-class="{'active': $location.url()=='/myReservations'}" ng-show="user">
-                    <a href="#/myReservations"> My Reservations</a></li>
+                    <a href="#/myReservations"> My Reservation</a></li>
                 <li ng-class="{'active': $location.url()=='/admin'}">
                     <a href="#/admin" ng-show="user.roles.indexOf('admin') >= 0"> Approve New Renters </a></li>
                 <li ng-class="{'active' : $location.url()=='/users'}"><a href="#/users"> Renter </a></li>

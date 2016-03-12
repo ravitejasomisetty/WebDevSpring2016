@@ -7,7 +7,7 @@
         var tellers = [
             {
                 "empid": 123, "fullName": "Alice Wonderland", "mgrid": "234",
-                "username": "AliceAdmin", "password": "999999999", "address": "Roxbury Xing, MA"
+                "username": "alice", "password": "alice", "address": "Roxbury Xing, MA"
             }
         ];
 
