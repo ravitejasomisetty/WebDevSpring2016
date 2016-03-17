@@ -15,7 +15,7 @@ module.exports = function (app) {
 
     var Create = function (user,callback) {
         users.push(user);
-        callback(users);
+        return users;
     }
 
     var FindAll = function () {

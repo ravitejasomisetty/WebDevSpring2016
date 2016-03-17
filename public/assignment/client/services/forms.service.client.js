@@ -5,50 +5,30 @@
         .factory("FormService", FormService);
 
     function FormService() {
-        var forms = [
-            {"_id": "000", "title": "Contacts", "userId": 123},
-            {"_id": "010", "title": "ToDo", "userId": 123},
-            {"_id": "020", "title": "CDs", "userId": 234},
-        ];
-
-        function createFormForUser(userId, form, callback) {
-            var newForm = {"_id": (new Date).getTime(), "title": form.title, "userId": userId};
-            forms.push(newForm);
-            callback(newForm);
+        function createFormForUser(userId, form) {
+            var forms = $http.post("/api/assignment/user/" + userId + "/form", form);
+            return forms;
         }
 
-        function findAllFormsForUser(userId, callback) {
-            var currentUserForms=[];
-            for (var i = 0; i < forms.length; i++) {
-                if (forms[i].userId == userId)
-                    currentUserForms.push(forms[i]);
-            }
-            callback(currentUserForms);
+        function findAllFormsForUser(userId) {
+            var forms = $http.get("/api/assignment/user/" + userId + "/form");
+            return forms;
         }
 
-        function deleteFormById(formId, callback) {
-            for (var i = 0; i < forms.length; i++) {
-                if (forms[i]._id == formId)
-                    forms.splice(i, 1);
-            }
-            callback(forms);
+        function deleteFormById(formId) {
+            return $http.delete("/api/assignment/form/" + formId);
         }
 
-        function updateFormById(formId, newForm, callback) {
-            for (var i = 0; i < forms.length; i++) {
-                if (forms[i]._id == formId) {
-                    forms[i].title = newForm.title;
-                    forms[i].userId = newForm.userId;
-                }
-            }
-            callback(newForm);
+        function updateFormById(formId, newForm) {
+            var updatedForm = $http.put("/api/assignment/form/" + formId, newForm);
+            return updatedForm;
         }
 
-        return{
-            createFormForUser:createFormForUser,
-            findAllFormsForUser:findAllFormsForUser,
-            deleteFormById:deleteFormById,
-            updateFormById:updateFormById
+        return {
+            createFormForUser: createFormForUser,
+            findAllFormsForUser: findAllFormsForUser,
+            deleteFormById: deleteFormById,
+            updateFormById: updateFormById
         }
     }
 })();
