@@ -10,10 +10,11 @@
             $scope.user.lastname = "";
             $scope.user.roles = "";
             if ($scope.user.password == $scope.user.verifypassword) {
-                UserService.createUser($scope.user, function (res) {
-                    $rootScope.user = res;
-                    alert("Welcome to FormBuilder App");
-                });
+                UserService.createUser($scope.user)
+                    .then(function (res) {
+                        $rootScope.user = res;
+                        alert("Welcome to FormBuilder App");
+                    });
                 $location.url("/profile");
             }
             else {

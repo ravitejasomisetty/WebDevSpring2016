@@ -29,7 +29,7 @@ app.config(function($routeProvider){
                     controller: "FormController"
                 })
                 .when("/fields", {
-                    templateUrl: "views/forms/vehicles.view.html",
+                    templateUrl: "views/forms/fields.view.html",
                     controller:"FieldsController"
                 })
 
