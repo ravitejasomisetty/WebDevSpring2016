@@ -23,33 +23,33 @@
     <!--end of cdns-->
 
     <!--load css-->
-    <link href="css/dashboard.css" rel="stylesheet"/>
-    <link href="css/style.css" rel="stylesheet"/>
+    <link href="client/css/dashboard.css" rel="stylesheet"/>
+    <link href="client/css/style.css" rel="stylesheet"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!--load angular modules-->
-    <script src="app.js"></script>
-    <script src="config.js"></script>
-    <script src="services/user.service.client.js"></script>
-    <script src="views/main/main.controller.js"></script>
-    <script src="views/users/profile.controller.js"></script>
-    <script src="views/forms/forms.controller.js"></script>
-    <script src="services/forms.service.client.js"></script>
-    <script src="views/users/register.controller.js"></script>
-    <script src="views/home/home.controller.js"></script>
-    <script src="views/sidebar/sidebar.controller.js"></script>
-    <script src="views/header/header.controller.js"></script>
-    <script src="views/users/login.controller.js"></script>
-    <script src="views/forms/fields.controller.js"></script>
-    <script src="views/admin/admin.controller.js"></script>
+    <script src="client/app.js"></script>
+    <script src="client/config.js"></script>
+    <script src="client/services/user.service.client.js"></script>
+    <script src="client/views/main/main.controller.js"></script>
+    <script src="client/views/users/profile.controller.js"></script>
+    <script src="client/views/forms/forms.controller.js"></script>
+    <script src="client/services/forms.service.client.js"></script>
+    <script src="client/views/users/register.controller.js"></script>
+    <script src="client/views/home/home.controller.js"></script>
+    <script src="client/views/sidebar/sidebar.controller.js"></script>
+    <script src="client/views/header/header.controller.js"></script>
+    <script src="client/views/users/login.controller.js"></script>
+    <script src="client/views/forms/fields.controller.js"></script>
+    <script src="client/views/admin/admin.controller.js"></script>
 </head>
 <body ng-controller="MainController">
 
 <div ng-view>
 </div>
 
-<div id="header-panel" ng-include="'views/header/header.view.html'"></div>
-<div id="sidebar-panel" ng-include="'views/sidebar/sidebar.view.html'"></div>
+<div id="header-panel" ng-include="'client/views/header/header.view.html'"></div>
+<div id="sidebar-panel" ng-include="'client/views/sidebar/sidebar.view.html'"></div>
 
 </body>
 </html>

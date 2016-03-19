@@ -6,7 +6,9 @@
     function UserService($rootScope, $http) {
         $rootScope.user = null;
 
-        var findUserByCredentials = function (username, password) {
+        function findUserByCredentials(username, password) {
+            console.log("change");
+            //console.log($http.get("/api/assignment/user?username=" + username + "&password=" + password));
             var user = $http.get("/api/assignment/user?username=" + username + "&password=" + password);
             return user;
         };

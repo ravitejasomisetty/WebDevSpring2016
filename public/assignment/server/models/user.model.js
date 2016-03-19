@@ -1,7 +1,6 @@
-"use strict";
-module.exports = function (app) {
-    var users = require("user.mock.json");
-    var api = {
+var users = require("./user.mock.json");
+module.exports = function () {
+    var api= {
         Create: Create,
         FindAll: FindAll,
         FindById: FindById,
@@ -9,20 +8,19 @@ module.exports = function (app) {
         Delete: Delete,
         findUserByUsername: findUserByUsername,
         findUserByCredentials: findUserByCredentials
-    }
-
+    };
     return api;
 
-    var Create = function (user,callback) {
+    function Create(user) {
         users.push(user);
         return users;
     }
 
-    var FindAll = function () {
+    function FindAll() {
         return users;
     }
 
-    var FindById = function (id) {
+    function FindById(id) {
         for (var i = 0; i < users.length; i++) {
             if (users[i]._id == id)
                 return users[i];
@@ -30,7 +28,7 @@ module.exports = function (app) {
         return null;
     }
 
-    var Update = function (id, user) {
+    function Update(id, user) {
         for (var i = 0; i < users.length; i++) {
             if (users[i]._id == id) {
                 users[i].firstName = user.firstName;
@@ -41,7 +39,7 @@ module.exports = function (app) {
         }
     }
 
-    var Delete = function (id) {
+    function Delete(id) {
         var usersCopy = users;
         for (var i = 0; i < usersCopy.length; i++) {
             if (usersCopy[i]._id == userId) {
@@ -50,7 +48,7 @@ module.exports = function (app) {
         }
     }
 
-    var findUserByUsername = function (username) {
+    function findUserByUsername(username) {
         for (var i = 0; i < users.length; i++) {
             if (users[i].username == username)
                 return users[i];
@@ -58,7 +56,7 @@ module.exports = function (app) {
         return null;
     }
 
-    var findUserByCredentials = function (credentials) {
+    function findUserByCredentials(credentials) {
         for (var i = 0; i < users.length; i++) {
             if (users[i].username == credentials.username && users[i].password == credentials.password)
                 return users[i];
