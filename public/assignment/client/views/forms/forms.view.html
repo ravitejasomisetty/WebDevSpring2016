@@ -32,7 +32,7 @@
             <tr ng-repeat="form in forms">
                 <td>{{form.title}}</td>
                 <td>
-                    <button ng-click="deleteForm($index)">
+                    <button ng-click="deleteForm(form)">
                         <span class="glyphicon glyphicon-remove"></span>
                     </button>
                     <button ng-click="selectForm($index)">
