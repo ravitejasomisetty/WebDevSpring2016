@@ -1,8 +1,7 @@
 
 
 module.exports = function (app) {
-    var userModel = require("./models/user.model.js");
-    console.log(userModel.findUserByCredentials);
+    var userModel = require("./models/user.model.js")();
 
     require("./services/user.service.server.js")(app, userModel);
 }
