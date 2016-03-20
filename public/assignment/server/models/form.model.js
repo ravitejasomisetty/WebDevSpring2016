@@ -27,11 +27,11 @@ module.exports = function (app) {
         return forms;
     }
 
-    var FindAll = function FindAll() {
+    function FindAll() {
         return forms;
     }
 
-    var FindById = function (id) {
+    function FindById(id) {
         for (var i = 0; i < forms.length; i++) {
             if (forms[i]._id == id)
                 return forms[i];

@@ -6,6 +6,5 @@
     function FieldController(FieldService,$routeParams) {
         var userId=$routeParams.userId;
         var formId=$routeParams.formId;
-        var fields=FieldService.getFieldsForForm(formId);
     }
 })();

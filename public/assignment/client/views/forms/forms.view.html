@@ -30,7 +30,7 @@
                 </td>
             </tr>
             <tr ng-repeat="form in forms">
-                <td>{{form.title}}</td>
+                <td><a href="#/form/{{form._id}}/fields">{{form.title}}</a></td>
                 <td>
                     <button ng-click="deleteForm(form)">
                         <span class="glyphicon glyphicon-remove"></span>

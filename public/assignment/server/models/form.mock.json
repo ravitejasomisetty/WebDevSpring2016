@@ -7,6 +7,42 @@
       {
         "_id": "111",
         "label": "First Name",
+        "type": "TEXTAREA",
+        "placeholder": "First Name"
+      },
+      {
+        "_id": "444",
+        "label": "State",
+        "type": "CHECKBOXES",
+        "options": [
+          {
+            "label": "Massachussetts",
+            "value": "MA"
+          },
+          {
+            "label": "New Hampshire",
+            "value": "NH"
+          }
+        ]
+      },
+      {
+        "_id": "444",
+        "label": "State",
+        "type": "RADIOS",
+        "options": [
+          {
+            "label": "Massachussetts",
+            "value": "MA"
+          },
+          {
+            "label": "New Hampshire",
+            "value": "NH"
+          }
+        ]
+      },
+      {
+        "_id": "111",
+        "label": "First Name",
         "type": "TEXT",
         "placeholder": "First Name"
       },
