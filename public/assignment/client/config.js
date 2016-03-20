@@ -1,5 +1,5 @@
 
-var app=angular.module('FormBuilderApp', ['ngRoute']);
+var app=angular.module('FormBuilderApp');
 
 app.config(function($routeProvider){
             $routeProvider

@@ -4,13 +4,14 @@
         .module("FormBuilderApp")
         .controller("FieldController", FieldController);
     function FieldController(FieldService, $routeParams,$scope) {
+        var vm=this;
         var formId = $routeParams.formId;
+        $scope.modalFieldType={};
 
         FieldService.getFieldsForForm(formId)
             .then(function (res) {
-                console.log("controller:"+res.data);
                 $scope.fields = res.data;
-            })
+            });
 
         function addField(fieldType) {
             FieldService.createFieldForForm(formId, fieldType)
@@ -18,5 +19,14 @@
                     $scope.fields = res.data;
                 });
         }
+
+
+        $scope.selectField=function  (fieldType) {
+            $scope.modalFieldType = fieldType;
+        }
+
+        $scope.updated=function(fieldType){
+
+        };
     }
 })();
