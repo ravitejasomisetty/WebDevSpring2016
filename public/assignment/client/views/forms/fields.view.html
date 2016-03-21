@@ -82,12 +82,13 @@
 
                                             <!--Dropdown Field-->
                                             <label for="modalDropdown" ng-switch-when="OPTIONS">Label:</label>
-                                            <input id="modalDropdown" ng-switch-when="OPTIONS" type="text"
-                                                   placeholder="Select Car Model">
+                                            <input id="modalDropdown" ng-switch-when="OPTIONS" ng-model="updated.txtLabel" type="text"/>
+                                            <textarea class="ng-pristine ng-untouched ng-valid" ng-model="modalFieldType.options"></textarea>
+
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" ng-click="updateSelectedField(updated)" data-dismiss="modal">Ok
+                                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="updateField(updated)"  >Ok
                                         </button>
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close
                                         </button>
@@ -117,17 +118,17 @@
     <label for="options">Add New Field:</label>
     <div class="row">
         <div class="form-group col-xs-5">
-            <select id="options" class="form-control">
-                <option><a href="#">Single Line Text</a></option>
-                <option><a href="#">Date</a></option>
-                <option><a href="#">DropDown</a></option>
-                <option><a href="#">Checkboxes</a></option>
-                <option><a href="#">Radio buttons</a></option>
-                <option><a href="#">Paragraph Text Field</a></option>
+            <select id="options" class="form-control" ng-model="fieldType">
+                <option value="Single Line Text"><a href="#">Single Line Text</a></option>
+                <option value="Date"><a href="#">Date</a></option>
+                <option value="DropDown"><a href="#">DropDown</a></option>
+                <option value="Checkboxes"><a href="#">Checkboxes</a></option>
+                <option value="Radio buttons"><a href="#">Radio buttons</a></option>
+                <option value="Paragraph Text Field"><a href="#">Paragraph Text Field</a></option>
             </select>
         </div>
         <div class="col-xs-7" align="right">
-            <button ng-click="addField(model.fieldType)" class="glyphicon glyphicon-plus "
+            <button ng-click="addField(fieldType)" class="glyphicon glyphicon-plus "
                     aria-hidden="true"></button>
         </div>
     </div>
