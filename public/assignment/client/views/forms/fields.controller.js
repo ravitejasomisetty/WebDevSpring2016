@@ -84,14 +84,15 @@
 
         $scope.updateField = function (fieldType) {
             $scope.modalFieldType.label = fieldType.txtLabel;
-
+            fieldType.txtLabel="";
             if(fieldType.txtPlaceholder)
             {
                 $scope.modalFieldType.placeholder = fieldType.txtPlaceholder;
+                fieldType.txtPlaceholder="";
 
             }
             var arrayOfObj = [];
-            if ($scope.modalFieldType.options) {
+            if ($scope.modalFieldType.options.length!=0) {
                 var lines = $scope.modalFieldType.options.split("\n");
                 for (var i in lines) {
                     var obj = {
@@ -104,11 +105,11 @@
             }
 
             $scope.modalFieldType.options = arrayOfObj;
+            arrayOfObj=[];
             FieldService.updateField(formId, $scope.modalFieldType._id, $scope.modalFieldType)
                 .then(
                     function (res) {
                         $scope.fields = res.data;
-                        console.log($scope.fields);
                     }
                 );
         };

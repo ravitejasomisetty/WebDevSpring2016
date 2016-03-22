@@ -23,6 +23,10 @@
                             <input class="form-control" id="textBox" ng-switch-when="TEXT" type="text"
                                    placeholder="{{field.placeholder}}">
 
+                            <label for="email" ng-switch-when="EMAIL">{{field.label}}</label>
+                            <input class="form-control" id="email" ng-switch-when="EMAIL" type="email"
+                                   placeholder="{{field.placeholder}}">
+
                             <label for="textArea" ng-switch-when="TEXTAREA">{{field.label}}</label>
                             <textarea class="form-control" type="text" id="textArea"
                                       ng-switch-when="TEXTAREA"></textarea>
@@ -83,6 +87,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <div ng-switch on="modalFieldType.type">
                         <h4 class="modal-title" ng-switch-when="TEXT">Single Line Field</h4>
+                        <h4 class="modal-title" ng-switch-when="EMAIL">Email Field</h4>
                         <h4 class="modal-title" ng-switch-when="TEXTAREA">Multi Line Field</h4>
                         <h4 class="modal-title" ng-switch-when="DATE">Date Field</h4>
                         <h4 class="modal-title" ng-switch-when="OPTIONS">Dropdown Field</h4>
@@ -99,6 +104,13 @@
                                    ng-model="updated.txtLabel">
                             <label for="modalTextBox1" ng-switch-when="TEXT">Placeholder:</label>
                             <input id="modalTextBox1" class="form-control" ng-switch-when="TEXT" type="text"
+                                   ng-model="updated.txtPlaceholder">
+
+                            <label for="modalEmail" ng-switch-when="EMAIL">Label:</label>
+                            <input id="modalEmail" class="form-control" ng-switch-when="EMAIL" type="text"
+                                   ng-model="updated.txtLabel">
+                            <label for="modalEmail1" ng-switch-when="EMAIL">Placeholder:</label>
+                            <input id="modalEmail1" class="form-control" ng-switch-when="EMAIL" type="email"
                                    ng-model="updated.txtPlaceholder">
 
                             <!--TEXTAREA-->
