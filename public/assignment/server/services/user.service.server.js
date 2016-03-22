@@ -9,8 +9,10 @@ module.exports = function (app, userModel) {
     app.delete("/api/assignment/user/:id", deleteUser);
 
     function createUser(req, res) {
-        var user = userModel.Create(req.body);
-        res.json(user);
+        var newUser=req.body;
+        newUser._id=null;
+        var users = userModel.Create(newUser);
+        res.json(users);
     }
 
     function findAllUsers(req, res) {
@@ -24,25 +26,33 @@ module.exports = function (app, userModel) {
     }
 
     function findUserByUsername(req, res) {
-        console.log("in find");
         var user = userModel.findUserByUsername(req.query.username);
         res.json(user);
     }
 
     function findUserByCredentials(req, res) {
-        var credentials = {
-            "username": req.query.username,
-            "password": req.query.password
-        };
-        var user = userModel.findUserByCredentials(credentials);
-        res.json(user);
+        if(req.query.username) {
+            var credentials = {
+                "username": req.query.username,
+                "password": req.query.password
+            };
+            var user = userModel.findUserByCredentials(credentials);
+            res.json(user);
+        }
+        else
+        {
+            var users = userModel.FindAll();
+            res.json(users);
+        }
     }
 
     function updateUser(req, res) {
-        userModel.Update(req.params.id, req.body);
+        var users=userModel.Update(req.params.id, req.body);
+        res.json(users);
     }
 
     function deleteUser(req, res) {
-        userModel.Delete(req.parmas.id);
+        var users=userModel.Delete(req.params.id);
+        res.json(users);
     }
 };

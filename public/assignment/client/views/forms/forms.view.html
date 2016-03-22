@@ -21,10 +21,10 @@
             <tr>
                 <td><input type="text" ng-model="form.title" class="form-control" placeholder="name"></td>
                 <td>
-                    <button ng-click="addForm(form)" type="button">
+                    <button class="btn btn-primary" ng-click="addForm(form)" type="button">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     </button>
-                    <button ng-click="updateForm(form)" type="button">
+                    <button class="btn btn-success" ng-click="updateForm(form)" type="button">
                         <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                     </button>
                 </td>
@@ -32,10 +32,10 @@
             <tr ng-repeat="form in forms">
                 <td><a href="#/form/{{form._id}}/fields">{{form.title}}</a></td>
                 <td>
-                    <button ng-click="deleteForm(form)">
+                    <button class="btn btn-danger" ng-click="deleteForm(form)">
                         <span class="glyphicon glyphicon-remove"></span>
                     </button>
-                    <button ng-click="selectForm($index)">
+                    <button class="btn btn-warning"  ng-click="selectForm($index)">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </button>
                 </td>

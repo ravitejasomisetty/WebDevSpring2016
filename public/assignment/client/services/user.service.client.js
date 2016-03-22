@@ -3,10 +3,14 @@
     angular
         .module("FormBuilderApp")
         .factory("UserService", UserService);
-    function UserService($rootScope, $http) {
-        $rootScope.user = null;
+    function UserService($http) {
 
-        function findUserByCredentials(username, password) {
+        function findUserByUsername(username) {
+            var user = $http.get("/api/assignment/user?username=" + username);
+            return user;
+        }
+
+        function findUserByCredentials(username, password,user) {
             var user = $http.get("/api/assignment/user?username=" + username + "&password=" + password);
             return user;
         };
@@ -17,24 +21,21 @@
         };
 
         function createUser(user) {
-            user._id = (new Date).getTime();
-            var user = $http.post("/api/assignment/user", user);
-            return user;
+            var users = $http.post("/api/assignment/user", user);
+            return users;
         };
 
         function deleteUserById(userId) {
-            $http.delete("/api/assignment/user/" + userId);
+            var users=$http.delete("/api/assignment/user/" + userId);
+            return users;
         };
 
         function updateUser(userId, user) {
-            var user = $http.put("/api/assignment/user/" + userId, user);
-            return user;
+            var users = $http.put("/api/assignment/user/" + userId, user);
+            return users;
         };
 
-        function findUserByUsername(username) {
-            var user = $http.get("/api/assignment/user?username=" + username);
-            return user;
-        }
+
 
         return {
             findUserByUsername: findUserByUsername,

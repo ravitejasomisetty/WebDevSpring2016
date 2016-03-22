@@ -11,109 +11,147 @@
         <li role="presentation"><a href="#/forms">Forms</a></li>
         <li class="active" role="presentation"><a href="#">Fields</a></li>
     </ul>
-    <table class="table">
-        <tbody id="tbody-sortable" jga-sortable jga-axis="y" class="ui-sortable">
+    <div class="table table-responsive">
+        <table class="table table-condensed">
+            <tbody id="tbody-sortable" jga-sortable jga-axis="y" class="ui-sortable">
 
-        <tr ng-repeat="field in fields">
-            <td>
-                <div class="col-xs-5">
-                    <div ng-switch on="field.type">
-                        <label for="textBox" ng-switch-when="TEXT">{{field.label}}</label>
-                        <input class="form-control" id="textBox" ng-switch-when="TEXT" type="text"
-                               placeholder="{{field.placeholder}}">
+            <tr ng-repeat="field in fields">
+                <td>
+                    <div class="col-xs-5">
+                        <div ng-switch on="field.type">
+                            <label for="textBox" ng-switch-when="TEXT">{{field.label}}</label>
+                            <input class="form-control" id="textBox" ng-switch-when="TEXT" type="text"
+                                   placeholder="{{field.placeholder}}">
 
-                        <label for="textArea" ng-switch-when="TEXTAREA">{{field.label}}</label>
-                                <textarea class="form-control" type="text" id="textArea"
-                                          ng-switch-when="TEXTAREA"></textarea>
+                            <label for="textArea" ng-switch-when="TEXTAREA">{{field.label}}</label>
+                            <textarea class="form-control" type="text" id="textArea"
+                                      ng-switch-when="TEXTAREA"></textarea>
 
-                        <label for="dateField" ng-switch-when="DATE">{{field.label}}</label>
-                        <input class="form-control" type="date" ng-switch-when="DATE" id="dateField">
+                            <label for="dateField" ng-switch-when="DATE">{{field.label}}</label>
+                            <input class="form-control" type="date" ng-switch-when="DATE" id="dateField">
 
-                        <label for="optionsField" ng-switch-when="OPTIONS">{{field.label}}</label>
+                            <label for="optionsField" ng-switch-when="OPTIONS">{{field.label}}</label>
 
-                        <select class="form-control" ng-switch-when="OPTIONS" id="optionsField">
-                            <option ng-repeat="op in field.options" value="op.value">{{op.label}}</option>
-                        </select>
-
-                        <label ng-switch-when="CHECKBOXES" ng-repeat="option in field.options">
-                            <input type="checkbox" value="{{option.value}}">{{option.value}}
-                        </label>
-
-                        <label ng-switch-when="RADIOS" ng-repeat="option in field.options">
-                            <input type="radio" value="{{option.value}}">{{option.value}}
-                        </label>
-                        <!-- Modal -->
-                        <div id="myModal" class="modal fade" role="dialog">
-                            <div class="modal-dialog">
-                                <!-- Modal content-->
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <div ng-switch on="modalFieldType.type">
-                                            <h4 class="modal-title" ng-switch-when="TEXT">Single Line Field</h4>
-                                            <h4 class="modal-title" ng-switch-when="TEXTAREA">Multi Line Field</h4>
-                                            <h4 class="modal-title" ng-switch-when="DATE">Date Field</h4>
-                                            <h4 class="modal-title" ng-switch-when="OPTIONS">Dropdown Field</h4>
-                                            <h4 class="modal-title" ng-switch-when="CHECKBOXES">Checbox Field</h4>
-                                            <h4 class="modal-title" ng-switch-when="RADIOS">Radio Button Field</h4>
-                                        </div>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div ng-switch on="modalFieldType.type">
-                                            <label for="modalTextBox" ng-switch-when="TEXT">Label:</label>
-                                            <input id="modalTextBox" ng-switch-when="TEXT" type="text"
-                                                   ng-model="updated.txtLabel">
-                                            <label for="modalTextBox1" ng-switch-when="TEXT">Placeholder:</label>
-                                            <input id="modalTextBox1" ng-switch-when="TEXT" type="text"
-                                                   ng-model="updated.txtPlaceholder">
-
-                                            <!--TEXTAREA-->
-                                            <label for="modalTextBox2" ng-switch-when="TEXTAREA">Label:</label>
-                                            <input id="modalTextBox2" ng-switch-when="TEXTAREA" type="text"
-                                                   ng-model="updated.txtLabel">
-                                            <label for="modalTextBox3" ng-switch-when="TEXTAREA">Placeholder:</label>
-                                            <input id="modalTextBox3" ng-switch-when="TEXTAREA" type="textarea"
-                                                   ng-model="updated.txtPlaceholder">
-
-                                            <!--Date-->
-                                            <label for="modalDate" ng-switch-when="DATE">Label:</label>
-                                            <input id="modalDate" ng-switch-when="DATE" type="text"
-                                            >
-
-                                            <!--Dropdown Field-->
-                                            <label for="modalDropdown" ng-switch-when="OPTIONS">Label:</label>
-                                            <input id="modalDropdown" ng-switch-when="OPTIONS" ng-model="updated.txtLabel" type="text"/>
-                                            <textarea class="ng-pristine ng-untouched ng-valid" ng-model="modalFieldType.options"></textarea>
-
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="updateField(updated)"  >Ok
-                                        </button>
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close
-                                        </button>
-                                    </div>
-                                </div>
-
+                            <select class="form-control" ng-switch-when="OPTIONS" id="optionsField">
+                                <option ng-repeat="op in field.options" value="op.value">{{op.label}}</option>
+                            </select>
+                            <div ng-repeat="option in field.options" ng-switch-when="CHECKBOXES">
+                                <div class="checkbox">
+                                    <label for="checkbox">
+                                        <input id="checkbox" type="checkbox" value="{{option.value}}">{{option.value}}
+                                    </label></div>
                             </div>
+
+                            <div ng-repeat="option in field.options" ng-switch-when="RADIOS">
+                                <div class="radio">
+                                    <label for="radio">
+                                        <input id="radio" type="radio" value="{{option.value}}">{{option.value}}
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="col-xs-7 text-nowrap" align="right">
+                        <button class="btn btn-warning btn-xs" data-toggle="modal" data-target="#myModal"
+                                ng-click="selectField(field)" aria-hidden="true">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                        <button class="btn btn-primary btn-xs" aria-hidden="true">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                        <button ng-click="removeField(field)" class="btn btn-danger btn-xs"
+                                aria-hidden="true">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                        <a href="#" class="sortingHandle" aria-hidden="true">
+                            <span class="glyphicon glyphicon-option-vertical "></span>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div ng-switch on="modalFieldType.type">
+                        <h4 class="modal-title" ng-switch-when="TEXT">Single Line Field</h4>
+                        <h4 class="modal-title" ng-switch-when="TEXTAREA">Multi Line Field</h4>
+                        <h4 class="modal-title" ng-switch-when="DATE">Date Field</h4>
+                        <h4 class="modal-title" ng-switch-when="OPTIONS">Dropdown Field</h4>
+                        <h4 class="modal-title" ng-switch-when="CHECKBOXES">Checkbox Field</h4>
+                        <h4 class="modal-title" ng-switch-when="RADIOS">Radio Button Field</h4>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div ng-switch on="modalFieldType.type">
+                        <div class="form-group">
+                            <!--TEXT-->
+                            <label for="modalTextBox" ng-switch-when="TEXT">Label:</label>
+                            <input id="modalTextBox" class="form-control" ng-switch-when="TEXT" type="text"
+                                   ng-model="updated.txtLabel">
+                            <label for="modalTextBox1" ng-switch-when="TEXT">Placeholder:</label>
+                            <input id="modalTextBox1" class="form-control" ng-switch-when="TEXT" type="text"
+                                   ng-model="updated.txtPlaceholder">
+
+                            <!--TEXTAREA-->
+                            <label for="modalTextBox2" ng-switch-when="TEXTAREA">Label:</label>
+                            <input id="modalTextBox2" class="form-control" ng-switch-when="TEXTAREA" type="text"
+                                   ng-model="updated.txtLabel">
+                            <label for="modalTextBox3" ng-switch-when="TEXTAREA">Placeholder:</label>
+                            <input id="modalTextBox3" class="form-control" ng-switch-when="TEXTAREA" type="text"
+                                   ng-model="updated.txtPlaceholder">
+
+                            <!--Date-->
+                            <label for="modalDate" ng-switch-when="DATE">Label:</label>
+                            <input id="modalDate" class="form-control" ng-switch-when="DATE" type="text"
+                                   ng-model="updated.txtLabel">
+
+                            <!--Dropdown Field-->
+                            <label for="modalDropdown" ng-switch-when="OPTIONS">Label:</label>
+                            <input id="modalDropdown" class="form-control" ng-switch-when="OPTIONS"
+                                   ng-model="updated.txtLabel" type="text"/>
+                            <label for="modalDropdown1" ng-switch-when="OPTIONS">Options:</label>
+                            <textarea id="modalDropDown1" class="form-control" ng-switch-when="OPTIONS"
+                                      ng-model="modalFieldType.options"></textarea>
+
+                            <!--Checkboxes-->
+                            <label for="modalCheckbox" ng-switch-when="CHECKBOXES">Label:</label>
+                            <input id="modalCheckbox" class="form-control" ng-switch-when="CHECKBOXES"
+                                   ng-model="updated.txtLabel" type="text"/>
+                            <label for="modalCheckbox1" ng-switch-when="CHECKBOXES">Options:</label>
+                            <textarea id="modalCheckbox1" class="form-control" ng-switch-when="CHECKBOXES"
+                                      ng-model="modalFieldType.options"></textarea>
+
+                            <!--Radios-->
+                            <label for="modalRadio" ng-switch-when="RADIOS">Label:</label>
+                            <input id="modalRadio" class="form-control" ng-switch-when="RADIOS"
+                                   ng-model="updated.txtLabel" type="text"/>
+                            <label for="modalRadio1" ng-switch-when="RADIOS">Options:</label>
+                            <textarea id="modalRadio1" class="form-control" ng-switch-when="RADIOS"
+                                      ng-model="modalFieldType.options"></textarea>
+
                         </div>
                     </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="updateField(updated)">
+                        Ok
+                    </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close
+                    </button>
+                </div>
+            </div>
 
-                </div>
-                <div class="col-xs-7" align="right">
-                    <button class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#myModal"
-                            ng-click="selectField(field)" aria-hidden="true"></button>
-                    <button class="glyphicon glyphicon-plus " aria-hidden="true"></button>
-                    <button ng-click="removeField(field)" class="glyphicon glyphicon-remove "
-                            aria-hidden="true"></button>
-                    <a href="#" class="sortingHandle" aria-hidden="true">
-                        <span class="glyphicon glyphicon-menu-hamburger "></span>
-                    </a>
-                </div>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+        </div>
+    </div>
     <hr>
     <label for="options">Add New Field:</label>
     <div class="row">
@@ -128,7 +166,7 @@
             </select>
         </div>
         <div class="col-xs-7" align="right">
-            <button ng-click="addField(fieldType)" class="glyphicon glyphicon-plus "
+            <button ng-click="addField(fieldType)" class="glyphicon glyphicon-plus btn btn-primary btn-xs "
                     aria-hidden="true"></button>
         </div>
     </div>

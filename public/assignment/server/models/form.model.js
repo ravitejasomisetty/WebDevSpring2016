@@ -1,5 +1,5 @@
 "use strict";
-module.exports = function (app) {
+module.exports = function (uuid) {
     var forms = require("./form.mock.json");
     var api = {
         Create: Create,
@@ -9,23 +9,52 @@ module.exports = function (app) {
         Update: Update,
         Delete: Delete,
         findFormByTitle: findFormByTitle,
-        updateField:updateField,
-        createField:createField,
-        deleteFieldFromForm:deleteFieldFromForm
+        updateField: updateField,
+        createField: createField,
+        deleteFieldFromForm: deleteFieldFromForm,
+        updateFieldsOrder: updateFieldsOrder,
+        FindField:FindField
     }
 
     return api;
 
-    function deleteFieldFromForm(formId,fieldId){
-        for(var i=0;i<forms.length;i++){
-            if(forms[i]._id==formId){
+    function FindField(formId,fieldId){
+        var field;
+        for(var i=0;i<forms.length;i++)
+        {
+            if(forms[i]._id==formId)
+            {
                 var fields=forms[i].fields;
-                var fieldsCopy=fields;
                 for(var j=0;j<fields.length;j++)
                 {
                     if(fields[j]._id==fieldId)
                     {
-                        fieldsCopy.splice(j,1);
+                        field=fields[j];
+                    }
+                }
+            }
+        }
+        return field;
+    }
+
+    function updateFieldsOrder(formId, fields) {
+        for (var i = 0; i < forms.length; i++) {
+            if (forms[i]._id == formId) {
+                forms[i].fields = fields;
+                return forms[i].fields;
+            }
+        }
+        return null;
+    }
+
+    function deleteFieldFromForm(formId, fieldId) {
+        for (var i = 0; i < forms.length; i++) {
+            if (forms[i]._id == formId) {
+                var fields = forms[i].fields;
+                var fieldsCopy = fields;
+                for (var j = 0; j < fields.length; j++) {
+                    if (fields[j]._id == fieldId) {
+                        fieldsCopy.splice(j, 1);
                         return fieldsCopy;
                     }
                 }
@@ -35,11 +64,15 @@ module.exports = function (app) {
     }
 
     function createField(formId, field) {
-        for(var i=0;i<forms.length;i++)
-        {
-            if(forms[i]._id==formId)
-            {
-                forms[i].fields.push(field);
+        field._id = uuid.v1();
+        for (var i = 0; i < forms.length; i++) {
+            if (forms[i]._id == formId) {
+                if (forms[i].fields) {
+                    forms[i].fields.push(field);
+                }
+                else {
+                    forms[i].fields = [field];
+                }
                 return forms[i].fields;
             }
         }
@@ -56,6 +89,7 @@ module.exports = function (app) {
     }
 
     function Create(form) {
+        form._id = uuid.v1();
         forms.push(form);
         return forms;
     }
@@ -83,24 +117,20 @@ module.exports = function (app) {
         return forms;
     }
 
-    function updateField(formId,fieldId,field){
-        for(var i=0;i<forms.length;i++)
-        {
-            if(forms[i]._id==formId)
-            {
-                var fields=forms[i].fields;
-                for(var j=0;j<fields.length;j++)
-                {
-
-                    if(fields[j]._id==fieldId)
-                    {
-                        fields[j]=field;
-                        return fields;
+    function updateField(formId, fieldId, field) {
+        var fields;
+        for (var i = 0; i < forms.length; i++) {
+            if (forms[i]._id == formId) {
+                fields = forms[i].fields;
+                for (var j = 0; j < fields.length; j++) {
+                    if (fields[j]._id == fieldId) {
+                        fields[j] = field;
+                        break;
                     }
                 }
             }
         }
-        return null;
+        return fields;
     }
 
     function Delete(id) {

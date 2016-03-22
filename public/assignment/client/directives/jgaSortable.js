@@ -3,7 +3,7 @@
         .module("jgaSortable", [])
         .directive("jgaSortable", jgaSortable);
 
-    function jgaSortable() {
+    function jgaSortable(FieldService) {
         var start = null;
         var end = null;
 
@@ -21,7 +21,11 @@
                     var temp = scope.fields[start];
                     scope.fields[start] = scope.fields[end];
                     scope.fields[end] = temp;
-                    scope.$apply();
+
+                    FieldService.updateFieldsOrder(scope.formId,scope.fields)
+                        .then(function(res){
+                            scope.fields=res.data;
+                        })
                 }
             }).disableSelection();
         }

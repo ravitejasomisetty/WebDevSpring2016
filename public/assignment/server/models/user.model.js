@@ -1,6 +1,7 @@
-var users = require("./user.mock.json");
-module.exports = function () {
-    var api= {
+
+module.exports = function (uuid) {
+    var users = require("./user.mock.json");
+    var api = {
         Create: Create,
         FindAll: FindAll,
         FindById: FindById,
@@ -12,8 +13,12 @@ module.exports = function () {
     return api;
 
     function Create(user) {
-        users.push(user);
-        return user;
+        user._id = uuid.v1();
+        if (users) {
+            users.push(user);
+        }
+        else users = [user];
+        return users;
     }
 
     function FindAll() {
@@ -36,17 +41,20 @@ module.exports = function () {
                 users[i].username = user.username;
                 users[i].password = user.password;
                 users[i].email = user.email;
+                users[i].roles=user.roles;
             }
         }
+        return users;
     }
 
     function Delete(id) {
         var usersCopy = users;
         for (var i = 0; i < usersCopy.length; i++) {
-            if (usersCopy[i]._id == userId) {
+            if (usersCopy[i]._id == id) {
                 users.splice(i, 1);
             }
         }
+        return users;
     }
 
     function findUserByUsername(username) {

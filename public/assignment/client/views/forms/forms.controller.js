@@ -5,10 +5,12 @@
     function FormController(FormService, $scope, $rootScope) {
         'use strict';
         var user = $rootScope.user;
-        FormService.findAllFormsForUser(user._id)
-            .then(function (userForms) {
-                $scope.forms = userForms.data;
-            });
+        if(user) {
+            FormService.findAllFormsForUser(user._id)
+                .then(function (userForms) {
+                    $scope.forms = userForms.data;
+                });
+        }
         $scope.addForm = function (form) {
             if (form) {
                 form.userId = $rootScope.user._id;

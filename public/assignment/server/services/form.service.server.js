@@ -15,7 +15,7 @@ module.exports = function (app, model) {
         var userId = req.params.userId;
         var form = req.body;
         form.userId = userId;
-        form._id = new Date().getTime();
+        form._id = null;
         var forms = model.Create(form);
         res.json(forms);
     }

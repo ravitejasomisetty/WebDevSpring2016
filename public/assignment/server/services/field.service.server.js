@@ -1,8 +1,10 @@
 "use strict";
 module.exports = function (app, formModel) {
     app.post("/api/assignment/form/:formId/field", createFieldForForm);
+    app.get("/api/assignment/form/:formId/field/:fieldId",getFieldForForm);
     app.get("/api/assignment/form/:formId/field", getFieldsForForm);
     app.put("/api/assignment/form/:formId/field/:fieldId", updateField);
+    app.put("/api/assignment/form/:formId/fields", updateFieldsOrder);
     app.delete("/api/assignment/form/:formId/field/:fieldId",deleteField);
 
     function deleteField(req,res){
@@ -18,6 +20,11 @@ module.exports = function (app, formModel) {
         res.json(form.fields);
     }
 
+    function getFieldForForm(req, res) {
+        var field = formModel.FindField(req.params.formId,req.params.fieldId);
+        res.json(field);
+    }
+
     function createFieldForForm(req, res) {
         var updatedFields = formModel.createField(req.params.formId, req.body);
         res.json(updatedFields);
@@ -28,6 +35,13 @@ module.exports = function (app, formModel) {
         var fieldId=req.params.fieldId;
         var field=req.body;
         var updatedFields=formModel.updateField(formId,fieldId,field);
+        res.json(updatedFields);
+    }
+
+    function updateFieldsOrder(req,res){
+        var formId=req.params.formId;
+        var fields=req.body;
+        var updatedFields=formModel.updateFieldsOrder(formId,fields);
         res.json(updatedFields);
     }
 }

@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var multer = require('multer');
 var passport = require('passport');
 var LocalStrategy = require('passport-local');
-//var uuid = require('node-uuid');
+var uuid = require('node-uuid');
 
 
 app.use(express.static(__dirname + '/public'));
@@ -19,7 +19,6 @@ app.use(multer());
 app.use(cookieParser());
 
 
-//require("./public/assignment/server/app.js")(app, uuid);
-require("./public/assignment/server/app.js")(app);
+require("./public/assignment/server/app.js")(app,uuid);
 
 app.listen(port, ipaddress);
