@@ -6,21 +6,23 @@
 </head>
 <body ng-controller="DetailsController">
 <div id="cardetails" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-    <div id="mileage" ng-if="instance.MileageDescription"><img ng-src="../project/client/images/tick.jpg" height="25px" width="20px"> Mileage
-        {{instance.MileageDescription}}
+    <div id="mileage" ng-if="model.instance.MileageDescription"><img ng-src="../project/client/images/tick.jpg"
+                                                                     height="25px" width="20px"> Mileage
+        {{model.instance.MileageDescription}}
     </div>
-    <div id="airport" ng-if="instance.PickupAirport"><img ng-src="../project/client/images/tick.jpg" height="25px"
-                                                              width="20px"> {{instance.PickupAirport}} Airport
+    <div id="airport" ng-if="model.instance.PickupAirport"><img ng-src="../project/client/images/tick.jpg" height="25px"
+                                                                width="20px"> {{model.instance.PickupAirport}} Airport
     </div>
-    <div id="location" ng-if="instance.LocationDescription"><img ng-src="../project/client/images/tick.jpg" height="25px" width="20px">
-        {{instance.LocationDescription}}
+    <div id="location" ng-if="model.instance.LocationDescription"><img ng-src="../project/client/images/tick.jpg"
+                                                                       height="25px" width="20px">
+        {{model.instance.LocationDescription}}
     </div>
 
-    <div id="dailyrate">${{instance.DailyRate}} / day</div>
+    <div id="dailyrate">${{model.instance.DailyRate}} / day</div>
 
-    <div id="carimg"><img ng-src="{{instance.carImage}}"></div>
-    <div id="pickup">PickUp: {{instance.PickupDay}}</div>
-    <div id="dropoff">DropOff: {{instance.DropoffDay}}</div>
+    <div id="carimg"><img ng-src="{{model.instance.carImage}}"></div>
+    <div id="pickup">PickUp: {{model.instance.PickupDay}}</div>
+    <div id="dropoff">DropOff: {{model.instance.DropoffDay}}</div>
 
     <div class="search-form">
         <div class="panel panel-warning">
@@ -29,19 +31,19 @@
                 <div>
                     <dl class="dl-horizontal">
                         <dt>Rental Days</dt>
-                        <dd>{{instance.RentalDays}}</dd>
+                        <dd>{{model.instance.RentalDays}}</dd>
                         <dt>DailyRate</dt>
-                        <dd>${{instance.DailyRate}}</dd>
+                        <dd>${{model.instance.DailyRate}}</dd>
                         <dt>SubTotal</dt>
-                        <dd>${{instance.SubTotal}}</dd>
+                        <dd>${{model.instance.SubTotal}}</dd>
                         <dt>TaxesAndFees</dt>
-                        <dd>${{instance.TaxesAndFees}}</dd>
+                        <dd>${{model.instance.TaxesAndFees}}</dd>
                         <dt>TotalPrice</dt>
-                        <dd>${{instance.TotalPrice}}</dd>
+                        <dd>${{model.instance.TotalPrice}}</dd>
                     </dl>
                 </div>
                 <div>
-                    <button class="btn btn-success btn-block" ng-click="success()">Reserve</button>
+                    <button class="btn btn-success btn-block" ng-click="model.success()">Reserve</button>
                 </div>
             </div>
         </div>

@@ -2,9 +2,10 @@
     angular
         .module("GrabACar")
         .controller("SearchController", SearchController);
-    function SearchController($scope, $rootScope, $http, $location, $window) {
+    function SearchController($rootScope, $http, $location, $window) {
         'use strict';
-        $scope.request = {
+        var vm=this;
+        vm.request = {
             "apikey": "2vq5exzbspp2d33yp327vta8",
             "dest": "",
             "startdate": "",
@@ -55,23 +56,23 @@
             "SXAR": "https://ak-secure.hotwirestatic.com/x/static/images/car/cartypes/181x82/US/Special.png",
             "XXAR": "https://ak-secure.hotwirestatic.com/x/static/images/car/cartypes/181x82/US/Special.png"
         }
-        $scope.pingAPI = function (request) {
+        vm.pingAPI = function (request) {
             if (request.dest == "" || request.startdate == "" || request.enddate == "" || request.pickuptime == "" || request.dropofftime == "") {//alert("All the fields are required");
             }
             else {
                 var modifiedDate = {"startdate": "", "enddate": ""};
-                modifiedDate.startdate = obtainDate($scope.request.startdate);
-                modifiedDate.enddate = obtainDate($scope.request.enddate);
+                modifiedDate.startdate = obtainDate(request.startdate);
+                modifiedDate.enddate = obtainDate(request.enddate);
 
-                var url = "http://api.hotwire.com/v1/search/car?apikey=" + $scope.request.apikey +
-                    "&dest=" + $scope.request.dest +
+                var url = "http://api.hotwire.com/v1/search/car?apikey=" + vm.request.apikey +
+                    "&dest=" + request.dest +
                     "&startdate=" + modifiedDate.startdate +
-                    "&enddate=" + modifiedDate.enddate + "&pickuptime=" + $scope.request.pickuptime +
-                    "&dropofftime=" + $scope.request.dropofftime + "&format=jsonp&includeResultsLink=true&callback=JSON_CALLBACK";
-
+                    "&enddate=" + modifiedDate.enddate + "&pickuptime=" + request.pickuptime +
+                    "&dropofftime=" + request.dropofftime + "&format=jsonp&includeResultsLink=true&callback=JSON_CALLBACK";
+                console.log(url);
                 $http.jsonp(url).success(function (response) {
                     if (response.StatusCode != 0) {
-                        $scope.errors = response.Errors;
+                        vm.errors = response.Errors;
                     }
                     else {
                         for (var i = 0; i < response.Result.length; i++) {
@@ -86,7 +87,7 @@
                             response.Result[i].carImage = instance.image;
                             //response.Result[i].carType=instance.carType;
                         }
-                        $scope.instances = response.Result;
+                        vm.instances = response.Result;
                     }
                 }).error(function (response, status, headers) {
                     console.log(response);
@@ -105,7 +106,7 @@
             return returnDate;
         }
 
-        $scope.open = function (path, instance) {
+        vm.open = function (path, instance) {
                 $rootScope.instance = instance;
             $location.url(path);
             /*   $window.open('/FFProject/public/project/index.html#' + path);*/

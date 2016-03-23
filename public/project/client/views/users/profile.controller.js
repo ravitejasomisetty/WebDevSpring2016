@@ -4,8 +4,9 @@
         .module("GrabACar")
         .controller("ProfileController", ProfileController);
 
-    function ProfileController($scope, $location, $rootScope, UserService) {
-        $scope.user = {
+    function ProfileController($rootScope, UserService) {
+        var vm=this;
+        vm.user = {
             "_id": $rootScope.user._id,
             "firstName": $rootScope.user.firstName,
             "lastName": $rootScope.user.lastName,
@@ -15,8 +16,10 @@
             "password": $rootScope.user.password
         };
 
-        $scope.update = function () {
-            UserService.updateUser($scope.user._id, $scope.user, function (res) {
+        vm.update = update;
+
+        function update() {
+            UserService.updateUser(vm.user._id, vm.user, function (res) {
                 $rootScope.user=res;
                 alert("Profile information is successfully updated");
             });

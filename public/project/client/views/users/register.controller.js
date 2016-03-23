@@ -3,14 +3,11 @@
     angular
         .module("GrabACar")
         .controller("RegisterController", RegisterController);
-    function RegisterController($scope, UserService, $location, $rootScope) {
-
-        $scope.register = function () {
-            $scope.user.firstname = "";
-            $scope.user.lastname = "";
-            $scope.user.roles = "";
-            if ($scope.user.password == $scope.user.verifypassword) {
-                UserService.createUser($scope.user, function (res) {
+    function RegisterController(UserService, $location, $rootScope) {
+        var vm=this;
+        vm.register = function () {
+            if (vm.user.password == vm.user.verifypassword) {
+                UserService.createUser(vm.user, function (res) {
                     $rootScope.user = res;
                     alert("Welcome to FormBuilder App");
                 });

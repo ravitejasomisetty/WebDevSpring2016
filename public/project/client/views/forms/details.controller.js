@@ -3,14 +3,15 @@
     angular
         .module("GrabACar")
         .controller("DetailsController", DetailsController);
-    function DetailsController($rootScope, $scope, $routeParams) {
-        $scope.success = function () {
+    function DetailsController($rootScope, $routeParams) {
+        var vm=this;
+        vm.success = function () {
             window.open("client/views/forms/successmessage.html");
             if ($rootScope.user) {
-                $rootScope.user.instance = $scope.instance;
+                $rootScope.user.instance = vm.instance;
             }
         };
-        $scope.HWRefNumber = $routeParams.HWRefNumber;
-        $scope.instance = $rootScope.instance;
+        vm.HWRefNumber = $routeParams.HWRefNumber;
+        vm.instance = $rootScope.instance;
     }
 })();

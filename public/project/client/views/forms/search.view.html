@@ -5,7 +5,7 @@
     <title>Search Cars</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
+<body ng-controller="SearchController">
 <div class="search-form">
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main panel panel-info">
     <form class="">
@@ -36,7 +36,7 @@
                        placeholder="HH:MM" required>
             </div>
         </div>
-        <button ng-click="pingAPI(request)" type="submit" class="form-control btn btn-primary btn-block ng-scope">Find
+        <button ng-click="model.pingAPI(request)" type="submit" class="form-control btn btn-primary btn-block ng-scope">Find
             cars
         </button>
     </form>
@@ -44,7 +44,7 @@
     </div>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="SearchController">
     <div class="transparent-input">
-        <ul ng-repeat="instance in instances" class="list-unstyled">
+        <ul ng-repeat="instance in model.instances" class="list-unstyled">
             <li>
                 <div class="panel panel-default">
                     <div class="panel panel-body">
@@ -70,7 +70,7 @@
                                 </ul>
                             </ul>
                         </div>
-                        <button ng-click="open('/details/'+instance.HWRefNumber,instance)" class="btn btn-success"  title="Click to view details">
+                        <button ng-click="model.open('/details/'+instance.HWRefNumber,instance)" class="btn btn-success"  title="Click to view details">
                             <span class="glyphicon glyphicon-new-window"></span>Select Car
                         </button>
                     </div>
@@ -79,7 +79,7 @@
         </ul>
         <!--</table>-->
 
-        <ul ng-repeat="error in errors">
+        <ul ng-repeat="error in model.errors">
             <li>{{error.ErrorMessage}}</li>
         </ul>
     </div>

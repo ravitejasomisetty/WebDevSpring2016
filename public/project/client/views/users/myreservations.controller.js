@@ -3,23 +3,24 @@
     angular
         .module("GrabACar")
         .controller("MyReservationsController", MyReservationsController);
-    function MyReservationsController($scope, $location, $rootScope) {
-        $scope.instance = $rootScope.user.instance;
+    function MyReservationsController($rootScope) {
+        var vm=this;
+        vm.instance = $rootScope.user.instance;
         var today = new Date();
-        var pickupDate=new Date($scope.instance.PickupDay);
+        var pickupDate=new Date(vm.instance.PickupDay);
         var constant=1000*60*60*24;
         var diffDays=Math.round((pickupDate-today)/constant);
         if (diffDays>2)
-            $scope.canBeCancelled = true;
+            vm.canBeCancelled = true;
         else {
-            $scope.canBeCancelled = false;
-            $scope.CancellationInfo = "You may not make any changes to this reservation";
+            vm.canBeCancelled = false;
+            vm.CancellationInfo = "You may not make any changes to this reservation";
         }
 
-        $scope.cancel = function () {
+        vm.cancel = function () {
             $rootScope.user.instance = null;
-            $scope.canBeCancelled = false;
-            $scope.CancellationInfo = "Your reservation has been cancelled successfully";
+            vm.canBeCancelled = false;
+            vm.CancellationInfo = "Your reservation has been cancelled successfully";
         }
 
     }

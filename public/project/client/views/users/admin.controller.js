@@ -3,37 +3,37 @@
     angular
         .module("GrabACar")
         .controller("AdminController", AdminController);
-    function AdminController($scope, $rootScope) {
-        $scope.users = [{
-            "birthdate": "03/23/1992",
-            "fullName": "Alice Wonderland",
-            "licenseNumber": "ADPHHSPE12",
-            "licenseCountry": "United States",
-            "status":"Waiting for approval"
-        }, {
-            "birthdate": "03/23/1992",
-            "fullName": "Alice Wonderland",
-            "licenseNumber": "ADPHHSPE12",
-            "licenseCountry": "United States",
-            "status":"Approved"
-        }, {
-            "birthdate": "03/23/1992",
-            "fullName": "Alice Wonderland",
-            "licenseNumber": "ADPHHSPE12",
-            "licenseCountry": "United States",
-            "status":"Declined"
-        }];
+    function AdminController(UserService) {
+        var vm=this;
+        vm.users= UserService.findAllUsers();
+            //.then(function(res){
+            //    vm.users=res.data;
+            //});
 
-        $scope.approve=function(user){
+        vm.approve=function(user){
             user.status="Approved";
-            $scope.user.approved=true;
-            $scope.user.declined=false;
+            user.approved=true;
+            user.declined=false;
+            vm.users=updateNewRenter(user);
         }
 
-        $scope.decline=function(user){
+        function updateNewRenter(user){
+            for(var i=0;i<vm.users.length;i++)
+            {
+                if(vm.users[i]._id==user._id)
+                {
+                    vm.users[i]=user;
+                    return vm.users;
+                }
+            }
+            return null;
+        }
+
+        vm.decline=function(user){
             user.status="Declined";
-            $scope.user.declined=true;
-            $scope.user.approved=false;
+            user.declined=true;
+            user.approved=false;
+            vm.users=updateNewRenter(user);
         }
     }
 })();

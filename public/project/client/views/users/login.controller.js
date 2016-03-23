@@ -3,11 +3,14 @@
     angular
         .module("GrabACar")
         .controller("LoginController", LoginController);
-    function LoginController($scope, UserService, $location, $rootScope) {
-        $scope.login = function () {
-            UserService.findUserByCredentials($scope.user.username, $scope.user.password, function (res) {
+    function LoginController(UserService, $location, $rootScope) {
+        var vm=this;
+        vm.login = login;
+        function login () {
+            UserService.findUserByCredentials(vm.user.username, vm.user.password)
+                .then(function (res) {
                 if (res) {
-                    $rootScope.user=res;
+                    $rootScope.user=res.data;
                     $location.url("/profile");
                 }
                 else {
@@ -17,6 +20,22 @@
                 }
             });
         };
+
+        function isYoungDriver(){
+            var usid=111;
+            UserService.isYoungDriver(usid)
+                .then(function (res) {
+                    if (res) {
+                        console.log(res.data+" :id:"+usid);
+                        $location.url("/profile");
+                    }
+                    else {
+                        alert("Unable to log you in because of the possible reason(s):\n" +
+                            "1. Insufficient or invalid credentials\n" +
+                            "2. You're not a registered user yet");
+                    }
+                });
+        }
     }
 })();
 
