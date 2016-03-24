@@ -4,11 +4,11 @@
 
 
 module.exports = function (uuid) {
-    var users = [
+    var renters = [
         {
             "_id": 123, "firstName": "Alice","lastName": "Wonderland", "nationality": "Indian",
             "city": "Boston", "mobilenumber": "999999999", "birthdate": new Date("6/8/1992"),
-            "username": "alice", "password": "alice", "email": "alicewonderland@gmail.com","roles":"admin",
+            "rentername": "alice", "password": "alice", "email": "alicewonderland@gmail.com","roles":"admin",
             "licenseNumber": "ADPHHSPE12",
             "licenseCountry": "United States",
             "status":"Waiting for approval"
@@ -16,7 +16,7 @@ module.exports = function (uuid) {
         {
             "_id": 234, "firstName": "Bob","lastName":"Hope", "nationality": "American",
             "city": "Phoenix", "mobilenumber": "999999999", "birthdate": new Date("4/25/1992"),
-            "username": "bob", "password": "bob", "email": "bobhope@gmail.com",
+            "rentername": "bob", "password": "bob", "email": "bobhope@gmail.com",
             "licenseNumber": "ADPHHSPE12",
             "licenseCountry": "United States",
             "status":"Waiting for approval"
@@ -24,7 +24,7 @@ module.exports = function (uuid) {
         {
             "_id": 345, "firstName": "Charlie","lastName":"Brown", "nationality": "African",
             "city": "New Jersey", "mobilenumber": "999999999", "birthdate": new Date("7/6/1992"),
-            "username": "charlie", "password": "charlie", "email": "charliebrown@gmail.com","roles":"admin",
+            "rentername": "charlie", "password": "charlie", "email": "charliebrown@gmail.com","roles":"admin",
             "licenseNumber": "ADPHHSPE12",
             "licenseCountry": "United States",
             "status":"Approved"
@@ -32,7 +32,7 @@ module.exports = function (uuid) {
         {
             "_id": 456, "firstName": "Dan","lastName":"Craig", "nationality": "African",
             "city": "San Diego", "mobilenumber": "999999999", "birthdate": new Date("2/22/1992"),
-            "username": "dan", "password": "dan", "email": "dancraig@gmail.com",
+            "rentername": "dan", "password": "dan", "email": "dancraig@gmail.com",
             "licenseNumber": "ADPHHSPE12",
             "licenseCountry": "United States",
             "status":"Declined"
@@ -44,17 +44,17 @@ module.exports = function (uuid) {
         FindById: FindById,
         Update: Update,
         Delete: Delete,
-        findUserByUsername: findUserByUsername,
-        findUserByCredentials: findUserByCredentials,
+        findRenterByRentername: findRenterByRentername,
+        findRenterByCredentials: findRenterByCredentials,
         isYoungDriver:isYoungDriver
     };
     return api;
 
-    function isYoungDriver(userId){
-        for(var i=0;i<users.length;i++)
+    function isYoungDriver(renterId){
+        for(var i=0;i<renters.length;i++)
         {
-            if(userId==users[i]._id){
-                var age=_calculateAge(users[i].birthdate);
+            if(renterId==renters[i]._id){
+                var age=_calculateAge(renters[i].birthdate);
                 if(15<=age && age<=18)
                 {
                     return true;
@@ -70,63 +70,63 @@ module.exports = function (uuid) {
         return Math.abs(ageDate.getUTCFullYear() - 1970);
     }
 
-    function Create(user) {
-        user._id = uuid.v1();
-        if (users) {
-            users.push(user);
+    function Create(renter) {
+        renter._id = uuid.v1();
+        if (renters) {
+            renters.push(renter);
         }
-        else users = [user];
-        return users;
+        else renters = [renter];
+        return renters;
     }
 
     function FindAll() {
-        return users;
+        return renters;
     }
 
     function FindById(id) {
-        for (var i = 0; i < users.length; i++) {
-            if (users[i]._id == id)
-                return users[i];
+        for (var i = 0; i < renters.length; i++) {
+            if (renters[i]._id == id)
+                return renters[i];
         }
         return null;
     }
 
-    function Update(id, user) {
-        for (var i = 0; i < users.length; i++) {
-            if (users[i]._id == id) {
-                users[i].firstName = user.firstName;
-                users[i].lastName = user.lastName;
-                users[i].username = user.username;
-                users[i].password = user.password;
-                users[i].email = user.email;
-                users[i].roles=user.roles;
+    function Update(id, renter) {
+        for (var i = 0; i < renters.length; i++) {
+            if (renters[i]._id == id) {
+                renters[i].firstName = renter.firstName;
+                renters[i].lastName = renter.lastName;
+                renters[i].rentername = renter.rentername;
+                renters[i].password = renter.password;
+                renters[i].email = renter.email;
+                renters[i].roles=renter.roles;
             }
         }
-        return users;
+        return renters;
     }
 
     function Delete(id) {
-        var usersCopy = users;
-        for (var i = 0; i < usersCopy.length; i++) {
-            if (usersCopy[i]._id == id) {
-                users.splice(i, 1);
+        var rentersCopy = renters;
+        for (var i = 0; i < rentersCopy.length; i++) {
+            if (rentersCopy[i]._id == id) {
+                renters.splice(i, 1);
             }
         }
-        return users;
+        return renters;
     }
 
-    function findUserByUsername(username) {
-        for (var i = 0; i < users.length; i++) {
-            if (users[i].username == username)
-                return users[i];
+    function findRenterByRentername(rentername) {
+        for (var i = 0; i < renters.length; i++) {
+            if (renters[i].rentername == rentername)
+                return renters[i];
         }
         return null;
     }
 
-    function findUserByCredentials(credentials) {
-        for (var i = 0; i < users.length; i++) {
-            if (users[i].username == credentials.username && users[i].password == credentials.password)
-                return users[i];
+    function findRenterByCredentials(credentials) {
+        for (var i = 0; i < renters.length; i++) {
+            if (renters[i].rentername == credentials.rentername && renters[i].password == credentials.password)
+                return renters[i];
         }
         return null;
     }

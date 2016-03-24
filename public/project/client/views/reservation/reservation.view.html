@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-controller="ReservationController">
+{{model.reservations}}
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-repeat="reservation in model.reservations">
+    <label>{{reservation.platenumber}}</label>
+</div>
+</body>
+</html>

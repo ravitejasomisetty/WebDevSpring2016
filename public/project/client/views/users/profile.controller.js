@@ -4,7 +4,7 @@
         .module("GrabACar")
         .controller("ProfileController", ProfileController);
 
-    function ProfileController($rootScope, UserService) {
+    function ProfileController($rootScope, RenterService) {
         var vm=this;
         vm.user = {
             "_id": $rootScope.user._id,
@@ -19,7 +19,7 @@
         vm.update = update;
 
         function update() {
-            UserService.updateUser(vm.user._id, vm.user, function (res) {
+            RenterService.updateUser(vm.user._id, vm.user, function (res) {
                 $rootScope.user=res;
                 alert("Profile information is successfully updated");
             });

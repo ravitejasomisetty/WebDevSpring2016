@@ -5,7 +5,8 @@
     <title>Title</title>
 </head>
 <body ng-controller="VehicleController">
-<div ng-repeat="vehicle in model.vehicles">
+{{model.vehicles}}
+    <div ng-repeat="vehicle in model.vehicles">
     <label>{{vehicle.platenumber}}</label>
 </div>
 </body>

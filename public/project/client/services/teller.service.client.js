@@ -1,50 +1,42 @@
+/**
+ * Created by ravit on 3/23/2016.
+ */
 (function () {
     'use strict';
     angular
         .module("GrabACar")
         .factory("TellerService", TellerService);
-    function TellerService() {
-        var tellers = [
-            {
-                "empid": 123, "fullName": "Alice Wonderland", "mgrid": "234",
-                "username": "alice", "password": "alice", "address": "Roxbury Xing, MA"
-            }
-        ];
-
-        var findAlltellers = function (callback) {
-            callback(tellers);
-        };
-
-        var createteller = function (teller, callback) {
-            teller = {
-                "empid": (new Date).getTime(),
-                "fullName": teller.fullName,
-                "mgrid": teller.mgrid,
-                "username": teller.username,
-                "password": teller.password,
-                "address": teller.address
-            };
-            tellers.push(teller);
-            callback(teller);
-        };
-
-        var updateteller = function (teller, callback) {
-            var tellerId = teller.empid;
-            for (var i = 0; i < tellers.length; i++) {
-                if (tellerId == tellers[i].empid) {
-                    tellers[i].fullName = teller.fullName;
-                    tellers[i].mgrid = teller.mgrid;
-                    tellers[i].username = teller.username;
-                    tellers[i].password = teller.password;
-                    tellers[i].address = teller.address;
-                    return callback(teller);
-                }
-            }
-        };
+    function TellerService($http) {
         return {
-            findAlltellers: findAlltellers,
-            createteller: createteller,
-            updateteller: updateteller
+            viewTeller: viewTeller,
+            newTeller:newTeller,
+            updateTeller:updateTeller,
+            deleteTeller:deleteTeller,
+            findAllTellers:findAllTellers
         }
-    }
-})();
+        function findAllTellers(){
+            var tellers=$http.get("/api/grabacar/teller");
+            console.log(tellers);
+            return tellers;
+        };
+
+        function viewTeller(employeeid) {
+            var teller=$http.get("/api/grabacar/teller/"+employeeid);
+            return teller;
+        }
+
+        function newTeller(teller){
+            var tellers=$http.post("/api/grabacar/teller",teller);
+            return tellers;
+        }
+
+        function updateTeller(employeeid,teller){
+            var tellers=$http.put("/api/grabacar/teller/"+employeeid,teller);
+            return tellers;
+        }
+
+        function deleteTeller(employeeid){
+            var tellers=$http.delete("/api/grabacar/teller/"+employeeid);
+            return tellers;
+        }
+    }})();

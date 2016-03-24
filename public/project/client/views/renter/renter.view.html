@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-controller="RenterController">
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div ng-repeat="renter in model.renters">
+    <label >{{renter.firstName}}</label>
+    <button class="btn btn-primary" ng-click="model.getMyRents(renter._id)">My Rents</button>
+    </div>
+    <label ng-repeat="rent in model.rents">{{rent.platenumber}}</label>
+
+</div>
+</body>
+</html>

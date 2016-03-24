@@ -5,7 +5,7 @@
     'use strict';
     angular
         .module("GrabACar")
-        .factory("VehicleService", VehicleService);
+        .factory("VehicleService1", VehicleService);
     function VehicleService($http) {
         var api= {
             viewVehicle: viewVehicle,

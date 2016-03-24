@@ -3,11 +3,11 @@
     angular
         .module("GrabACar")
         .controller("LoginController", LoginController);
-    function LoginController(UserService, $location, $rootScope) {
+    function LoginController(RenterService, $location, $rootScope) {
         var vm=this;
         vm.login = login;
         function login () {
-            UserService.findUserByCredentials(vm.user.username, vm.user.password)
+            RenterService.findRenterByCredentials(vm.user.username, vm.user.password)
                 .then(function (res) {
                 if (res) {
                     $rootScope.user=res.data;
@@ -23,7 +23,7 @@
 
         function isYoungDriver(){
             var usid=111;
-            UserService.isYoungDriver(usid)
+            RenterService.isYoungDriver(usid)
                 .then(function (res) {
                     if (res) {
                         console.log(res.data+" :id:"+usid);

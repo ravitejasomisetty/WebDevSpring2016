@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-controller="VLocationController">
+{{model.vlocations}}
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-repeat="vlocation in model.vlocations">
+    <label>{{vlocation.platenumber}}</label>
+    <label>{{vlocation.locationid}}</label>
+</div>
+</body>
+</html>
