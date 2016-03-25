@@ -28,7 +28,10 @@
             .when("/search", {
                 templateUrl: "client/views/search/search.view.html",
                 controller: "SearchController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    getLoggedIn: getLoggedIn
+                }
             })
             .when("/details/:HWRefNumber", {
                 templateUrl: "client/views/forms/details.view.html",
@@ -71,16 +74,36 @@
             .when("/myReservations/:rentid", {
                 templateUrl: "client/views/users/myreservations.view.html",
                 controller: "MyReservationsController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    getLoggedIn: getLoggedIn
+                }
             })
             .when("/admin", {
                 templateUrl: "client/views/users/admin.view.html",
                 controller: "AdminController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    getLoggedIn: getLoggedIn
+                }
             })
             .otherwise({
                 redirectTo: "/search"
             })
+    }
+
+    function getLoggedIn(RenterService, $q) {
+        var deferred = $q.defer();
+
+        RenterService
+            .getCurrentUser()
+            .then(function (response) {
+                var currentUser = response.data;
+                RenterService.setCurrentUser(currentUser);
+                deferred.resolve();
+            });
+
+        return deferred.promise;
     }
 
     function checkLoggedIn(RenterService, $q, $location) {
