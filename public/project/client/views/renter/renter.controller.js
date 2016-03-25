@@ -38,7 +38,6 @@
                     "rentername": user.rentername,
                     "password": user.password
                 };
-                if(userCopy.birthdate)
                 userCopy.birthdate=DateService.obtainDate(user.birthdate);
                 RenterService.updateRenter(userCopy._id, userCopy)
                     .then(function (renters) {

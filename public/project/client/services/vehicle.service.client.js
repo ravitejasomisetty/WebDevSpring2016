@@ -5,7 +5,7 @@
     'use strict';
     angular
         .module("GrabACar")
-        .factory("VehicleService1", VehicleService);
+        .factory("VehicleService", VehicleService);
     function VehicleService($http) {
         var api= {
             viewVehicle: viewVehicle,
@@ -18,7 +18,6 @@
         return api;
         function findAllVehicles(){
             var vehicles=$http.get("/api/grabacar/vehicle");
-            console.log(vehicles);
             return vehicles;
         };
 

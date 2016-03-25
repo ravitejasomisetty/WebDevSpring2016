@@ -92,7 +92,19 @@ module.exports = function (uuid) {
     function Update(id, renter) {
         for (var i = 0; i < renters.length; i++) {
             if (renters[i]._id == id) {
-                renters[i]=renter;
+                renters[i].firstName = renter.firstName;
+                renters[i].lastName = renter.lastName;
+                renters[i].rentername = renter.rentername;
+                renters[i].city = renter.city;
+                renters[i].nationality = renter.nationality;
+                renters[i].mobilenumber = renter.mobilenumber;
+                renters[i].birthdate = renter.birthdate;;
+                renters[i].licenseNumber = renter.licenseNumber;
+                renters[i].licenseCountry = renter.licenseCountry;
+                renters[i].password = renter.password;
+                renters[i].status = renter.status;
+                renters[i].email = renter.email;
+                renters[i].roles = renter.roles;
             }
         }
         return renters;

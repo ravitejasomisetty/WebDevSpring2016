@@ -16,7 +16,6 @@
         }
         function findAllTellers(){
             var tellers=$http.get("/api/grabacar/teller");
-            console.log(tellers);
             return tellers;
         };
 

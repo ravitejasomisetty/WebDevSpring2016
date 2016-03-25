@@ -18,7 +18,6 @@ module.exports = function (app, tellerModel) {
     function findAllTellers(req,res){
         var req=req.body;
         var tellers=tellerModel.findAllTellers();
-        console.log(tellers);
         res.json(tellers);
     }
 
@@ -30,7 +29,8 @@ module.exports = function (app, tellerModel) {
 
     function updateTeller(req,res){
         var teller=req.body;
-        var tellers=tellerModel.updateTeller(teller);
+        var employeeid=req.params.employeeid;
+        var tellers=tellerModel.updateTeller(employeeid,teller);
         res.json(tellers);
     }
 

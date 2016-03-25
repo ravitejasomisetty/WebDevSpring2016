@@ -7,17 +7,20 @@ app.config(function ($routeProvider) {
             controller: "RenterController",
             controllerAs:"model"
         })
-        .when("/vehicles", {
-            templateUrl: "client/views/forms/vehicles.view.html",
-            controller: "VehicleController"
+        .when("/vehicle", {
+            templateUrl: "client/views/vehicle/vehicle.view.html",
+            controller: "VehicleController",
+            controllerAs: "model"
         })
-        .when("/reservations", {
-            templateUrl: "client/views/forms/reservations.view.html",
-            controller: "ReservationController"
+        .when("/reservation", {
+            templateUrl: "client/views/reservation/reservation.view.html",
+            controller: "ReservationController",
+            controllerAs:"model"
         })
-        .when("/tellers", {
-            templateUrl: "client/views/forms/teller.view.html",
-            controller: "TellerController"
+        .when("/teller", {
+            templateUrl: "client/views/teller/teller.view.html",
+            controller: "TellerController",
+            controllerAs: "model"
         })
         .when("/search", {
             templateUrl: "client/views/search/search.view.html",
@@ -34,24 +37,9 @@ app.config(function ($routeProvider) {
             controller: "RegisterController",
             controllerAs: "model"
         })
-        .when("/vehicle", {
-            templateUrl: "client/views/vehicle/vehicle.view.html",
-            controller: "VehicleController",
-            controllerAs: "model"
-        })
         .when("/rent", {
             templateUrl: "client/views/rent/rent.view.html",
             controller: "RentController",
-            controllerAs: "model"
-        })
-        .when("/teller", {
-            templateUrl: "client/views/teller/teller.view.html",
-            controller: "TellerController",
-            controllerAs: "model"
-        })
-        .when("/reservation", {
-            templateUrl: "client/views/reservation/reservation.view.html",
-            controller: "ReservationController",
             controllerAs: "model"
         })
         .when("/vlocation", {

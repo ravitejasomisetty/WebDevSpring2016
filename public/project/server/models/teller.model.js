@@ -33,15 +33,15 @@ module.exports = function (uuid) {
     }
 
     function newTeller(teller){
-        var tellerid=uuid.v1();
+        var employeeid=uuid.v1();
         teller.employeeid=employeeid;
         tellers.push(teller);
         return tellers;
     }
 
-    function updateTeller(teller){
+    function updateTeller(employeeid,teller){
         for(var i=0;i<tellers.length;i++){
-            if(tellers[i].employeeid==teller.employeeid)
+            if(tellers[i].employeeid==employeeid)
             {
                 tellers[i]=teller;
                 return tellers;

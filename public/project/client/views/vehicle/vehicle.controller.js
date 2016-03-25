@@ -1,24 +1,65 @@
-/**
- * Created by ravit on 3/22/2016.
- */
 (function () {
-    'use strict';
     angular
         .module("GrabACar")
         .controller("VehicleController", VehicleController);
-    function VehicleController(VehicleService1) {
+    function VehicleController(VehicleService) {
+        'use strict';
         var vm = this;
-        console.log("hi");
-        vm.vehicles = [];
+        vm.addForm = addForm;
+        vm.updateForm = updateForm;
+        vm.deleteForm = deleteForm;
+        vm.selectForm = selectForm;
 
-        vm.init = function init() {
-            VehicleService1.findAllVehicles().then(function (res) {
-
-                vm.vehicles = res.data;
-
+        VehicleService.findAllVehicles()
+            .then(function (vehicles) {
+                vm.vehicles = vehicles.data;
             });
-            console.log(vm.vehicles + "responed");
+
+        function addForm(vehicle) {
+            if (vehicle) {
+                VehicleService.registerVehicle(vehicle)
+                    .then(function (vehicles) {
+                        vm.vehicles = vehicles.data;
+                        console.log("Added vehicle");
+                    })
+            }
+            else {
+                alert("Fields cannot be empty");
+            }
         }
-        vm.init();
+
+        function updateForm(vehicle) {
+            if (vehicle) {
+                VehicleService.updateVehicle(vehicle.platenumber, vehicle)
+                    .then(function (vehicles) {
+                        vm.vehicles = vehicles.data;
+                        console.log("updated successfully");
+                    })
+            }
+            else {
+                alert("Select by clicking EDIT to update a record");
+            }
+        }
+
+        function deleteForm(vehicle) {
+            VehicleService.deleteVehicle(vehicle.platenumber)
+                .then(function (vehicles) {
+                        vm.vehicles = vehicles.data;
+                    }
+                )
+        }
+
+        function selectForm(index) {
+            vm.vehicle = {
+                "brand": vm.vehicles[index].brand,
+                "type": vm.vehicles[index].type,
+                "model": vm.vehicles[index].model,
+                "platenumber": vm.vehicles[index].platenumber,
+                "seatquantity": vm.vehicles[index].seatquantity,
+                "fueltype": vm.vehicles[index].fueltype,
+                "condition": vm.vehicles[index].condition,
+                "dailyprice": vm.vehicles[index].dailyprice
+            };
+        }
     }
 })();

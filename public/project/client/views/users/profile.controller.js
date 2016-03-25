@@ -4,15 +4,15 @@
         .module("GrabACar")
         .controller("ProfileController", ProfileController);
 
-    function ProfileController($rootScope, RenterService, ReservationService,$location) {
+    function ProfileController($rootScope, RenterService, ReservationService, $location) {
         var vm = this;
         vm.update = update;
-        vm.open=open;
+        vm.open = open;
         /*/!* var testData={};
          testData.user = {
          "_id": 123, "firstName": "Alice", "lastName": "Wonderland", "nationality": "Indian",
          "city": "Boston", "mobilenumber": "999999999", "birthdate": new Date("6/8/1992"),
-         "rentername": "alice", "password": "alice", "email": "alicewonderland@gmail.com", "roles": "admin",
+         "$rootScope.username": "alice", "password": "alice", "email": "alicewonderland@gmail.com", "roles": "admin",
          "licenseNumber": "ADPHHSPE12",
          "licenseCountry": "United States",
          "status": "Waiting for approval"
@@ -41,10 +41,17 @@
             "_id": $rootScope.user._id,
             "firstName": $rootScope.user.firstName,
             "lastName": $rootScope.user.lastName,
+            "rentername": $rootScope.user.rentername,
+            "city": $rootScope.user.city,
+            "nationality": $rootScope.user.nationality,
+            "mobilenumber": $rootScope.user.mobilenumber,
+            "birthdate": $rootScope.user.birthdate,
+            "licenseNumber": $rootScope.user.licenseNumber,
+            "licenseCountry": $rootScope.user.licenseCountry,
+            "password": $rootScope.user.password,
+            "status": $rootScope.user.status,
             "email": $rootScope.user.email,
-            "roles": $rootScope.user.roles,
-            "username": $rootScope.user.rentername,
-            "password": $rootScope.user.password
+            "roles": $rootScope.user.roles
         };
 
         if (vm.user) {
@@ -57,13 +64,13 @@
             }
         }
         function update() {
-            RenterService.updateRenter(vm.user._id, vm.user, function (res) {
-                $rootScope.user = res;
-                alert("Profile information is successfully updated");
-            });
+            RenterService.updateRenter(vm.user._id, vm.user)
+                .then(function (res) {
+                    alert("Profile information is successfully updated");
+                });
         }
 
-        function open(path){
+        function open(path) {
             $location.url(path);
         }
     }
