@@ -2,9 +2,10 @@ var app = angular.module('GrabACar', ['ngRoute']);
 
 app.config(function ($routeProvider) {
     $routeProvider
-        .when("/users", {
-            templateUrl: "client/views/forms/users.view.html",
-            controller: "UserController"
+        .when("/renter", {
+            templateUrl: "client/views/renter/renter.view.html",
+            controller: "RenterController",
+            controllerAs:"model"
         })
         .when("/vehicles", {
             templateUrl: "client/views/forms/vehicles.view.html",
@@ -19,7 +20,7 @@ app.config(function ($routeProvider) {
             controller: "TellerController"
         })
         .when("/search", {
-            templateUrl: "client/views/forms/search.view.html",
+            templateUrl: "client/views/search/search.view.html",
             controller: "SearchController",
             controllerAs: "model"
         })
@@ -28,7 +29,6 @@ app.config(function ($routeProvider) {
             controller: "DetailsController",
             controllerAs: "model"
         })
-
         .when("/register", {
             templateUrl: "client/views/users/register.view.html",
             controller: "RegisterController",
@@ -64,11 +64,6 @@ app.config(function ($routeProvider) {
             controller: "LocationController",
             controllerAs: "model"
         })
-        .when("/renter", {
-            templateUrl: "client/views/renter/renter.view.html",
-            controller: "RenterController",
-            controllerAs: "model"
-        })
         .when("/login", {
             templateUrl: "client/views/users/login.view.html",
             controller: "LoginController",
@@ -79,9 +74,10 @@ app.config(function ($routeProvider) {
             controller: "ProfileController",
             controllerAs: "model"
         })
-        .when("/myReservations", {
+        .when("/myReservations/:rentid", {
             templateUrl: "client/views/users/myreservations.view.html",
-            controller: "MyReservationsController"
+            controller: "MyReservationsController",
+            controllerAs:"model"
         })
         .when("/admin", {
             templateUrl: "client/views/users/admin.view.html",

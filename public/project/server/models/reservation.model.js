@@ -7,15 +7,44 @@ module.exports = function (uuid) {
         "pickupdate": "3/23/2016",
         "returndate": "3/26/2016",
         "reservationdate": "3/19/2016",
+        "status":"RESERVED",
         "reservationid": "10",
-        "userid": "10"
+        "renterid": "123",
+        "rentid":"10"
     }];
+    var recentReservationJSON;
     return {
         viewReservation: viewReservation,
         newReservation:newReservation,
         updateReservation:updateReservation,
         deleteReservation:deleteReservation,
-        findAllReservations:findAllReservations
+        recentReservation:recentReservation,
+        findAllReservations:findAllReservations,
+        findAllReservationsByRenter:findAllReservationsByRenter,
+        findReservationByRentId:findReservationByRentId
+    }
+
+    function findReservationByRentId(rentid){
+        for(var i=0;i<reservations.length;i++){
+            if(reservations[i].rentid=rentid){
+                return reservations[i];
+            }
+        }
+        return null;
+    }
+
+    function recentReservation(){
+        return recentReservationJSON;
+    }
+
+    function findAllReservationsByRenter(renterid){
+        var renterReservations=[];
+        for(var i=0;i<reservations.length;i++){
+            if(reservations[i].renterid==renterid){
+                renterReservations.push(reservations[i]);
+            }
+        }
+        return renterReservations;
     }
 
     function findAllReservations(){
@@ -35,6 +64,7 @@ module.exports = function (uuid) {
         var reservationid=uuid.v1();
         reservation.reservationid=reservationid;
         reservations.push(reservation);
+        recentReservationJSON=reservation;
         return reservations;
     }
 

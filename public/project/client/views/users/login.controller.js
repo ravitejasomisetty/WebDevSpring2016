@@ -9,7 +9,7 @@
         function login () {
             RenterService.findRenterByCredentials(vm.user.username, vm.user.password)
                 .then(function (res) {
-                if (res) {
+                if (res.data) {
                     $rootScope.user=res.data;
                     $location.url("/profile");
                 }

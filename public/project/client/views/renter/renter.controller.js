@@ -1,32 +1,75 @@
-/**
- * Created by ravit on 3/23/2016.
- */
 (function () {
     'use strict';
     angular
         .module("GrabACar")
         .controller("RenterController", RenterController);
-    function RenterController(RenterService,RentService) {
+    function RenterController(RenterService, DateService) {
         var vm = this;
-        vm.renters = [];
+        vm.selectForm = selectForm;
+        vm.updateForm = updateForm;
+        vm.deleteForm = deleteForm;
+        vm.addForm = addForm;
 
-        vm.init = function init() {
-            RenterService.findAllRenters().then(function (res) {
-
-                vm.renters = res.data;
-
+        RenterService.findAllRenters()
+            .then(function (renters) {
+                vm.users = renters.data;
             });
-            console.log(vm.renters + "responed");
+
+        function addForm(user) {
+            if (user)
+                RenterService.createRenter(user)
+                    .then(function (renters) {
+                        vm.users = renters.data;
+                        console.log("New user added");
+                    })
+            else {
+                alert("Fields cannot be empty");
+            }
         }
-        vm.init();
 
-        vm.getMyRents=getMyRents;
+        function updateForm(user) {
+            if (user) {
+                var userCopy = {
+                    "email": user.email,
+                    "_id": user._id,
+                    "firstName": user.firstName,
+                    "nationality": user.nationality,
+                    "mobilenumber": user.mobilenumber,
+                    "rentername": user.rentername,
+                    "password": user.password
+                };
+                if(userCopy.birthdate)
+                userCopy.birthdate=DateService.obtainDate(user.birthdate);
+                RenterService.updateRenter(userCopy._id, userCopy)
+                    .then(function (renters) {
+                        vm.users = renters.data;
+                        vm.user=null;
+                        console.log("updated successfully");
+                    })
+            }
+            else {
+                alert("Select by clicking EDIT to update a record");
+            }
+        }
 
-        function getMyRents(renterid){
-            RentService.findAllRentsByRenter(renterid)
-                .then(function(res){
-                    vm.rents=res.data;
-                })
+        function deleteForm(user) {
+            if (user)
+                RenterService.deleteRenterById(user._id)
+                    .then(function (res) {
+                        vm.users = res.data;
+                    })
+        }
+
+        function selectForm(index) {
+            vm.user = {
+                "email": vm.users[index].email,
+                "_id": vm.users[index]._id,
+                "firstName": vm.users[index].firstName,
+                "nationality": vm.users[index].nationality,
+                "mobilenumber": vm.users[index].mobilenumber,
+                "rentername": vm.users[index].rentername,
+                "password": vm.users[index].password
+            };
         }
     }
 })();

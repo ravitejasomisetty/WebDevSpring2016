@@ -6,43 +6,43 @@
 </head>
 <body ng-controller="MyReservationsController">
 <div id="cardetails" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-    <div id="mileage" ng-if="instance.MileageDescription"><img ng-src="../project/client/images/tick.jpg" height="25px" width="20px"> Mileage
-        {{instance.MileageDescription}}
+    <div id="mileage" ng-if="model.instance.mileagedescription"><img ng-src="../project/client/images/tick.jpg" height="25px" width="20px"> Mileage
+        {{model.instance.mileagedescription}}
     </div>
-    <div id="airport" ng-if="instance.PickupAirport"><img ng-src="../project/client/images/tick.jpg" height="25px"
-                                                          width="20px"> {{instance.PickupAirport}} Airport
+    <div id="airport" ng-if="model.instance.pickupairport"><img ng-src="../project/client/images/tick.jpg" height="25px"
+                                                          width="20px"> {{model.instance.pickupairport}} Airport
     </div>
-    <div id="location" ng-if="instance.LocationDescription"><img ng-src="../project/client/images/tick.jpg" height="25px" width="20px">
-        {{instance.LocationDescription}}
+    <div id="location" ng-if="model.instance.locationdescription"><img ng-src="../project/client/images/tick.jpg" height="25px" width="20px">
+        {{model.instance.locationdescription}}
     </div>
 
-    <div id="dailyrate">${{instance.DailyRate}} / day</div>
+    <div id="dailyrate">${{model.instance.dailyrentfee}} / day</div>
 
-    <div id="carimg"><img ng-src="{{instance.carImage}}"></div>
-    <div id="pickup">PickUp: {{instance.PickupDay}}, {{instance.PickupTime}}</div>
-    <div id="dropoff">DropOff: {{instance.DropoffDay}}, {{instance.DropoffTime}}</div>
+    <div id="carimg"><img ng-src="{{model.instance.carimage}}"></div>
+    <div id="pickup">PickUp: {{model.instance.rentdate}}, {{model.instance.pickuptime}}</div>
+    <div id="dropoff">DropOff: {{model.instance.returndate}}, {{model.instance.returntime}}</div>
 
     <div class="search-form">
         <div class="panel panel-warning">
-            <div class="panel panel-heading">Status: Confirmed</div>
+            <div class="panel panel-heading">Status: {{model.instance.status}}</div>
             <div class="panel panel-body">
                 <div>
                     <dl class="dl-horizontal">
                         <dt>Rental Days</dt>
-                        <dd>{{instance.RentalDays}}</dd>
+                        <dd>{{model.instance.totalrentday}}</dd>
                         <dt>DailyRate</dt>
-                        <dd>${{instance.DailyRate}}</dd>
+                        <dd>${{model.instance.dailyrentfee}}</dd>
                         <dt>SubTotal</dt>
-                        <dd>${{instance.SubTotal}}</dd>
+                        <dd>${{model.instance.subtotal}}</dd>
                         <dt>TaxesAndFees</dt>
-                        <dd>${{instance.TaxesAndFees}}</dd>
+                        <dd>${{model.instance.taxesandfees}}</dd>
                         <dt>TotalPrice</dt>
-                        <dd>${{instance.TotalPrice}}</dd>
+                        <dd>${{model.instance.totalprice}}</dd>
                     </dl>
                     <div>
-                        <button class="btn btn-danger" ng-show="canBeCancelled" ng-click="cancel()">Cancel</button>
+                        <button class="btn btn-danger" ng-show="model.canBeCancelled" ng-click="model.cancel()">Cancel</button>
                     </div>
-                    <label ng-show="!canBeCancelled">{{CancellationInfo}}</label>
+                    <label ng-show="!model.canBeCancelled">{{model.CancellationInfo}}</label>
                 </div>
             </div>
         </div>

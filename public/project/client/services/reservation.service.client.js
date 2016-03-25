@@ -15,13 +15,31 @@
             newReservation:newReservation,
             updateReservation:updateReservation,
             deleteReservation:deleteReservation,
-            findAllReservations:findAllReservations
+            findAllReservations:findAllReservations,
+            findAllReservationsByRenter:findAllReservationsByRenter,
+            recentReservation:recentReservation,
+            findReservationByRentId:findReservationByRentId
         }
+
+        function findReservationByRentId(rentid){
+            var reservation=$http.get("/api/grabacar/reservationByRentId/"+rentid);
+            return reservation;
+        }
+
+        function recentReservation(){
+            var recentReservationJSON=$http.get("/api/grabacar/reservation/json/true");
+            return recentReservationJSON;
+        }
+
+        function findAllReservationsByRenter(renterid){
+            var reservations=$http.get("/api/grabacar/reservation/renterid/"+renterid);
+            return reservations;
+        }
+
         function findAllReservations(){
             var reservations=$http.get("/api/grabacar/reservation");
-            console.log(reservations);
             return reservations;
-        };
+        }
 
         function viewReservation(reservationid) {
             var reservation=$http.get("/api/grabacar/reservation/"+reservationid);

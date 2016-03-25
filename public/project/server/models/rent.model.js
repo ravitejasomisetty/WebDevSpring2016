@@ -4,19 +4,32 @@
 module.exports = function (uuid) {
     var rents = [{
         "platenumber": "4HS821",
-        "rentdate": "3/23/2016",
+        "rentdate": "3/29/2016",
         "returndate": "3/25/2016",
         "totalrentday": "30",
         "dailyrentfee": "10",
+        "pickuptime":"09:00",
+        "returntime":"18:30",
+        "carimage":"https://ak-secure.hotwirestatic.com/x/static/images/car/cartypes/181x82/US/compact.png",
+        "subtotal": "101.34",
+        "taxesandfees": "20",
+        "totalprice": "121.34",
+        "cartypecode": "CCAR",
+        "cartypename": "Compact Car",
+        "locationdescription": "Boston Airport",
+        "mileagedescription":"21",
+        "pickupairport":"LOGAN",
         "fuelprovidedby": "RENTER",
         "fuelcharge": "10.10",
         "downpayment": "20",
         "totalpaid": "30",
         "refund": "10",
+        "status":"SUCCESS",
         "rentid": "123",
         "renterid": "123",
         "employeeid": "111"
     }];
+    var recentRentJSON;
     return {
         viewRent: viewRent,
         rentVehicle: rentVehicle,
@@ -25,7 +38,23 @@ module.exports = function (uuid) {
         findAllRents: findAllRents,
         findAllRentsByTeller: findAllRentsByTeller,
         findAllRentsByRenter: findAllRentsByRenter,
-        approveRent: approveRent
+        approveRent: approveRent,
+        recentRent:recentRent,
+        cancelRent:cancelRent
+    }
+
+    function cancelRent(rentid){
+        var rent=viewRent(rentid);
+        if(rent){
+            rent.status="CANCEL";
+            updateRent(rent);
+            return true;
+        }
+        return false;
+    }
+
+    function recentRent(){
+        return recentRentJSON;
     }
 
     function approveRent(rentid, employeeid) {
@@ -73,6 +102,7 @@ module.exports = function (uuid) {
         var rentid = uuid.v1();
         rent.rentid = rentid;
         rents.push(rent);
+        recentRentJSON=rent;
         return rents;
     }
 

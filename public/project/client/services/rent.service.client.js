@@ -15,7 +15,19 @@
             findAllRents:findAllRents,
             findAllRentsByRenter:findAllRentsByRenter,
             findAllRentsByTeller:findAllRentsByTeller,
-            approveRent:approveRent
+            approveRent:approveRent,
+            recentRent:recentRent,
+            cancelRent:cancelRent
+        }
+
+        function cancelRent(rentid){
+            var cancelled=$http.put("/api/grabacar/rent/"+rentid+"/cancel");
+            return cancelled;
+        }
+
+        function recentRent(){
+            var recentRentJSON=$http.get("/api/grabacar/rent/json/true");
+            return recentRentJSON;
         }
 
         function findAllRentsByTeller(employeeid){
@@ -35,7 +47,6 @@
 
         function findAllRents(){
             var rents=$http.get("/api/grabacar/rent");
-            console.log(rents);
             return rents;
         };
 
