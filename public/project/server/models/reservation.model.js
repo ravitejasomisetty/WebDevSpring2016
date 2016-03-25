@@ -10,7 +10,7 @@ module.exports = function (uuid) {
         "status":"RESERVED",
         "reservationid": "10",
         "renterid": "123",
-        "rentid":"10"
+        "rentid":"123"
     }];
     var recentReservationJSON;
     return {

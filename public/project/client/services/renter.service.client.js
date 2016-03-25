@@ -3,14 +3,14 @@
     angular
         .module("GrabACar")
         .factory("RenterService", RenterService);
-    function RenterService($http) {
+    function RenterService($http,$rootScope) {
 
         function findRenterByRentername(rentername) {
             var renter = $http.get("/api/grabacar/renter?rentername=" + rentername);
             return renter;
         }
 
-        function findRenterByCredentials(rentername, password,renter) {
+        function findRenterByCredentials(rentername, password, renter) {
             var renter = $http.get("/api/grabacar/renter?rentername=" + rentername + "&password=" + password);
             return renter;
         };
@@ -26,7 +26,7 @@
         };
 
         function deleteRenterById(renterId) {
-            var renters=$http.delete("/api/grabacar/renter/" + renterId);
+            var renters = $http.delete("/api/grabacar/renter/" + renterId);
             return renters;
         };
 
@@ -35,9 +35,21 @@
             return renters;
         };
 
-        function isYoungDriver(renterId){
-            var msg=$http.get("/api/grabacar/renter/isYoungDriver/"+renterId);
+        function isYoungDriver(renterId) {
+            var msg = $http.get("/api/grabacar/renter/isYoungDriver/" + renterId);
             return msg;
+        }
+
+        function logout() {
+            return $http.post("/api/grabacar/rentersession/logout");
+        }
+
+        function setCurrentUser(user) {
+            $rootScope.user = user;
+        }
+
+        function getCurrentUser() {
+            return $http.get("/api/grabacar/rentersession/loggedin");
         }
 
         return {
@@ -47,6 +59,10 @@
             createRenter: createRenter,
             deleteRenterById: deleteRenterById,
             updateRenter: updateRenter,
-            isYoungDriver:isYoungDriver
+            isYoungDriver: isYoungDriver,
+            logout: logout,
+            setCurrentUser: setCurrentUser,
+            getCurrentUser: getCurrentUser
         }
-    }})();
+    }
+})();

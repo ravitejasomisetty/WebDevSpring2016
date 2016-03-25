@@ -50,25 +50,31 @@
             </div>
         </div>
     </form>
-    <button class="btn btn-primary" ng-click="model.myReservations()">View My Reservations</button>
-    <table class="table table-hover">
-        <tr>
-            <th>PlateNumber</th>
-            <th>Pick up Date</th>
-            <th>Return Date</th>
-            <th>Reservation Date</th>
-            <th>Rent info</th>
-        </tr>
-        <tr ng-repeat="reservation in model.reservations">
-            <td>{{reservation.platenumber}}</td>
-            <td>{{reservation.pickupdate}}</td>
-            <td>{{reservation.returndate}}</td>
-            <td>{{reservation.reservationdate}}</td>
-            <td><button ng-click="model.open('/myReservations/'+reservation.rentid)" class="btn btn-success"  title="Click to view details">
-                <span class="glyphicon glyphicon-new-window"></span>View
-            </button></td>
-        </tr>
-    </table>
+    <hr />
+    <h3 class="page-header">Reservations History</h3>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <tr class="text-nowrap">
+                <th>PlateNumber</th>
+                <th>Pick up Date</th>
+                <th>Return Date</th>
+                <th>Reservation Date</th>
+                <th>Rent info</th>
+            </tr>
+            <tr ng-repeat="reservation in model.reservations" ng-class="model.rowStatus(reservation)">
+                <td>{{reservation.platenumber}}</td>
+                <td>{{reservation.pickupdate}}</td>
+                <td>{{reservation.returndate}}</td>
+                <td>{{reservation.reservationdate}}</td>
+                <td>
+                    <button ng-click="model.open('/myReservations/'+reservation.rentid)" class="btn btn-success"
+                            title="Click to view details">
+                        <span class="glyphicon glyphicon-new-window"></span> View
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
 
 </body>

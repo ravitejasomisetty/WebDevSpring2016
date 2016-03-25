@@ -11,6 +11,17 @@ module.exports = function (app, renterModel) {
     app.get("/api/grabacar/renter?rentername=rentername", findRenterByRentername);
     app.put("/api/grabacar/renter/:id", updateRenter);
     app.delete("/api/grabacar/renter/:id", deleteRenter);
+    app.get("/api/grabacar/rentersession/loggedin", loggedin);
+    app.post("/api/grabacar/rentersession/logout", logout);
+
+    function logout(req, res) {
+        req.session.destroy();
+        res.send(200);
+    }
+
+    function loggedin(req, res) {
+        res.json(req.session.user);
+    }
 
     function isYoungDriver(req,res){
         var renterId=req.params.id;
@@ -47,6 +58,7 @@ module.exports = function (app, renterModel) {
                 "password": req.query.password
             };
             var renter = renterModel.findRenterByCredentials(credentials);
+            req.session.user = renter;
             res.json(renter);
         }
         else

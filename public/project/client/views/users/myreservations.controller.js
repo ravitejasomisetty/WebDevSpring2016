@@ -20,10 +20,11 @@
                             vm.canBeCancelled = true;
                         else {
                             vm.canBeCancelled = false;
+                            vm.CancellationInfo = "You may not make any changes to this reservation";
                         }
                     }
                     else {
-                        vm.CancellationInfo = "You may not make any changes to this reservation";
+                        vm.CancellationInfo = "This reservation of yours had been cancelled upon your request";
                     }
                 })
         }

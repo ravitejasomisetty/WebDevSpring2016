@@ -16,10 +16,12 @@ var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(multer());
+app.use(session({secret: "ravi"}));
 app.use(cookieParser());
+app.use(passport.initialize());
+app.use(passport.session());
 
-
-require("./public/assignment/server/app.js")(app,uuid);
-require("./public/project/server/app.js")(app,uuid);
+require("./public/assignment/server/app.js")(app, uuid);
+require("./public/project/server/app.js")(app, uuid);
 
 app.listen(port, ipaddress);

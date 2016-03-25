@@ -3,37 +3,34 @@
     angular
         .module("GrabACar")
         .controller("AdminController", AdminController);
-    function AdminController(UserService) {
-        var vm=this;
-        vm.users= UserService.findAllUsers();
-            //.then(function(res){
-            //    vm.users=res.data;
-            //});
+    function AdminController(RenterService) {
+        var vm = this;
+        vm.approve = approve;
+        vm.decline=decline;
 
-        vm.approve=function(user){
-            user.status="Approved";
-            user.approved=true;
-            user.declined=false;
-            vm.users=updateNewRenter(user);
+        RenterService.findAllRenters()
+            .then(function (renters) {
+                vm.users = renters.data;
+            });
+
+        function approve(user) {
+            user.status = "Approved";
+            user.approved = true;
+            user.declined = false;
+            RenterService.updateRenter(user._id, user)
+                .then(function (renters) {
+                    vm.users = renters.data;
+                })
         }
 
-        function updateNewRenter(user){
-            for(var i=0;i<vm.users.length;i++)
-            {
-                if(vm.users[i]._id==user._id)
-                {
-                    vm.users[i]=user;
-                    return vm.users;
-                }
-            }
-            return null;
-        }
-
-        vm.decline=function(user){
-            user.status="Declined";
-            user.declined=true;
-            user.approved=false;
-            vm.users=updateNewRenter(user);
+        function decline(user) {
+            user.status = "Declined";
+            user.declined = true;
+            user.approved = false;
+            RenterService.updateRenter(user._id, user)
+                .then(function (renters) {
+                    vm.users = renters.data;
+                })
         }
     }
 })();
