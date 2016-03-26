@@ -75,7 +75,7 @@
             if (reservation.status == "CANCEL")
                 return "danger";
             else if (reservation.status == "SUCCESS")
-                return "success";
+                return "warning";
             else if (reservation.status == "RESERVED")
                 return "info";
         }
