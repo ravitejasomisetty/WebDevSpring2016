@@ -7,6 +7,7 @@
         var vm = this;
         vm.approve = approve;
         vm.decline=decline;
+        vm.isYoungDriver=isYoungDriver;
 
         RenterService.findAllRenters()
             .then(function (renters) {
