@@ -1,6 +1,8 @@
-
-module.exports = function (uuid) {
+module.exports = function (mongoose, db, uuid) {
+    var q = require("q");
     var users = require("./user.mock.json");
+    var UserSchema = require('./user.schema.server.js')(mongoose);
+    var UserModel = mongoose.model("UserModel", UserSchema);
     var api = {
         Create: Create,
         FindAll: FindAll,
@@ -22,7 +24,16 @@ module.exports = function (uuid) {
     }
 
     function FindAll() {
-        return users;
+        var deferred = q.defer();
+        UserModel.find(function (err, users) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(users);
+                console.log(users);
+            }
+        });
+        return deferred.promise;
     }
 
     function FindById(id) {
@@ -41,7 +52,7 @@ module.exports = function (uuid) {
                 users[i].username = user.username;
                 users[i].password = user.password;
                 users[i].email = user.email;
-                users[i].roles=user.roles;
+                users[i].roles = user.roles;
             }
         }
         return users;
@@ -66,10 +77,14 @@ module.exports = function (uuid) {
     }
 
     function findUserByCredentials(credentials) {
-        for (var i = 0; i < users.length; i++) {
-            if (users[i].username == credentials.username && users[i].password == credentials.password)
-                return users[i];
-        }
-        return null;
+        var deferred = q.defer();
+        UserModel.findOne({username: credentials.username, password: credentials.password}, function (err, user) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(user);
+            }
+        });
+        return deferred.promise;
     }
 };

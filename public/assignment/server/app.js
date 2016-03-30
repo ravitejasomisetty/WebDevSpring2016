@@ -1,7 +1,7 @@
 
 
-module.exports = function (app,uuid) {
-    var userModel = require("./models/user.model.js")(uuid);
+module.exports = function (app,mongoose,db,uuid) {
+    var userModel = require("./models/user.model.js")(mongoose,db,uuid);
     var formModel = require("./models/form.model.js")(uuid);
 
     require("./services/user.service.server.js")(app, userModel);
