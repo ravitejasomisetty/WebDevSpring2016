@@ -9,7 +9,7 @@
             "_id": $rootScope.user._id,
             "firstName": $rootScope.user.firstName,
             "lastName": $rootScope.user.lastName,
-            "email": $rootScope.user.email,
+            "emails": $rootScope.user.emails,
             "roles": $rootScope.user.roles,
             "username": $rootScope.user.username,
             "password": $rootScope.user.password
@@ -19,6 +19,7 @@
             UserService.updateUser($scope.user._id, $scope.user)
                 .then(function (res) {
                     $rootScope.user = res.data;
+                    console.log(res.data);
                     alert("Profile information is successfully updated");
                 });
         };

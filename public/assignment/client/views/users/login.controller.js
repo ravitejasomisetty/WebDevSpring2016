@@ -3,13 +3,13 @@
     angular
         .module("FormBuilderApp")
         .controller("LoginController", LoginController);
-    function LoginController($scope, UserService, $location, $rootScope) {
+    function LoginController($scope, UserService, $location) {
         $scope.login = function () {
             UserService.findUserByCredentials($scope.user.username, $scope.user.password)
                 .then(function (res) {
                     console.log(res);
                 if (res.data) {
-                    $rootScope.user=res.data;
+                    UserService.setCurrentUser(res.data);
                     $location.url("/profile");
                 }
                 else {

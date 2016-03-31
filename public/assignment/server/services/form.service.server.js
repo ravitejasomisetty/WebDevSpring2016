@@ -7,31 +7,54 @@ module.exports = function (app, model) {
     app.delete("/api/assignment/form/:formId", deleteFormById);
 
     function findAllFormsForUser(req, res) {
-        var forms = model.FindByUserId(req.params.userId);
-        res.json(forms);
+        model.FindByUserId(req.params.userId)
+            .then(function (forms) {
+                    res.json(forms);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
     }
 
     function createFormForUser(req, res) {
         var userId = req.params.userId;
         var form = req.body;
-        form.userId = userId;
-        form._id = null;
-        var forms = model.Create(form);
-        res.json(forms);
+        model.Create(form, userId)
+            .then(function (forms) {
+                    res.json(forms);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
     }
 
     function findFormById(req, res) {
-        var form = model.FindById(req.params.formId);
-        res.json(form);
+        model.FindById(req.params.formId)
+            .then(function (form) {
+                    res.json(form);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
     }
 
     function updateForm(req, res) {
-        var forms=model.Update(req.params.formId, req.body);
-        res.json(forms);
+        model.Update(req.params.formId, req.body)
+            .then(function (updatedForm) {
+                    res.json(updatedForm);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                })
     }
 
     function deleteFormById(req, res) {
-        var forms=model.Delete(req.params.formId);
-        res.json(forms);
+        model.Delete(req.params.formId)
+            .then(function (status) {
+                    res.json(status)
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
     }
 };
