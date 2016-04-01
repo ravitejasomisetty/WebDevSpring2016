@@ -39,16 +39,20 @@
                             <select class="form-control" ng-switch-when="OPTIONS" id="optionsField">
                                 <option ng-repeat="op in field.options" value="op.value">{{op.label}}</option>
                             </select>
+
+                            <label ng-switch-when="CHECKBOXES">{{field.label}}</label>
                             <div ng-repeat="option in field.options" ng-switch-when="CHECKBOXES">
-                                <div class="checkbox">
-                                    <label for="checkbox">
-                                        <input id="checkbox" type="checkbox" value="{{option.value}}">{{option.value}}
-                                    </label></div>
+                                <div id="checkbox" class="checkbox">
+                                    <label>
+                                        <input  type="checkbox" value="{{option.value}}">{{option.value}}
+                                    </label>
+                                    </div>
                             </div>
 
+                            <label ng-switch-when="RADIOS">{{field.label}}</label>
                             <div ng-repeat="option in field.options" ng-switch-when="RADIOS">
                                 <div class="radio">
-                                    <label for="radio">
+                                    <label for="radio">{{field.label}}
                                         <input id="radio" type="radio" value="{{option.value}}">{{option.value}}
                                     </label>
                                 </div>

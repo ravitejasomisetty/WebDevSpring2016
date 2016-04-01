@@ -4,8 +4,9 @@
         .module("FormBuilderApp")
         .controller("ProfileController", ProfileController);
 
-    function ProfileController($scope, $location, $rootScope, UserService) {
-        $scope.user = {
+    function ProfileController($rootScope, UserService) {
+        var vm=this;
+        vm.user = {
             "_id": $rootScope.user._id,
             "firstName": $rootScope.user.firstName,
             "lastName": $rootScope.user.lastName,
@@ -15,11 +16,10 @@
             "password": $rootScope.user.password
         };
 
-        $scope.update = function () {
-            UserService.updateUser($scope.user._id, $scope.user)
+        vm.update = function () {
+            UserService.updateUser(vm.user._id, vm.user)
                 .then(function (res) {
                     $rootScope.user = res.data;
-                    console.log(res.data);
                     alert("Profile information is successfully updated");
                 });
         };

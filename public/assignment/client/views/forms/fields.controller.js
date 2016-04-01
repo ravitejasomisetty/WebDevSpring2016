@@ -20,27 +20,27 @@
         $scope.addField = function (fieldType) {
             var field = "";
             if (fieldType == "Single Line Text")
-                field = {"_id": null, "label": "New Text Field", "type": "TEXT", "placeholder": "New Field"};
+                field = { "label": "New Text Field", "type": "TEXT", "placeholder": "New Field"};
 
             else if (fieldType == "DropDown")
-                field = {"_id": null, "label": "New Dropdown", "type": "OPTIONS", "options": [
+                field = { "label": "New Dropdown", "type": "OPTIONS", "options": [
                     {"label": "Option 1", "value": "OPTION_1"},
                     {"label": "Option 2", "value": "OPTION_2"},
                     {"label": "Option 3", "value": "OPTION_3"}
                 ]};
 
             else if (fieldType == "Date")
-                field = {"_id": null, "label": "New Date Field", "type": "DATE"};
+                field = {"label": "New Date Field", "type": "DATE"};
 
             else if (fieldType == "Checkboxes")
-                field = {"_id": null, "label": "New Checkboxes", "type": "CHECKBOXES", "options": [
+                field = {"label": "New Checkboxes", "type": "CHECKBOXES", "options": [
                     {"label": "Option A", "value": "OPTION_A"},
                     {"label": "Option B", "value": "OPTION_B"},
                     {"label": "Option C", "value": "OPTION_C"}
                 ]};
 
             else if (fieldType == "Radio buttons")
-                field = {"_id": null, "label": "New Radio Buttons", "type": "RADIOS", "options": [
+                field = { "label": "New Radio Buttons", "type": "RADIOS", "options": [
                     {"label": "Option X", "value": "OPTION_X"},
                     {"label": "Option Y", "value": "OPTION_Y"},
                     {"label": "Option Z", "value": "OPTION_Z"}
@@ -48,7 +48,7 @@
 
 
             if (fieldType == "Paragraph Text Field")
-                field = {"_id": null, "label": "New Text Field", "type": "TEXTAREA", "placeholder": "New Field"};
+                field = { "label": "New Text Field", "type": "TEXTAREA", "placeholder": "New Field"};
 
             if (field!="") {
                 FieldService.createFieldForForm(formId, field)

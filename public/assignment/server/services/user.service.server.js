@@ -101,6 +101,7 @@ module.exports = function (app, userModel) {
         var user = req.body;
         var users = userModel.Update(id, user)
             .then(function (doc) {
+                    req.session.currentUser = doc;
                     res.json(user);
                 },// send error if promise rejected
                 function (err) {

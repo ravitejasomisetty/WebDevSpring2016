@@ -3,14 +3,14 @@
     angular
         .module("FormBuilderApp")
         .controller("RegisterController", RegisterController);
-    function RegisterController($scope, UserService, $location, $rootScope) {
-
-        $scope.register = function () {
-            $scope.user.firstName = "";
-            $scope.user.lastName = "";
-            $scope.user.roles = "";
-            if ($scope.user.password == $scope.user.verifypassword) {
-                UserService.createUser($scope.user)
+    function RegisterController( UserService, $location, $rootScope) {
+        var vm=this;
+        vm.register = function () {
+            vm.user.firstName = "";
+            vm.user.lastName = "";
+            vm.user.roles = "";
+            if (vm.user.password == vm.user.verifypassword) {
+                UserService.createUser(vm.user)
                     .then(function (res) {
                         $rootScope.user = res.data;
                         alert("Welcome to FormBuilder App");
