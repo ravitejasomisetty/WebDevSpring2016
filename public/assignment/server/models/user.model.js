@@ -74,7 +74,7 @@ module.exports = function (mongoose, db, uuid) {
                 doc.lastName = user.lastName;
                 doc.username = user.username;
                 doc.password = user.password;
-                doc.email = user.email;
+                doc.emails.push(user.email);
                 doc.roles = user.roles;
 
                 // save user

@@ -6,11 +6,12 @@
 
     function ProfileController($rootScope, UserService) {
         var vm=this;
+        console.log($rootScope.user);
         vm.user = {
             "_id": $rootScope.user._id,
             "firstName": $rootScope.user.firstName,
             "lastName": $rootScope.user.lastName,
-            "emails": $rootScope.user.emails,
+            "email": $rootScope.user.emails[0],
             "roles": $rootScope.user.roles,
             "username": $rootScope.user.username,
             "password": $rootScope.user.password
