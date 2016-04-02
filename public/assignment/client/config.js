@@ -4,7 +4,10 @@ app.config(function ($routeProvider) {
     $routeProvider
         .when("/home", {
             templateUrl: "views/home/home.view.html",
-            controller: "HomeController"
+            controller: "HomeController",
+            resolve: {
+                getLoggedIn: getLoggedIn
+            }
         })
         .when("/register", {
             templateUrl: "views/users/register.view.html",
@@ -70,7 +73,18 @@ var checkLoggedin = function ($q, $http, $location, $rootScope) {
 
     return deferred.promise;
 };
+var getLoggedIn=function (UserService, $q) {
+    var deferred = $q.defer();
+    UserService
+        .getCurrentUser()
+        .then(function(response){
+            var currentUser = response.data;
+            UserService.setCurrentUser(currentUser);
+            deferred.resolve();
+        });
 
+    return deferred.promise;
+}
 var checkAdmin = function($q, $http, $location, $rootScope)
 {
     var deferred = $q.defer();
