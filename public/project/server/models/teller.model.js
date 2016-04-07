@@ -3,6 +3,9 @@
  * Created by ravit on 3/23/2016.
  */
 module.exports = function (uuid) {
+    var q = require("q");
+    var TellerSchema = require('./teller.schema.server.js')(mongoose);
+    var TellerModel = mongoose.model("TellerModel", TellerSchema);
     var tellers = [{
         "password": "raviteja",
         "username": "raviteja",
@@ -20,44 +23,88 @@ module.exports = function (uuid) {
     }
 
     function findAllTellers(){
-        return tellers;
+        var deferred = q.defer();
+        TellerModel.find(function (err, tellers) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(tellers);
+            }
+        });
+        return deferred.promise;
     }
 
     function viewTeller(employeeid) {
-        for (var i = 0; i < tellers.length; i++) {
-            if (tellers[i].employeeid == employeeid) {
-                return tellers[i];
+        var deferred = q.defer();
+        TellerModel.findById(employeeid, function (err, doc) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(doc);
             }
-        }
-        return null;
+        });
+        return deferred.promise;
     }
 
     function newTeller(teller){
-        var employeeid=uuid.v1();
-        teller.employeeid=employeeid;
-        tellers.push(teller);
-        return tellers;
+        var deferred = q.defer();
+
+        // insert new user with mongoose renter model's create()
+        TellerModel.create(teller, function (err, doc) {
+
+            if (err) {
+                // reject promise if error
+                deferred.reject(err);
+            } else {
+                // resolve promise
+                deferred.resolve(doc);
+            }
+
+        });
+
+        // return a promise
+        return deferred.promise;
     }
 
     function updateTeller(employeeid,teller){
-        for(var i=0;i<tellers.length;i++){
-            if(tellers[i].employeeid==employeeid)
-            {
-                tellers[i]=teller;
-                return tellers;
-            }
-        }
-        return null;
+        var deferred = q.defer();
+
+        // find the reservation
+        TellerModel.findById(employeeid, function (err, doc) {
+
+            // reject promise if error
+            if (err) {
+                deferred.reject(err);
+            } else {
+                doc.password=teller.password;
+                doc.username=teller.username;
+                doc.fullname=teller.fullname;
+                doc.address=teller.address;
+                doc.managerid=teller.managerid;
+                doc.rentsApproved=teller.rentsApproved;
+                doc.vehiclesAdded=teller.vehiclesAdded;
+                doc.save(function (err, doc) {
+
+                    if (err) {
+                        deferred.reject(err);
+                    } else {
+
+                        // resolve promise with renter
+                        deferred.resolve(doc);
+                    }
+                });
+            }});
     }
 
     function deleteTeller(employeeid){
-        for(var i=0;i<tellers.length;i++)
-        {
-            if(tellers[i].employeeid==employeeid)
-            {
-                tellers.splice(i,1);
+        var deferred = q.defer();
+        TellerModel.remove({_id:employeeid}, function(err, status) {
+            if(err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(status);
             }
-        }
-        return tellers;
+        });
+        return deferred.promise;
     }
 };

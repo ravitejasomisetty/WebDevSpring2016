@@ -31,6 +31,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require("./public/assignment/server/app.js")(app,mongoose,db, uuid);
-require("./public/project/server/app.js")(app, uuid);
+require("./public/project/server/app.js")(app,mongoose,db, uuid);
 
 app.listen(port, ipaddress);

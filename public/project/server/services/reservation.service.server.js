@@ -15,11 +15,16 @@ module.exports = function (app, reservationModel) {
     app.get("/api/grabacar/reservationByRentId/:rentid",findReservationByRentId);
 
     function findReservationByRentId(req,res){
-        var rentid=req.params.rentid;
-        var reservation=reservationModel.findReservationByRentId(rentid);
-        res.json(reservation);
+        reservationModel.findReservationByRentId(req.params.rentid)
+            .then(function (reservation) {
+                    res.json(reservation);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
     }
 
+    //TBF
     function recentReservation(req, res) {
         var recent = req.query.recent;
         var recentReservationJSON=null;
@@ -29,6 +34,7 @@ module.exports = function (app, reservationModel) {
         res.json(recentReservationJSON);
     }
 
+    //TBF
     function findAllReservationsByRenter(req, res) {
         var renterid = req.params.renterid;
         var reservations = reservationModel.findAllReservationsByRenter(renterid);
@@ -37,31 +43,59 @@ module.exports = function (app, reservationModel) {
 
     function newReservation(req, res) {
         var reservation = req.body;
-        var reservations = reservationModel.newReservation(reservation);
-        res.json(reservations);
+        reservation = reservationModel.newReservation(reservation)
+            // handle model promise
+            .then(
+                // login user if promise resolved
+                function (doc) {
+                    res.json(reservation);
+                },
+                // send error if promise rejected
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function findAllReservations(req, res) {
-        var req = req.body;
-        var reservations = reservationModel.findAllReservations();
-        res.json(reservations);
+        reservationModel.findAllReservations()
+            .then(function (reservations) {
+                    res.json(reservations);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
     }
 
     function viewReservation(req, res) {
-        var reservationid = req.params.reservationid;
-        var reservation = reservationModel.viewReservation(reservationid);
-        res.json(reservation);
+        reservationModel.FindById(req.params.reservationid)
+            .then(function (reservation) {
+                    res.json(reservation);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
     }
 
     function updateReservation(req, res) {
         var reservation = req.body;
-        var reservations = reservationModel.updateReservation(reservation);
-        res.json(reservations);
+        reservationModel.updateReservation(reservation)
+            .then(function (doc) {
+                    res.json(reservation);
+                },// send error if promise rejected
+                function (err) {
+                    res.status(400).send(err);
+                });
     }
 
     function deleteReservation(req, res) {
         var reservationid = req.params.reservationid;
-        var reservations = reservationModel.deleteReservation(reservationid);
-        res.json(reservations);
+        reservationModel.deleteReservation(reservationid)
+            .then(function (reservations) {
+                    res.json(reservations);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
     }
 };

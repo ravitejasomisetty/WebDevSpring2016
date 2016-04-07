@@ -11,32 +11,59 @@ module.exports = function (app, tellerModel) {
     function newTeller(req,res)
     {
         var teller=req.body;
-        var tellers=tellerModel.newTeller(teller);
-        res.json(tellers);
+        tellerModel.newTeller(teller)
+            // handle model promise
+            .then(
+                // login user if promise resolved
+                function (doc) {
+                    res.json(teller);
+                },
+                // send error if promise rejected
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function findAllTellers(req,res){
-        var req=req.body;
-        var tellers=tellerModel.findAllTellers();
-        res.json(tellers);
+        tellerModel.findAllTellers()
+            .then(function (tellers) {
+                    res.json(tellers);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
     }
 
     function viewTeller(req,res){
-        var employeeid=req.params.employeeid;
-        var teller=tellerModel.viewTeller(employeeid);
-        res.json(teller);
+        tellerModel.viewTeller(req.params.employeeid)
+            .then(function (teller) {
+                    res.json(teller);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
     }
 
     function updateTeller(req,res){
         var teller=req.body;
-        var employeeid=req.params.employeeid;
-        var tellers=tellerModel.updateTeller(employeeid,teller);
-        res.json(tellers);
+        tellerModel.updateTeller(req.params.employeeid,teller)
+            .then(function (doc) {
+                    res.json(teller);
+                },// send error if promise rejected
+                function (err) {
+                    res.status(400).send(err);
+                });
     }
 
     function deleteTeller(req,res){
         var employeeid=req.params.employeeid;
-        var tellers=tellerModel.deleteTeller(employeeid);
-        res.json(tellers);
+        tellerModel.deleteTeller(employeeid)
+            .then(function (tellers) {
+                    res.json(tellers);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
     }
 };
