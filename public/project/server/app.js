@@ -6,7 +6,7 @@
 module.exports = function (app,mongoose,db,uuid) {
     var renterModel = require("./models/renter.model.js")(mongoose,db,uuid);
     var vehicleModel = require("./models/vehicle.model.js")(uuid);
-    var rentModel = require("./models/rent.model.js")(uuid);
+    var rentModel = require("./models/rent.model.js")(mongoose,db,uuid);
     var tellerModel = require("./models/teller.model.js")(mongoose,db,uuid);
     var reservationModel = require("./models/reservation.model.js")(mongoose,db,uuid);
     var vlocationModel = require("./models/vlocation.model.js")(uuid);

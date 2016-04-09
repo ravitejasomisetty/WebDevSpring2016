@@ -50,31 +50,55 @@ module.exports = function (app, rentModel) {
 
     function rentVehicle(req, res) {
         var rent = req.body;
-        var rents = rentModel.rentVehicle(rent);
-        res.json(rents);
+        rentModel.rentVehicle(rent)
+            .then(function (rents) {
+                    res.json(rents);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
     }
 
     function findAllRents(req, res) {
-        var req = req.body;
-        var rents = rentModel.findAllRents();
-        res.json(rents);
+        rentModel.findAllRents()
+            .then(function (rents) {
+                    res.json(rents);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
     }
 
     function viewRent(req, res) {
-        var rentid = req.params.rentid;
-        var rent = rentModel.viewRent(rentid);
-        res.json(rent);
+        rentModel.viewRent(req.params.rentid)
+            .then(function (rent) {
+                    res.json(rent);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
     }
 
     function updateRent(req, res) {
         var rent = req.body;
-        var rents = rentModel.updateRent(rent);
-        res.json(rents);
+        rentModel.updateRent(rent)
+            .then(function (doc) {
+                    res.json(doc);
+                },// send error if promise rejected
+                function (err) {
+                    res.status(400).send(err);
+                });
     }
 
     function deleteRent(req, res) {
         var rentid = req.params.rentid;
-        var rents = rentModel.deleteRent(rentid);
-        res.json(rents);
+        rentModel.deleteRent(rentid)
+            .then(function (msg) {
+                    res.json(msg);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
     }
+
 };

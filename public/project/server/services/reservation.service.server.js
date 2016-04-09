@@ -68,7 +68,7 @@ module.exports = function (app, reservationModel) {
     }
 
     function viewReservation(req, res) {
-        reservationModel.FindById(req.params.reservationid)
+        reservationModel.viewReservation(req.params.reservationid)
             .then(function (reservation) {
                     res.json(reservation);
                 },

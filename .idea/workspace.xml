@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d66b16b2-8bfc-4f8b-936a-5609f68081fd" name="Default" comment="Restructured public/assignment&#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/server/models/rent.schema.server.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/server/app.js" afterPath="$PROJECT_DIR$/public/project/server/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/server/models/teller.model.js" afterPath="$PROJECT_DIR$/public/project/server/models/teller.model.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/server/models/rent.model.js" afterPath="$PROJECT_DIR$/public/project/server/models/rent.model.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/server/models/renter.schema.server.js" afterPath="$PROJECT_DIR$/public/project/server/models/renter.schema.server.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/server/services/rent.service.server.js" afterPath="$PROJECT_DIR$/public/project/server/services/rent.service.server.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/server/services/reservation.service.server.js" afterPath="$PROJECT_DIR$/public/project/server/services/reservation.service.server.js" />
     </list>
     <ignored path="OpenShiftRepoDirectory.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,26 +29,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file leaf-file-name="teller.schema.server.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project/server/models/teller.schema.server.js">
+      <file leaf-file-name="rent.model.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/project/server/models/rent.model.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="40" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
+              <caret line="222" column="0" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
               <folding>
-                <element signature="e#0#40#0" expanded="false" />
+                <element signature="e#260#1136#0" expanded="false" />
+                <element signature="e#1146#2126#0" expanded="false" />
+                <element signature="e#2136#3111#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="teller.model.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project/server/models/teller.model.js">
+      <file leaf-file-name="rent.schema.server.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/project/server/models/rent.schema.server.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="4" column="39" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
+              <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
               <folding>
-                <element signature="e#273#470#0" expanded="false" />
-                <element signature="e#1820#2737#0" expanded="false" />
+                <element signature="e#0#40#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -53,33 +58,19 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/project/server/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.29068577">
-              <caret line="9" column="75" selection-start-line="9" selection-start-column="75" selection-end-line="9" selection-end-column="75" />
+            <state vertical-scroll-proportion="0.26509723">
+              <caret line="8" column="66" selection-start-line="8" selection-start-column="66" selection-end-line="8" selection-end-column="66" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="teller.service.server.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project/server/services/teller.service.server.js">
+      <file leaf-file-name="rent.service.server.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/project/server/services/rent.service.server.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="59" column="45" selection-start-line="59" selection-start-column="45" selection-end-line="59" selection-end-column="45" />
+              <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="reservation.service.server.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project/server/services/reservation.service.server.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="98" column="19" selection-start-line="92" selection-start-column="8" selection-end-line="98" selection-end-column="19" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="e#1112#1353#0" expanded="false" />
-                <element signature="e#1416#1582#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -88,14 +79,27 @@
         <entry file="file://$PROJECT_DIR$/public/project/server/models/reservation.model.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="160" column="32" selection-start-line="152" selection-start-column="8" selection-end-line="160" selection-end-column="32" />
+              <caret line="160" column="32" selection-start-line="152" selection-start-column="7" selection-end-line="160" selection-end-column="32" />
               <folding>
                 <element signature="e#302#563#0" expanded="false" />
                 <element signature="e#573#870#0" expanded="false" />
                 <element signature="e#880#1175#0" expanded="false" />
                 <element signature="e#2114#2387#0" expanded="false" />
                 <element signature="e#3096#3612#0" expanded="false" />
-                <element signature="e#3658#4630#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="reservation.service.server.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/project/server/services/reservation.service.server.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="99" column="5" selection-start-line="92" selection-start-column="8" selection-end-line="99" selection-end-column="5" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#1112#1353#0" expanded="false" />
+                <element signature="e#1416#1582#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -118,15 +122,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/public/project/client/views/sidebar/sidebar.view.html" />
-        <option value="$PROJECT_DIR$/public/project/client/views/renter/renter.controller.js" />
         <option value="$PROJECT_DIR$/public/project/client/views/header/header.controller.js" />
         <option value="$PROJECT_DIR$/public/project/client/services/renter.service.client.js" />
         <option value="$PROJECT_DIR$/public/project/index.html" />
         <option value="$PROJECT_DIR$/public/project/client/config.js" />
         <option value="$PROJECT_DIR$/public/project/client/views/users/admin.view.html" />
         <option value="$PROJECT_DIR$/public/project/client/views/users/admin.controller.js" />
-        <option value="$PROJECT_DIR$/public/project/server/models/rent.model.js" />
         <option value="$PROJECT_DIR$/public/project/client/views/users/profile.controller.js" />
         <option value="$PROJECT_DIR$/public/project/client/views/users/myreservations.controller.js" />
         <option value="$PROJECT_DIR$/public/project/client/views/users/profile.view.html" />
@@ -160,14 +161,17 @@
         <option value="$PROJECT_DIR$/public/project/server/models/renter.model.js" />
         <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/public/project/client/views/users/login.controller.js" />
-        <option value="$PROJECT_DIR$/public/project/server/models/renter.schema.server.js" />
         <option value="$PROJECT_DIR$/public/project/server/models/reservation.schema.server.js" />
         <option value="$PROJECT_DIR$/public/project/server/services/renter.service.server.js" />
-        <option value="$PROJECT_DIR$/public/project/server/services/reservation.service.server.js" />
         <option value="$PROJECT_DIR$/public/project/server/models/teller.schema.server.js" />
         <option value="$PROJECT_DIR$/public/project/server/models/reservation.model.js" />
         <option value="$PROJECT_DIR$/public/project/server/services/teller.service.server.js" />
         <option value="$PROJECT_DIR$/public/project/server/models/teller.model.js" />
+        <option value="$PROJECT_DIR$/public/project/server/models/renter.schema.server.js" />
+        <option value="$PROJECT_DIR$/public/project/server/services/reservation.service.server.js" />
+        <option value="$PROJECT_DIR$/public/project/server/models/rent.schema.server.js" />
+        <option value="$PROJECT_DIR$/public/project/server/models/rent.model.js" />
+        <option value="$PROJECT_DIR$/public/project/server/services/rent.service.server.js" />
         <option value="$PROJECT_DIR$/public/project/server/app.js" />
       </list>
     </option>
@@ -471,9 +475,9 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297935" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297935" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38746268" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38709676" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24974619" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3761194" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37634408" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1657817" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -527,27 +531,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/project/client/views/users/profile.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="77" column="31" selection-start-line="77" selection-start-column="31" selection-end-line="77" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/client/views/users/myreservations.view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2955032">
-          <caret line="26" column="76" selection-start-line="26" selection-start-column="76" selection-end-line="26" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/client/views/users/profile.view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3522484">
-          <caret line="57" column="26" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/project/client/views/sidebar/sidebar.view.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.21323529">
@@ -814,34 +797,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/server/models/renter.schema.server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/server/models/renter.model.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6772541">
-          <caret line="164" column="32" selection-start-line="156" selection-start-column="8" selection-end-line="164" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/project/server/services/renter.service.server.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6956967">
           <caret line="130" column="19" selection-start-line="124" selection-start-column="8" selection-end-line="130" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/server/models/teller.schema.server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="40" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#40#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -852,36 +811,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/server/models/reservation.model.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="160" column="32" selection-start-line="152" selection-start-column="8" selection-end-line="160" selection-end-column="32" />
-          <folding>
-            <element signature="e#302#563#0" expanded="false" />
-            <element signature="e#573#870#0" expanded="false" />
-            <element signature="e#880#1175#0" expanded="false" />
-            <element signature="e#2114#2387#0" expanded="false" />
-            <element signature="e#3096#3612#0" expanded="false" />
-            <element signature="e#3658#4630#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/server/services/reservation.service.server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="98" column="19" selection-start-line="92" selection-start-column="8" selection-end-line="98" selection-end-column="19" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#1112#1353#0" expanded="false" />
-            <element signature="e#1416#1582#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/project/server/services/teller.service.server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="1.6130654">
           <caret line="59" column="45" selection-start-line="59" selection-start-column="45" selection-end-line="59" selection-end-column="45" />
           <folding />
         </state>
@@ -898,10 +830,96 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/server/models/renter.schema.server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#40#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/server/models/teller.schema.server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="40" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#40#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/server/models/renter.model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.67738694">
+          <caret line="164" column="32" selection-start-line="156" selection-start-column="8" selection-end-line="164" selection-end-column="32" />
+          <folding>
+            <element signature="e#273#1989#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/server/models/reservation.model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="160" column="32" selection-start-line="152" selection-start-column="7" selection-end-line="160" selection-end-column="32" />
+          <folding>
+            <element signature="e#302#563#0" expanded="false" />
+            <element signature="e#573#870#0" expanded="false" />
+            <element signature="e#880#1175#0" expanded="false" />
+            <element signature="e#2114#2387#0" expanded="false" />
+            <element signature="e#3096#3612#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/server/services/reservation.service.server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="99" column="5" selection-start-line="92" selection-start-column="8" selection-end-line="99" selection-end-column="5" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#1112#1353#0" expanded="false" />
+            <element signature="e#1416#1582#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/server/models/rent.model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="222" column="0" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
+          <folding>
+            <element signature="e#260#1136#0" expanded="false" />
+            <element signature="e#1146#2126#0" expanded="false" />
+            <element signature="e#2136#3111#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/server/services/rent.service.server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/server/models/rent.schema.server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#40#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/project/server/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29068577">
-          <caret line="9" column="75" selection-start-line="9" selection-start-column="75" selection-end-line="9" selection-end-column="75" />
+        <state vertical-scroll-proportion="0.26509723">
+          <caret line="8" column="66" selection-start-line="8" selection-start-column="66" selection-end-line="8" selection-end-column="66" />
           <folding />
         </state>
       </provider>
