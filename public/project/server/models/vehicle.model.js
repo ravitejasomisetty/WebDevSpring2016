@@ -1,7 +1,10 @@
 /**
  * Created by ravit on 3/22/2016.
  */
-module.exports = function (uuid) {
+module.exports = function (mongoose,db,uuid) {
+    var q = require("q");
+    var VehicleSchema = require('./vehicle.schema.server.js')(mongoose);
+    var VehicleModel = mongoose.model("VehicleModel", VehicleSchema);
     var vehicles = [{
         "brand": "Toyota",
         "type": "Economy",
@@ -21,47 +24,88 @@ module.exports = function (uuid) {
     }
 
     function findAllVehicles(){
-        return vehicles;
+        var deferred = q.defer();
+        VehicleModel.find(function (err, vehicles) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(vehicles);
+            }
+        });
+        return deferred.promise;
     }
 
     function viewVehicle(plateNum) {
-        for (var i = 0; i < vehicles.length; i++) {
-            if (vehicles[i].platenumber == plateNum) {
-                return vehicles[i];
+        var deferred = q.defer();
+        VehicleModel.findById(plateNum, function (err, doc) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(doc);
             }
-        }
-        return null;
+        });
+        return deferred.promise;
     }
 
     function registerVehicle(vehicle){
-        var duplicateVehicle=viewVehicle(vehicle.platenumber);
-        if(!duplicateVehicle)
-        {
-            vehicles.push(vehicle);
-        }
-        return vehicles;
+        var deferred = q.defer();
+
+        // insert new user with mongoose renter model's create()
+        VehicleModel.create(vehicle, function (err, doc) {
+
+            if (err) {
+                // reject promise if error
+                deferred.reject(err);
+            } else {
+                // resolve promise
+                deferred.resolve(doc);
+            }
+
+        });
+
+        // return a promise
+        return deferred.promise;
     }
 
     function updateVehicle(vehicle){
-        for(var i=0;i<vehicles.length;i++){
-            if(vehicles[i].platenumber==vehicle.platenumber)
-            {
-                vehicles[i]=vehicle;
-                return vehicles;
-            }
-        }
-        return null;
+        var deferred = q.defer();
+
+        // find the reservation
+        VehicleModel.findById(vehicle._id, function (err, doc) {
+
+            // reject promise if error
+            if (err) {
+                deferred.reject(err);
+            } else {
+                doc.brand=vehicle.brand;
+                doc.type=vehicle.type;
+                doc.platenumber=vehicle.platenumber;
+                doc.seatquantity=vehicle.seatquantity;
+                doc.fueltype=vehicle.fueltype;
+                doc.condition=vehicle.condition;
+                doc.dailyprice=vehicle.dailyprice;
+                doc.save(function (err, doc) {
+
+                    if (err) {
+                        deferred.reject(err);
+                    } else {
+
+                        // resolve promise with renter
+                        deferred.resolve(doc);
+                    }
+                });
+            }})
     }
 
     function deleteVehicle(plateNum){
-        for(var i=0;i<vehicles.length;i++)
-        {
-            if(vehicles[i].platenumber==plateNum)
-            {
-                vehicles.splice(i,1);
+        var deferred = q.defer();
+        VehicleModel.remove({platenumber:plateNum}, function(err, status) {
+            if(err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(status);
             }
-        }
-
-        return vehicles;
+        });
+        return deferred.promise;
     }
 };

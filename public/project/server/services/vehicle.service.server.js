@@ -11,32 +11,56 @@ module.exports = function (app, vehicleModel) {
     function registerVehicle(req,res)
     {
         var vehicle=req.body;
-        var vehicles=vehicleModel.registerVehicle(vehicle);
-        res.json(vehicles);
+        vehicleModel.registerVehicle(vehicle)
+            .then(function (vehicles) {
+                    res.json(vehicles);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
     }
 
     function findAllVehicles(req,res){
-        var req=req.body;
-        var vehicles=vehicleModel.findAllVehicles();
-        console.log(vehicles);
-        res.json(vehicles);
+        vehicleModel.findAllVehicles()
+            .then(function (vehicles) {
+                    res.json(vehicles);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
     }
 
     function viewVehicle(req,res){
         var vehicleId=req.params.pNum;
-        var vehicle=vehicleModel.viewVehicle(vehicleId);
-        res.json(vehicle);
+        vehicleModel.viewVehicle(vehicleId)
+            .then(function (vehicle) {
+                    res.json(vehicle);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
     }
 
     function updateVehicle(req,res){
         var vehicle=req.body;
-        var vehicles=vehicleModel.updateVehicle(vehicle);
-        res.json(vehicles);
+        vehicleModel.updateVehicle(vehicle)
+            .then(function (doc) {
+                    res.json(doc);
+                },// send error if promise rejected
+                function (err) {
+                    res.status(400).send(err);
+                });
     }
 
     function deleteVehicle(req,res){
         var pNum=req.params.pNum;
-        var vehicles=vehicleModel.deleteVehicle(pNum);
-        res.json(vehicles);
+        vehicleModel.deleteVehicle(pNum)
+            .then(function (msg) {
+                    res.json(msg);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
+
     }
 };

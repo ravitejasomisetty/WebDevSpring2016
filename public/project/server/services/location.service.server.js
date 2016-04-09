@@ -11,32 +11,56 @@ module.exports = function (app, locationModel) {
     function newLocation(req,res)
     {
         var location=req.body;
-        var locations=locationModel.newLocation(location);
-        res.json(locations);
+        locationModel.newLocation(location)
+            .then(function (locations) {
+                    res.json(locations);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
     }
 
     function findAllLocations(req,res){
-        var req=req.body;
         var locations=locationModel.findAllLocations();
-        console.log(locations);
-        res.json(locations);
+        locationModel.findAllLocations()
+            .then(function (locations) {
+                    res.json(locations);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
     }
 
     function viewLocation(req,res){
         var locationid=req.params.locationid;
-        var location=locationModel.viewLocation(locationid);
-        res.json(location);
+        locationModel.viewLocation(locationid)
+            .then(function (location) {
+                    res.json(location);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
     }
 
     function updateLocation(req,res){
         var location=req.body;
-        var locations=locationModel.updateLocation(location);
-        res.json(locations);
+        locationModel.updateLocation(location)
+            .then(function (doc) {
+                    res.json(doc);
+                },// send error if promise rejected
+                function (err) {
+                    res.status(400).send(err);
+                });
     }
 
     function deleteLocation(req,res){
         var locationid=req.params.locationid;
-        var locations=locationModel.deleteLocation(locationid);
-        res.json(locations);
+        locationModel.deleteLocation(locationid)
+            .then(function (msg) {
+                    res.json(msg);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
     }
 };
