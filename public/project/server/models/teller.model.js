@@ -2,7 +2,7 @@
 /**
  * Created by ravit on 3/23/2016.
  */
-module.exports = function (uuid) {
+module.exports = function (mongoose,db,uuid) {
     var q = require("q");
     var TellerSchema = require('./teller.schema.server.js')(mongoose);
     var TellerModel = mongoose.model("TellerModel", TellerSchema);
