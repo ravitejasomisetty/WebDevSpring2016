@@ -37,8 +37,18 @@ module.exports = function (app, reservationModel) {
     //TBF
     function findAllReservationsByRenter(req, res) {
         var renterid = req.params.renterid;
-        var reservations = reservationModel.findAllReservationsByRenter(renterid);
-        res.json(reservations);
+        reservationModel.findAllReservationsByRenter(renterid)
+            // handle model promise
+            .then(
+                // login user if promise resolved
+                function (docs) {
+                    res.json(docs);
+                },
+                // send error if promise rejected
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function newReservation(req, res) {

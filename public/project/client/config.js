@@ -15,6 +15,11 @@
                 controller: "VehicleController",
                 controllerAs: "model"
             })
+            .when("/newVehicle", {
+                templateUrl: "client/views/vehicle/newVehicle.view.html",
+                controller: "NewVehicleController",
+                controllerAs: "model"
+            })
             .when("/reservation", {
                 templateUrl: "client/views/reservation/reservation.view.html",
                 controller: "ReservationController",

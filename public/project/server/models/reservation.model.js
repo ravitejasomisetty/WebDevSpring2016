@@ -65,13 +65,11 @@ module.exports = function (mongoose,db,uuid) {
     }
     //TBF
     function findAllReservationsByRenter(renterid) {
-        var renterReservations = [];
-        for (var i = 0; i < reservations.length; i++) {
-            if (reservations[i].renterid == renterid) {
-                renterReservations.push(reservations[i]);
-            }
-        }
-        return renterReservations;
+        var deferred = q.defer();
+        ReservationModel.find({customerid:renterid},function(err,docs){
+            deferred.resolve(docs);
+        });
+        return deferred.promise;
     }
 
     function findAllReservations() {

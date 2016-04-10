@@ -3,10 +3,40 @@
  */
 module.exports = function (app, tellerModel) {
     app.post("/api/grabacar/teller", newTeller);
+    app.get("/api/grabacar/teller", findTellerByCredentials);
     app.get("/api/grabacar/teller", findAllTellers);
     app.get("/api/grabacar/teller/:employeeid", viewTeller);
     app.put("/api/grabacar/teller/:employeeid", updateTeller);
     app.delete("/api/grabacar/teller/:employeeid", deleteTeller);
+
+    function findTellerByCredentials(req, res) {
+        if (req.query.username) {
+            var credentials = {
+                "username": req.query.username,
+                "password": req.query.password
+            };
+            var user = tellerModel.findTellerByCredentials(credentials)
+                .then(
+                    function (doc) {
+                        req.session.user = doc;
+                        res.json(doc);
+                    },
+                    // send error if promise rejected
+                    function (err) {
+                        res.status(400).send(err);
+                    }
+                )
+        }
+        else {
+            tellerModel.findAllTellers()
+                .then(function (tellers) {
+                        res.json(tellers);
+                    },
+                    function (err) {
+                        res.status(400).send(err);
+                    });
+        }
+    }
 
     function newTeller(req,res)
     {

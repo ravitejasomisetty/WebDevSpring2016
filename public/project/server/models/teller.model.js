@@ -19,7 +19,19 @@ module.exports = function (mongoose,db,uuid) {
         newTeller:newTeller,
         updateTeller:updateTeller,
         deleteTeller:deleteTeller,
-        findAllTellers:findAllTellers
+        findAllTellers:findAllTellers,
+        findTellerByCredentials:findTellerByCredentials
+    }
+    function findTellerByCredentials(credentials) {
+        var deferred = q.defer();
+        TellerModel.findOne({username: credentials.username, password: credentials.password}, function (err, teller) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(teller);
+            }
+        });
+        return deferred.promise;
     }
 
     function findAllTellers(){
