@@ -20,7 +20,20 @@ module.exports = function (mongoose,db,uuid) {
         registerVehicle:registerVehicle,
         updateVehicle:updateVehicle,
         findAllVehicles:findAllVehicles,
-        deleteVehicle:deleteVehicle
+        deleteVehicle:deleteVehicle,
+        availableVehiclesByLocation:availableVehiclesByLocation
+    }
+
+    function availableVehiclesByLocation(location){
+        var deferred = q.defer();
+        VehicleModel.find({location:location},function (err, vehicles) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(vehicles);
+            }
+        });
+        return deferred.promise;
     }
 
     function findAllVehicles(){

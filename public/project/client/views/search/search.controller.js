@@ -2,7 +2,7 @@
     angular
         .module("GrabACar")
         .controller("SearchController", SearchController);
-    function SearchController($rootScope, $http, $location, $window) {
+    function SearchController($rootScope, $http, $location, VehicleService) {
         'use strict';
         var vm=this;
         vm.request = {
@@ -72,9 +72,11 @@
                 console.log(url);
                 $http.jsonp(url).success(function (response) {
                     if (response.StatusCode != 0) {
+                        vm.instances=null;
                         vm.errors = response.Errors;
                     }
                     else {
+                        vm.errors=null;
                         for (var i = 0; i < response.Result.length; i++) {
                             carTypes = response.MetaData.CarMetaData.CarTypes;
                             for (var j = 0; j < carTypes.length; j++) {
@@ -88,6 +90,14 @@
                             //response.Result[i].carType=instance.carType;
                         }
                         vm.instances = response.Result;
+                        VehicleService.availableVehiclesByLocation(request.dest)
+                            .then(function(res){
+                                console.log(res);
+                                if(res.data)
+                                {
+                                    vm.instances.push(res.data);
+                                }
+                            })
                     }
                 }).error(function (response, status, headers) {
                     console.log(response);

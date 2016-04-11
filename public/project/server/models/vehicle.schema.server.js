@@ -9,7 +9,8 @@ module.exports = function (mongoose) {
         "seatquantity": String,
         "fueltype": String,
         "condition": Date,
-        "dailyprice": String
+        "dailyprice": String,
+        "location":String
     }, {collection: "grabacar.vehicle"});
 
     return VehicleSchema;

@@ -11,11 +11,16 @@
             viewVehicle: viewVehicle,
             registerVehicle:registerVehicle,
             updateVehicle:updateVehicle,
+            availableVehiclesByLocation:availableVehiclesByLocation,
             findAllVehicles:findAllVehicles,
             deleteVehicle:deleteVehicle
         };
 
         return api;
+        function availableVehiclesByLocation(location){
+            var vehicles=$http.get("/api/grabacar/vehicleByLocation?location="+location);
+            return vehicles;
+        }
         function findAllVehicles(){
             var vehicles=$http.get("/api/grabacar/vehicle");
             return vehicles;

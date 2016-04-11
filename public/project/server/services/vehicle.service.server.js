@@ -4,9 +4,21 @@
 module.exports = function (app, vehicleModel) {
     app.post("/api/grabacar/vehicle", registerVehicle);
     app.get("/api/grabacar/vehicle", findAllVehicles);
+    app.get("/api/grabacar/locationvehicle?location=location",availableVehiclesByLocation);
     app.get("/api/grabacar/vehicle/:pNum", viewVehicle);
     app.put("/api/grabacar/vehicle/:pNum", updateVehicle);
     app.delete("/api/grabacar/vehicle/:pNum", deleteVehicle);
+
+    function availableVehiclesByLocation(req,res){
+        var location=req.query.location;
+        vehicleModel.availableVehiclesByLocation(location)
+            .then(function (vehicles) {
+                    res.json(vehicles);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
+    }
 
     function registerVehicle(req,res)
     {
