@@ -28,7 +28,7 @@
         };
 
         function findAllUsers() {
-            var users = $http.get("/api/assignment/user");
+            var users = $http.get("/api/assignment/users");
             return users;
         };
 

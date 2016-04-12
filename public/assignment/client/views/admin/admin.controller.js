@@ -3,14 +3,14 @@
     angular
         .module("FormBuilderApp")
         .controller("AdminController", AdminController);
-    function AdminController(UserService, $scope, $rootScope,$location) {
+    function AdminController(UserService, $scope, $rootScope, $location) {
         if ($rootScope.user) {
             UserService.findAllUsers()
                 .then(function (res) {
                     $scope.users = res.data;
                 })
         }
-        else{
+        else {
             alert("Please log in and continue");
             $location.path("/login");
         }
@@ -19,8 +19,13 @@
                 newUser.roles = convertToArrOfJSON(newUser.roles);
                 UserService.createUser(newUser)
                     .then(function (res) {
-                        $scope.users = res.data;
-                        newUser = null;
+                        UserService.findAllUsers()
+                            .then(function (users) {
+                                $scope.users = users.data;
+                                newUser = null;
+                            }, function (err) {
+
+                            });
                     });
             }
             else {
@@ -31,7 +36,12 @@
         $scope.deleteUser = function (user) {
             UserService.deleteUserById(user._id)
                 .then(function (res) {
-                    $scope.users = res.data;
+                    UserService.findAllUsers()
+                        .then(function (users) {
+                            $scope.users = users.data;
+                        }, function (err) {
+
+                        });
                 });
         }
 
@@ -67,7 +77,12 @@
                 UserService.updateUser(newUser._id, newUser)
                     .then(function (res) {
                         newUser = null;
-                        $scope.users = res.data;
+                        UserService.findAllUsers()
+                            .then(function (users) {
+                                $scope.users = users.data;
+                            }, function (err) {
+
+                            });
                     })
             }
             else {

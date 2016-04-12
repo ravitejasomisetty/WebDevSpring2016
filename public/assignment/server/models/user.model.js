@@ -108,7 +108,7 @@ module.exports = function (mongoose, db, uuid) {
 
     function findUserByUsername(username) {
         var deferred = q.defer();
-        UserModel.findOne({username: credentials.username}, function (err, user) {
+        UserModel.findOne({username: username}, function (err, user) {
             if (err) {
                 deferred.reject(err);
             } else {
