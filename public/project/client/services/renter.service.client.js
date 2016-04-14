@@ -11,7 +11,7 @@
         }
 
         function findRenterByCredentials(rentername, password, renter) {
-            var renter = $http.get("/api/grabacar/renter?rentername=" + rentername + "&password=" + password);
+            var renter = $http.get("/api/grabacar/renter?username=" + rentername + "&password=" + password);
             return renter;
         };
 
