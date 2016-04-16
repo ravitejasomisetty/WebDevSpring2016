@@ -75,7 +75,6 @@ module.exports = function (mongoose,db,uuid) {
 
         // find the reservation
         TellerModel.findById(employeeid, function (err, doc) {
-
             // reject promise if error
             if (err) {
                 deferred.reject(err);
@@ -87,6 +86,7 @@ module.exports = function (mongoose,db,uuid) {
                 doc.managerid=teller.managerid;
                 doc.rentsApproved=teller.rentsApproved;
                 doc.vehiclesAdded=teller.vehiclesAdded;
+                doc.rentersEvaluated=teller.rentersEvaluated;
                 doc.save(function (err, doc) {
 
                     if (err) {

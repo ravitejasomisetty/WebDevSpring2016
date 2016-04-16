@@ -27,7 +27,7 @@
         function viewRenters(user) {
             vm.viewRentsTable = false;
             vm.viewRentersTable = true;
-            vm.renters = user.rentersApproved;
+            vm.renters = user.rentersEvaluated;
         }
 
         function open(path) {

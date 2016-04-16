@@ -11,7 +11,7 @@ module.exports = function (mongoose) {
         "managerid": String,
         "rentsApproved": [{_id: false, platenumber: String}],
         "vehiclesAdded": [String],
-        "rentersApproved": [RenterSchema]
+        "rentersEvaluated": [RenterSchema]
     }, {collection: "grabacar.teller"});
 
     return TellerSchema;
