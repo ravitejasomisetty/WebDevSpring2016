@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-controller="TellerAccountController">
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+    <div class="panel panel-default col-xs-4">
+        <div class="panel panel-body text-nowrap">
+            <div class="">
+                <img ng-src="../project/client/images/userimage.jpg"
+                     title="{{user.fullname}}">
+            </div>
+            <div class="">
+                <button class="btn btn-primary" ng-click="model.viewRents(user)">View Rents Activity</button>
+            </div>
+            <div class="">
+                <button class="btn btn-primary" ng-click="model.viewRenters(user)">View Renters Activity</button>
+            </div>
+        </div>
+    </div>
+    <div ng-show="model.viewRentsTable" class="col-xs-8">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <tr class="text-nowrap">
+                    <th>Renter</th>
+                    <th>Rent Date</th>
+                    <th>Return Date</th>
+                    <th>Daily Rent</th>
+                    <th>Rent info</th>
+                </tr>
+                <tr ng-repeat="rent in model.rents">
+                    <td>{{rent.renterid}}</td>
+                    <td>{{rent.rentdate}}</td>
+                    <td>{{rent.returndate}}</td>
+                    <td>{{rent.dailyrent}}</td>
+                    <td>
+                        <button ng-click="model.open('/details/'+rent.platenumber)" class="btn btn-success"
+                                title="Click to view details">
+                            <span class="glyphicon glyphicon-new-window"></span> {{rent.status}}
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div ng-show="model.viewRentersTable" class="col-xs-8">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <tr class="text-nowrap">
+                    <th>Renter</th>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>Status</th>
+                </tr>
+                <tr ng-repeat="renter in model.renters">
+                    <td>{{renter._id}}</td>
+                    <td>{{renter.firstName}}</td>
+                    <td>{{renter.lastName}}</td>
+                    <td>{{renter.status}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

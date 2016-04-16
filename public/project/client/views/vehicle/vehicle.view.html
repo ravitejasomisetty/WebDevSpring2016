@@ -3,60 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <title>Vehicle</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="VehicleController">
-    <h1 class="page-header">Vehicle</h1>
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <tr class="text-nowrap">
-                <th><span class="caret"></span>Type</th>
-                <th><span class="caret"></span>Brand</th>
-                <th><span class="caret"></span>Model</th>
-                <th><span class="caret"></span>Plate#</th>
-                <th><span class="caret"></span>Seats</th>
-                <th><span class="caret"></span>Condtion</th>
-                <th><span class="caret"></span>Action</th>
-            </tr>
-            <tr>
-                <td><input type="text" ng-model="model.vehicle.type" class="form-control" placeholder="Type"></td>
-                <td><input type="text" ng-model="model.vehicle.brand" class="form-control" placeholder="Brand"></td>
-                <td><input type="text" ng-model="model.vehicle.model" class="form-control" placeholder="Model"></td>
-                <td><input type="text" ng-model="model.vehicle.platenumber" class="form-control" placeholder="Plate Number">
-                </td>
-                <td><input type="text" ng-model="model.vehicle.seatquantity" class="form-control" placeholder="Seats">
-                </td>
-                <td><input type="text" ng-model="model.vehicle.condition" class="form-control" placeholder="Condition">
-                </td>
-                <td class="text-nowrap">
-                    <button ng-click="model.addForm(model.vehicle)" type="button" class="btn btn-primary">
-                        Add</span>
-                    </button>
-                    <button ng-click="model.updateForm(model.vehicle)" type="button" class="btn btn-success">
-                        Done</span>
-                    </button>
-                </td>
-            </tr>
-            <tr ng-repeat="vehicle in model.vehicles">
-                <td class="text-left">{{vehicle.type}}</td>
-                <td class="text-left">{{vehicle.brand}}</td>
-                <td class="text-left">{{vehicle.model}}</td>
-                <td class="text-left">{{vehicle.platenumber}}</td>
-                <td class="text-right">{{vehicle.seatquantity}}</td>
-                <td class="text-left">{{vehicle.condition}}</td>
-                <td class="text-nowrap">
-                    <button ng-click="model.deleteForm(vehicle)" class="btn btn-danger">
-                        Delete</span>
-                    </button>
-                    <button ng-click="model.selectForm($index)" class="btn btn-warning">
-                        Edit</span>
-                    </button>
-                </td>
-            </tr>
-        </table>
+<div ng-controller="VehicleController">
+    <div class="search-form">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main panel panel-info">
+            <form class="">
+                <div class="form-group">
+                    <label for="search-location">Location:</label>
+                    <input type="text" id="search-location" ng-model="vehicle.location" class="form-control"
+                           placeholder="Location" googleplace
+                           required>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="selectType">Type:</label>
+                        <select id="selectType" ng-model="vehicle.CarTypeCode" class="form-control">
+                            <option value="ECAR">Economy car</option>
+                            <option value="CCAR">Compact car</option>
+                            <option value="FCAR">Full-Size car</option>
+                            <option value="FFAR">Full-Size SUV</option>
+                            <option value="FFAR">Full-Size SUV</option>
+                            <option value="ICAR">MidSize car</option>
+                            <option value="IFAR">MidSize SUV</option>
+                            <option value="LCAR">Luxury car</option>
+                            <option value="MVAR">Minivan</option>
+                            <option value="PCAR">Premium car</option>
+                            <option value="SCAR">Standard car</option>
+                            <option value="SFAR">Standard SUV</option>
+                            <option value="SPAR">Standard pickup truck</option>
+                            <option value="STAR">Convertible car</option>
+                            <option value="SXAR">Special car</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="platenumber">Plate#:</label>
+                        <input type="text" id="platenumber" ng-model="vehicle.platenumber" class="form-control"
+                               placeholder="Eg: F62GBM" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="mileageDesc">Mileage:</label>
+                        <input type="text" id="mileageDesc" ng-model="vehicle.MileageDescription" class="form-control" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="dailyRate">Daily Rate:</label>
+                        <input type="text" id="dailyRate" ng-model="vehicle.DailyRate" class="form-control" required>
+                    </div>
+                </div>
+                <button ng-click="model.addVehicle(vehicle)" type="submit"
+                        class="form-control btn btn-primary btn-block ng-scope">Add Vehicle
+                </button>
+            </form>
+        </div>
     </div>
 </div>
-
 </body>
 </html>

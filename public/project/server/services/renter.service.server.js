@@ -15,10 +15,22 @@ module.exports = function (app, renterModel) {
     app.get("/api/grabacar/renters", findAllRenters);
     app.get("/api/grabacar/renter/:id", findRenterById);
     app.get("/api/grabacar/renter?rentername=rentername", findRenterByRentername);
-    app.put("/api/grabacar/renter/:id", auth, updateRenter);
+    app.put("/api/grabacar/renter/:id", updateRenter);
     app.delete("/api/grabacar/renter/:id", auth, deleteRenter);
     app.get("/api/grabacar/rentersession/loggedin", loggedin);
     app.post("/api/grabacar/rentersession/logout", logout);
+    app.get("/api/grabacar/rentersession/refresh", refreshSession);
+
+    function refreshSession(req,res) {
+        var currentUser = req.session.user;
+        renterModel.FindById(currentUser._id)
+            .then(
+                function (renter) {
+                    req.session.user = renter;
+                    res.json(req.session.user);
+                }
+            );
+    }
 
     // passport.use(new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
@@ -43,7 +55,6 @@ module.exports = function (app, renterModel) {
                         if (!doc) {
                             return done(null, false);
                         } else {
-
                             return done(null, doc);
                         }
                     },
@@ -79,7 +90,9 @@ module.exports = function (app, renterModel) {
     }
 
     function loggedin(req, res) {
-        // res.json(req.isAuthenticated() ? req.session.user : null);
+        //console.log(req.isAuthenticated())
+
+        //res.json(req.isAuthenticated() ? req.session.user : null);
         res.json(req.session.user);
     }
 
@@ -154,7 +167,6 @@ module.exports = function (app, renterModel) {
     function findRenterByCredentials(req, res) {
         var renter = req.user;
         if (renter.rentername) {
-
             req.session.user = renter;
             res.json(renter);
         }
@@ -175,7 +187,6 @@ module.exports = function (app, renterModel) {
         var renter = req.body;
         var renters = renterModel.Update(id, renter)
             .then(function (doc) {
-                    req.session.user = doc;
                     res.json(renter);
                 },// send error if promise rejected
                 function (err) {

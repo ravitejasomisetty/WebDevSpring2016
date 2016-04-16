@@ -1,7 +1,7 @@
 /**
  * Created by ravit on 3/23/2016.
  */
-module.exports = function (mongoose,db,uuid) {
+module.exports = function (mongoose, db, uuid) {
     var q = require("q");
     var RentSchema = require('./rent.schema.server.js')(mongoose);
     var RentModel = mongoose.model("RentModel", RentSchema);
@@ -101,13 +101,30 @@ module.exports = function (mongoose,db,uuid) {
     }
 
     function cancelRent(rentid) {
-        var rent = viewRent(rentid);
-        if (rent) {
-            rent.status = "CANCEL";
-            updateRent(rent);
-            return true;
-        }
-        return false;
+        var deferred = q.defer();
+
+        // find the reservation
+        RentModel.findById(rentid, function (err, doc) {
+
+            // reject promise if error
+            if (err) {
+                deferred.reject(err);
+            } else {
+                doc.status = "CANCEL";
+                doc.save(function (err, doc) {
+
+                    if (err) {
+                        deferred.reject(err);
+                    } else {
+
+                        // resolve promise with renter
+                        deferred.resolve(doc);
+                    }
+                });
+            }
+        });
+
+        return deferred.promise;
     }
 
     function recentRent() {
@@ -190,24 +207,36 @@ module.exports = function (mongoose,db,uuid) {
         var deferred = q.defer();
 
         // find the reservation
-        RentModel.findById(rent.rentid, function (err, doc) {
+        RentModel.findById(rent._id, function (err, doc) {
 
             // reject promise if error
             if (err) {
                 deferred.reject(err);
             } else {
-                doc.platenumber=rent.platenumber;
-                doc.rentdate=rent.rentdate;
-                doc.returndate=rent.returndate;
-                doc.totalrentday=rent.totalrentday;
-                doc.dailyrentfee=rent.dailyrentfee;
-                doc.fuelprovidedby=rent.fuelprovidedby;
-                doc.fuelcharge=rent.fuelcharge;
-                doc.downpayment=rent.downpayment;
-                doc.totalpaid=rent.totalpaid;
-                doc.refund=rent.refund;
-                doc.customerid=rent.customerid;
-                doc.employeeid=rent.employeeid;
+                doc.platenumber = rent.platenumber;
+                doc.rentdate = rent.rentdate;
+                doc.returndate = rent.returndate;
+                doc.totalrentday = rent.totalrentday;
+                doc.dailyrentfee = rent.dailyrentfee;
+                doc.pickuptime = rent.pickuptime;
+                doc.returntime = rent.returntime;
+                doc.carimage = rent.carimage;
+                doc.subtotal = rent.subtotal;
+                doc.taxesandfees = rent.taxesandfees;
+                doc.totalprice = rent.totalprice;
+                doc.cartypecode = rent.cartypecode;
+                doc.locationdescription = rent.locationdescription;
+                doc.mileagedescription = rent.mileagedescription;
+                doc.pickupairport = rent.pickupairport;
+                doc.fuelprovidedby = rent.fuelprovidedby;
+                doc.fuelcharge = rent.fuelcharge;
+                doc.downpayment = rent.downpayment;
+                doc.totalpaid = rent.totalpaid;
+                doc.refund = rent.refund;
+                doc.status = rent.status;
+                doc.renterid = rent.renterid;
+                doc.employeeid = rent.employeeid;
+                doc.updatedby=rent.updatedby;
                 doc.save(function (err, doc) {
 
                     if (err) {
@@ -218,13 +247,15 @@ module.exports = function (mongoose,db,uuid) {
                         deferred.resolve(doc);
                     }
                 });
-            }})
+            }
+        });
+        return deferred.promise;
     }
 
     function deleteRent(rentid) {
         var deferred = q.defer();
-        RentModel.remove({_id:rentid}, function(err, status) {
-            if(err) {
+        RentModel.remove({_id: rentid}, function (err, status) {
+            if (err) {
                 deferred.reject(err);
             } else {
                 deferred.resolve(status);

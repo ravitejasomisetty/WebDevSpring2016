@@ -41,13 +41,7 @@
 
                 RentService.rentVehicle(rent)
                     .then(function (res) {
-                        console.log("reserving ..");
 
-                    });
-
-                //obtain recent rent id to create a new reservation record
-                RentService.recentRent()
-                    .then(function (res) {
                         var today=DateService.obtainDate(new Date());
                         var reservation = {
                             "platenumber": vm.HWRefNumber,
@@ -57,7 +51,7 @@
                             "status":"RESERVED",
                             "reservationid": null,
                             "renterid": $rootScope.user._id,
-                            "rentid": res.data.rentid
+                            "rentid": res.data._id
                         };
                         ReservationService.newReservation(reservation)
                             .then(function (reservationRes) {

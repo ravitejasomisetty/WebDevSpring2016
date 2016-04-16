@@ -66,7 +66,9 @@ module.exports = function (mongoose,db,uuid) {
     //TBF
     function findAllReservationsByRenter(renterid) {
         var deferred = q.defer();
-        ReservationModel.find({customerid:renterid},function(err,docs){
+        console.log("in model")
+        ReservationModel.find({renterid:renterid},function(err,docs){
+           console.log(docs)
             deferred.resolve(docs);
         });
         return deferred.promise;
@@ -121,7 +123,7 @@ module.exports = function (mongoose,db,uuid) {
         var deferred = q.defer();
 
         // find the reservation
-        ReservationModel.findById(reservation.reservationid, function (err, doc) {
+        ReservationModel.findById(reservation._id, function (err, doc) {
 
             // reject promise if error
             if (err) {
@@ -145,6 +147,7 @@ module.exports = function (mongoose,db,uuid) {
                     }
                 });
             }});
+        return deferred.promise;
     }
 
     function deleteReservation(reservationid) {

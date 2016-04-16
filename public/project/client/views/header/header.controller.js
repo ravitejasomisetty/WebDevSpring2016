@@ -3,7 +3,7 @@
     angular
         .module("GrabACar")
         .controller("HeaderController", HeaderController);
-    function HeaderController($rootScope, $location, RenterService) {
+    function HeaderController($location, RenterService) {
         var vm = this;
         vm.$location = $location;
         vm.logout = logout;

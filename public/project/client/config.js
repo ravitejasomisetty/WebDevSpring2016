@@ -10,14 +10,14 @@
                 controller: "RenterController",
                 controllerAs: "model"
             })
+            .when("/crudvehicle", {
+                templateUrl: "client/views/vehicle/crud.vehicle.view.html",
+                controller: "CRUDVehicleController",
+                controllerAs: "model"
+            })
             .when("/vehicle", {
                 templateUrl: "client/views/vehicle/vehicle.view.html",
                 controller: "VehicleController",
-                controllerAs: "model"
-            })
-            .when("/newVehicle", {
-                templateUrl: "client/views/vehicle/newVehicle.view.html",
-                controller: "NewVehicleController",
                 controllerAs: "model"
             })
             .when("/reservation", {
@@ -89,7 +89,23 @@
                 controller: "AdminController",
                 controllerAs: "model",
                 resolve: {
-                    getLoggedIn: getLoggedIn
+                    checkTellerLoggedIn: checkTellerLoggedIn
+                }
+            })
+            .when("/approverents", {
+                templateUrl: "client/views/users/approverents.view.html",
+                controller: "ApproveRentsController",
+                controllerAs: "model",
+                resolve: {
+                    checkTellerLoggedIn: checkTellerLoggedIn
+                }
+            })
+            .when("/telleraccount/:id", {
+                templateUrl: "client/views/users/telleraccount.view.html",
+                controller: "TellerAccountController",
+                controllerAs: "model",
+                resolve: {
+                    checkTellerLoggedIn: checkTellerLoggedIn
                 }
             })
             .otherwise({
@@ -119,9 +135,27 @@
             .getCurrentUser()
             .then(function (response) {
                 var currentUser = response.data;
-                console.log(currentUser)
                 if (currentUser) {
                     RenterService.setCurrentUser(currentUser);
+                    deferred.resolve();
+                } else {
+                    deferred.reject();
+                }
+            });
+
+        return deferred.promise;
+    }
+
+    function checkTellerLoggedIn(TellerService, $q, $location) {
+
+        var deferred = $q.defer();
+
+        TellerService
+            .getCurrentUser()
+            .then(function (response) {
+                var currentUser = response.data;
+                if (currentUser) {
+                    TellerService.setCurrentUser(currentUser);
                     deferred.resolve();
                 } else {
                     deferred.reject();

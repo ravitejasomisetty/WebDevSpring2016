@@ -4,12 +4,12 @@
 module.exports = function (mongoose) {
     var VehicleSchema = mongoose.Schema({
         "brand": String,
-        "type": String,
+        "CarTypeCode": String,
         "platenumber": String,
         "seatquantity": String,
         "fueltype": String,
         "condition": Date,
-        "dailyprice": String,
+        "DailyRate": String,
         "location":String
     }, {collection: "grabacar.vehicle"});
 

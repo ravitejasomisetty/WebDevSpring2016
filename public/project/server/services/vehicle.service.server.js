@@ -3,14 +3,14 @@
  */
 module.exports = function (app, vehicleModel) {
     app.post("/api/grabacar/vehicle", registerVehicle);
+    app.get("/api/grabacar/vehiclebylocation/:location", availableVehiclesByLocation);
     app.get("/api/grabacar/vehicle", findAllVehicles);
-    app.get("/api/grabacar/locationvehicle?location=location",availableVehiclesByLocation);
     app.get("/api/grabacar/vehicle/:pNum", viewVehicle);
     app.put("/api/grabacar/vehicle/:pNum", updateVehicle);
     app.delete("/api/grabacar/vehicle/:pNum", deleteVehicle);
 
-    function availableVehiclesByLocation(req,res){
-        var location=req.query.location;
+    function availableVehiclesByLocation(req, res) {
+        var location = req.params.location;
         vehicleModel.availableVehiclesByLocation(location)
             .then(function (vehicles) {
                     res.json(vehicles);
@@ -20,9 +20,8 @@ module.exports = function (app, vehicleModel) {
                 });
     }
 
-    function registerVehicle(req,res)
-    {
-        var vehicle=req.body;
+    function registerVehicle(req, res) {
+        var vehicle = req.body;
         vehicleModel.registerVehicle(vehicle)
             .then(function (vehicles) {
                     res.json(vehicles);
@@ -32,7 +31,7 @@ module.exports = function (app, vehicleModel) {
                 });
     }
 
-    function findAllVehicles(req,res){
+    function findAllVehicles(req, res) {
         vehicleModel.findAllVehicles()
             .then(function (vehicles) {
                     res.json(vehicles);
@@ -42,8 +41,8 @@ module.exports = function (app, vehicleModel) {
                 });
     }
 
-    function viewVehicle(req,res){
-        var vehicleId=req.params.pNum;
+    function viewVehicle(req, res) {
+        var vehicleId = req.params.pNum;
         vehicleModel.viewVehicle(vehicleId)
             .then(function (vehicle) {
                     res.json(vehicle);
@@ -53,8 +52,8 @@ module.exports = function (app, vehicleModel) {
                 });
     }
 
-    function updateVehicle(req,res){
-        var vehicle=req.body;
+    function updateVehicle(req, res) {
+        var vehicle = req.body;
         vehicleModel.updateVehicle(vehicle)
             .then(function (doc) {
                     res.json(doc);
@@ -64,8 +63,8 @@ module.exports = function (app, vehicleModel) {
                 });
     }
 
-    function deleteVehicle(req,res){
-        var pNum=req.params.pNum;
+    function deleteVehicle(req, res) {
+        var pNum = req.params.pNum;
         vehicleModel.deleteVehicle(pNum)
             .then(function (msg) {
                     res.json(msg);

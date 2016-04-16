@@ -16,7 +16,7 @@
         };
 
         function findAllRenters() {
-            var renters = $http.get("/api/grabacar/renter");
+            var renters = $http.get("/api/grabacar/renters");
             return renters;
         };
 
@@ -43,6 +43,9 @@
         function logout() {
             return $http.post("/api/grabacar/rentersession/logout");
         }
+        function refresh() {
+            return $http.get("/api/grabacar/rentersession/refresh");
+        }
 
         function setCurrentUser(user) {
             $rootScope.user = user;
@@ -62,7 +65,8 @@
             isYoungDriver: isYoungDriver,
             logout: logout,
             setCurrentUser: setCurrentUser,
-            getCurrentUser: getCurrentUser
+            getCurrentUser: getCurrentUser,
+            refresh:refresh
         }
     }
 })();

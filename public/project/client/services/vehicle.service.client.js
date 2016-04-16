@@ -18,7 +18,7 @@
 
         return api;
         function availableVehiclesByLocation(location){
-            var vehicles=$http.get("/api/grabacar/vehicleByLocation?location="+location);
+            var vehicles=$http.get("/api/grabacar/vehiclebylocation/"+location);
             return vehicles;
         }
         function findAllVehicles(){

@@ -34,7 +34,6 @@ module.exports = function (app, reservationModel) {
         res.json(recentReservationJSON);
     }
 
-    //TBF
     function findAllReservationsByRenter(req, res) {
         var renterid = req.params.renterid;
         reservationModel.findAllReservationsByRenter(renterid)
@@ -42,6 +41,7 @@ module.exports = function (app, reservationModel) {
             .then(
                 // login user if promise resolved
                 function (docs) {
+
                     res.json(docs);
                 },
                 // send error if promise rejected

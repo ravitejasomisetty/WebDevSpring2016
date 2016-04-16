@@ -38,7 +38,7 @@
                         .then(function (resRes) {
                             var reservation = resRes.data;
                             reservation.status = "CANCEL";
-                            ReservationService.updateReservation(reservation.reservationid, reservation)
+                            ReservationService.updateReservation(reservation._id, reservation)
                                 .then(function (updateRes) {
                                     vm.canBeCancelled = !res.data;
                                     vm.CancellationInfo = "Your reservation has been cancelled successfully";

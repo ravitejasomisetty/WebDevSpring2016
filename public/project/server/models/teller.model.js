@@ -6,14 +6,6 @@ module.exports = function (mongoose,db,uuid) {
     var q = require("q");
     var TellerSchema = require('./teller.schema.server.js')(mongoose);
     var TellerModel = mongoose.model("TellerModel", TellerSchema);
-    var tellers = [{
-        "password": "raviteja",
-        "username": "raviteja",
-        "fullname": "Somisetty, Raviteja",
-        "address": "Boston",
-        "employeeid": "10",
-        "managerid": "10"
-    }];
     return {
         viewTeller: viewTeller,
         newTeller:newTeller,
@@ -106,6 +98,7 @@ module.exports = function (mongoose,db,uuid) {
                     }
                 });
             }});
+        return deferred.promise;
     }
 
     function deleteTeller(employeeid){

@@ -15,9 +15,13 @@ module.exports = function (app, rentModel) {
 
     function cancelRent(req, res) {
         var rentid = req.params.rentid;
-        var cancelled;
-        cancelled = rentModel.cancelRent(rentid);
-        res.send(cancelled);
+        rentModel.cancelRent(rentid)
+            .then(function(cancelledRent){
+                    res.json(cancelledRent);
+                },
+            function(err){
+                res.status(400).send(err);
+            })
     }
 
     function recentRent(req, res) {

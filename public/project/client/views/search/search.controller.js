@@ -4,7 +4,7 @@
         .controller("SearchController", SearchController);
     function SearchController($rootScope, $http, $location, VehicleService) {
         'use strict';
-        var vm=this;
+        var vm = this;
         vm.request = {
             "apikey": "2vq5exzbspp2d33yp327vta8",
             "dest": "",
@@ -72,32 +72,33 @@
                 console.log(url);
                 $http.jsonp(url).success(function (response) {
                     if (response.StatusCode != 0) {
-                        vm.instances=null;
+                        vm.instances = null;
                         vm.errors = response.Errors;
                     }
                     else {
-                        vm.errors=null;
-                        for (var i = 0; i < response.Result.length; i++) {
-                            carTypes = response.MetaData.CarMetaData.CarTypes;
-                            for (var j = 0; j < carTypes.length; j++) {
-                                if (response.Result[i].CarTypeCode == carTypes[j].CarTypeCode)
-                                    response.Result[i].Metadata = carTypes[j];
-                            }
-                            var instance = {"image": "", "carType": ""};
-                            instance.image = carImages[response.Result[i].CarTypeCode];
-                            //instance.carType=carTypes[response.Result[i].CarTypeCode];
-                            response.Result[i].carImage = instance.image;
-                            //response.Result[i].carType=instance.carType;
-                        }
-                        vm.instances = response.Result;
+                        vm.errors = null;
                         VehicleService.availableVehiclesByLocation(request.dest)
-                            .then(function(res){
-                                console.log(res);
-                                if(res.data)
-                                {
-                                    vm.instances.push(res.data);
+                            .then(function (res) {
+                                console.log(res.data);
+                                if (res.data.length>0) {
+                                    response.Result.push(res.data[0]);
+                                    console.log(response.Result);
                                 }
-                            })
+                                for (var i = 0; i < response.Result.length; i++) {
+                                    carTypes = response.MetaData.CarMetaData.CarTypes;
+                                    for (var j = 0; j < carTypes.length; j++) {
+                                        if (response.Result[i].CarTypeCode == carTypes[j].CarTypeCode)
+                                            response.Result[i].Metadata = carTypes[j];
+                                    }
+                                    var instance = {"image": "", "carType": ""};
+                                    instance.image = carImages[response.Result[i].CarTypeCode];
+                                    //instance.carType=carTypes[response.Result[i].CarTypeCode];
+                                    response.Result[i].carImage = instance.image;
+                                    //response.Result[i].carType=instance.carType;
+                                }
+                                vm.instances = response.Result;
+                            });
+
                     }
                 }).error(function (response, status, headers) {
                     console.log(response);
@@ -117,7 +118,7 @@
         }
 
         vm.open = function (path, instance) {
-                $rootScope.instance = instance;
+            $rootScope.instance = instance;
             $location.url(path);
             /*   $window.open('/FFProject/public/project/index.html#' + path);*/
         }

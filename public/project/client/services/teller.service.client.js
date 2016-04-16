@@ -6,15 +6,30 @@
     angular
         .module("GrabACar")
         .factory("TellerService", TellerService);
-    function TellerService($http) {
+    function TellerService($http,$rootScope) {
         return {
             viewTeller: viewTeller,
             newTeller:newTeller,
             updateTeller:updateTeller,
             deleteTeller:deleteTeller,
             findAllTellers:findAllTellers,
-            findTellerByCredentials:findTellerByCredentials
+            findTellerByCredentials:findTellerByCredentials,
+            logout: logout,
+            setCurrentUser: setCurrentUser,
+            getCurrentUser: getCurrentUser
         }
+        function logout() {
+            return $http.post("/api/grabacar/tellersession/logout");
+        }
+
+        function setCurrentUser(user) {
+            $rootScope.user = user;
+        }
+
+        function getCurrentUser() {
+            return $http.get("/api/grabacar/tellersession/loggedin");
+        }
+
         function findTellerByCredentials(username, password, teller) {
             var teller = $http.get("/api/grabacar/teller?username=" + username + "&password=" + password);
             return teller;
