@@ -5,6 +5,7 @@
         .controller("HeaderController", HeaderController);
     function HeaderController($location, RenterService) {
         var vm = this;
+        vm.redirectToRenters = redirectToRenters;
         vm.$location = $location;
         vm.logout = logout;
 
@@ -14,6 +15,11 @@
                     RenterService.setCurrentUser(null);
                     $location.url("/home");
                 });
+        }
+
+        function redirectToRenters(searchRenterName) {
+            if (searchRenterName)
+                $location.url("/admin/" + searchRenterName);
         }
     }
 })();

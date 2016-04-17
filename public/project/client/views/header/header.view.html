@@ -22,13 +22,28 @@
                     <a href="#/register" ng-hide="user">Register</a></li>
                 <li ng-class="{'active': model.$location.url()=='/login'}">
                     <a href="#/login" ng-hide="user"> Login </a></li>
+
                 <li ng-class="{'active': model.$location.url()=='/profile'}">
-                    <a href="#/profile" ng-show="user.rentername"> {{user.rentername}} </a></li>
+                    <a href="#/profile/{{user._id}}" ng-show="user.rentername"> {{user.rentername}} </a></li>
                 <li ng-class="{'active': model.$location.url()=='/telleraccount'}">
                     <a href="#/telleraccount/{{user._id}}" ng-show="user.username"> {{user.username}} </a></li>
                 <li>
                     <a href="#/login" ng-click="model.logout()" ng-show="user"> Logout </a></li>
             </ul>
+            <div class="col-sm-3 col-md-3 pull-right">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" ng-model="model.searchRentername" placeholder="Search"
+                               name="srch-term" id="srch-term">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" ng-click="model.redirectToRenters(model.searchRentername)"
+                                    type="submit"><span
+                                    class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
             <ul class="nav navbar-nav navbar-right visible-xs">
                 <li ng-class="{'active': $location.url()=='/search'}">
                     <a href="#/search"> Find cars</a></li>

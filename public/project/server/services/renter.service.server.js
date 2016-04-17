@@ -11,17 +11,31 @@ module.exports = function (app, renterModel) {
 
     app.get("/api/grabacar/renter/isYoungDriver/:id", isYoungDriver);
     app.post("/api/grabacar/renter", createRenter);
-    app.get("/api/grabacar/renter", passport.authenticate('renter'), findRenterByCredentials);
+    app.get("/api/grabacar/renter", findRenterByCredentials);
     app.get("/api/grabacar/renters", findAllRenters);
     app.get("/api/grabacar/renter/:id", findRenterById);
+    app.get("/api/grabacar/renterByFirstName/:firstName", findRentersByFirstName);
     app.get("/api/grabacar/renter?rentername=rentername", findRenterByRentername);
     app.put("/api/grabacar/renter/:id", updateRenter);
-    app.delete("/api/grabacar/renter/:id", auth, deleteRenter);
+    app.delete("/api/grabacar/renter/:id", deleteRenter);
     app.get("/api/grabacar/rentersession/loggedin", loggedin);
     app.post("/api/grabacar/rentersession/logout", logout);
     app.get("/api/grabacar/rentersession/refresh", refreshSession);
 
-    function refreshSession(req,res) {
+    function findRentersByFirstName(req, res) {
+        var firstName = req.params.firstName;
+        renterModel.findRentersByFirstName(firstName)
+            .then(
+                function (renters) {
+                    res.json(renters);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
+    }
+
+    function refreshSession(req, res) {
         var currentUser = req.session.user;
         renterModel.FindById(currentUser._id)
             .then(
@@ -42,7 +56,7 @@ module.exports = function (app, renterModel) {
         } else {
             next();
         }
-    };
+    }
 
     passport.use('renter', new LocalStrategy({
             usernameField: 'username',
@@ -165,10 +179,18 @@ module.exports = function (app, renterModel) {
     }
 
     function findRenterByCredentials(req, res) {
-        var renter = req.user;
-        if (renter.rentername) {
-            req.session.user = renter;
-            res.json(renter);
+        var rentername = req.query.rentername;
+        var password = req.query.password;
+        console.log(req.query.rentername);
+        if (req.query.rentername) {
+            renterModel.findRenterByCredentials({rentername: rentername, password: password})
+                .then(
+                    function (doc) {
+                        req.session.user = doc;
+                        res.json(doc);
+                    }, function (err) {
+                        res.status(400).send(err);
+                    })
         }
         else {
             renterModel.FindAll()

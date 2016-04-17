@@ -5,6 +5,10 @@
         .factory("RenterService", RenterService);
     function RenterService($http,$rootScope) {
 
+        function findRenterById(renterid){
+            var renter = $http.get("/api/grabacar/renter/" + renterid);
+            return renter;
+        }
         function findRenterByRentername(rentername) {
             var renter = $http.get("/api/grabacar/renter?rentername=" + rentername);
             return renter;
@@ -18,7 +22,12 @@
         function findAllRenters() {
             var renters = $http.get("/api/grabacar/renters");
             return renters;
-        };
+        }
+
+        function findRentersByFirstName(searchRenterName) {
+            var renters = $http.get("/api/grabacar/renterByFirstName/"+searchRenterName);
+            return renters;
+        }
 
         function createRenter(renter) {
             var renters = $http.post("/api/grabacar/renter", renter);
@@ -56,7 +65,9 @@
         }
 
         return {
+            findRentersByFirstName:findRentersByFirstName,
             findRenterByRentername: findRenterByRentername,
+            findRenterById: findRenterById,
             findRenterByCredentials: findRenterByCredentials,
             findAllRenters: findAllRenters,
             createRenter: createRenter,

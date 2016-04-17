@@ -4,36 +4,22 @@
         .module("GrabACar")
         .controller("ProfileController", ProfileController);
 
-    function ProfileController($rootScope, RenterService, ReservationService, $location) {
+    function ProfileController($rootScope,$routeParams, RenterService, ReservationService, $location) {
         var vm = this;
+        vm.activeUser=$rootScope.user;
+        var renterId=$routeParams.renterId;
         vm.update = update;
         vm.rowStatus = rowStatus;
-        vm.myReservations = myReservations;
         vm.open = open;
-
-        vm.user = {
-            "_id": $rootScope.user._id,
-            "firstName": $rootScope.user.firstName,
-            "lastName": $rootScope.user.lastName,
-            "rentername": $rootScope.user.rentername,
-            "city": $rootScope.user.city,
-            "nationality": $rootScope.user.nationality,
-            "mobilenumber": $rootScope.user.mobilenumber,
-            "birthdate": $rootScope.user.birthdate,
-            "licenseNumber": $rootScope.user.licenseNumber,
-            "licenseCountry": $rootScope.user.licenseCountry,
-            "password": $rootScope.user.password,
-            "status": $rootScope.user.status,
-            "email": $rootScope.user.email,
-            "roles": $rootScope.user.roles
-        };
-        myReservations();
-        function myReservations() {
-            ReservationService.findAllReservationsByRenter(vm.user._id)
-                .then(function (res) {
-                    vm.reservations = res.data;
-                })
-        }
+        RenterService.findRenterById(renterId)
+            .then(function(renter){
+                console.log(renter);
+                vm.user=renter.data;
+                ReservationService.findAllReservationsByRenter(vm.user._id)
+                    .then(function (res) {
+                        vm.reservations = res.data;
+                    })
+            });
 
         function update() {
             RenterService.updateRenter(vm.user._id, vm.user)

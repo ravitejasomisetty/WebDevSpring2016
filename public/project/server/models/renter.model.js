@@ -3,7 +3,7 @@
  */
 
 
-module.exports = function (mongoose,db,uuid) {
+module.exports = function (mongoose, db, uuid) {
     var q = require("q");
     var RenterSchema = require('./renter.schema.server.js')(mongoose);
     var RenterModel = mongoose.model("RenterModel", RenterSchema);
@@ -49,9 +49,24 @@ module.exports = function (mongoose,db,uuid) {
         Delete: Delete,
         findRenterByRentername: findRenterByRentername,
         findRenterByCredentials: findRenterByCredentials,
-        isYoungDriver: isYoungDriver
+        isYoungDriver: isYoungDriver,
+        findRentersByFirstName: findRentersByFirstName
     };
     return api;
+
+    function findRentersByFirstName(firstName) {
+        var deferred = q.defer();
+        RenterModel.find({"firstName": new RegExp('.*' + firstName + '.*', "i")}, function (err, doc) {
+            if (err) {
+                // reject promise if error
+                deferred.reject(err);
+            } else {
+                // resolve promise
+                deferred.resolve(doc);
+            }
+        });
+        return deferred.promise;
+    }
 
     function isYoungDriver(renterId) {
         for (var i = 0; i < renters.length; i++) {
@@ -155,8 +170,8 @@ module.exports = function (mongoose,db,uuid) {
 
     function Delete(id) {
         var deferred = q.defer();
-        RenterModel.remove({_id:id}, function(err, status) {
-            if(err) {
+        RenterModel.remove({_id: id}, function (err, status) {
+            if (err) {
                 deferred.reject(err);
             } else {
                 deferred.resolve(status);
@@ -179,7 +194,10 @@ module.exports = function (mongoose,db,uuid) {
 
     function findRenterByCredentials(credentials) {
         var deferred = q.defer();
-        RenterModel.findOne({rentername: credentials.rentername, password: credentials.password}, function (err, renter) {
+        RenterModel.findOne({
+            rentername: credentials.rentername,
+            password: credentials.password
+        }, function (err, renter) {
             if (err) {
                 deferred.reject(err);
             } else {

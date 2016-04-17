@@ -31,7 +31,7 @@
                     <th>Rent info</th>
                 </tr>
                 <tr ng-repeat="rent in model.rents">
-                    <td>{{rent.renterid}}</td>
+                    <td><a href="#profile/{{rent.renterid}}"> {{rent.renterid}}</a></td>
                     <td>{{rent.rentdate}}</td>
                     <td>{{rent.returndate}}</td>
                     <td>{{rent.dailyrent}}</td>
@@ -55,7 +55,7 @@
                     <th>Status</th>
                 </tr>
                 <tr ng-repeat="renter in model.renters">
-                    <td>{{renter._id}}</td>
+                    <td><a href="#profile/{{renter._id}}">{{renter._id}}</a></td>
                     <td>{{renter.firstName}}</td>
                     <td>{{renter.lastName}}</td>
                     <td>{{renter.status}}</td>

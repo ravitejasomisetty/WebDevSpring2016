@@ -3,16 +3,24 @@
     angular
         .module("GrabACar")
         .controller("AdminController", AdminController);
-    function AdminController($rootScope, RenterService, TellerService) {
+    function AdminController($routeParams, $rootScope, RenterService, TellerService) {
+        var searchRenterName = $routeParams.searchRenterName;
         var vm = this;
         var teller = $rootScope.user;
         vm.approve = approve;
         vm.decline = decline;
-
-        RenterService.findAllRenters()
-            .then(function (renters) {
-                vm.users = renters.data;
-            });
+        if (searchRenterName) {
+            RenterService.findRentersByFirstName(searchRenterName)
+                .then(function (renters) {
+                    vm.users = renters.data;
+                });
+        }
+        else {
+            RenterService.findAllRenters()
+                .then(function (renters) {
+                    vm.users = renters.data;
+                });
+        }
 
         function approve(user) {
             user.status = "Approved";

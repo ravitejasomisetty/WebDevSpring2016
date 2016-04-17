@@ -68,7 +68,7 @@
                 controller: "LoginController",
                 controllerAs: "model"
             })
-            .when("/profile", {
+            .when("/profile/:renterId", {
                 templateUrl: "client/views/users/profile.view.html",
                 controller: "ProfileController",
                 controllerAs: "model",
@@ -82,6 +82,14 @@
                 controllerAs: "model",
                 resolve: {
                     getLoggedIn: getLoggedIn
+                }
+            })
+            .when("/admin/:searchRenterName", {
+                templateUrl: "client/views/users/admin.view.html",
+                controller: "AdminController",
+                controllerAs: "model",
+                resolve: {
+                    checkTellerLoggedIn: checkTellerLoggedIn
                 }
             })
             .when("/admin", {
