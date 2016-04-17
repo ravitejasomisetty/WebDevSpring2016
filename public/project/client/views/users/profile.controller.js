@@ -4,30 +4,38 @@
         .module("GrabACar")
         .controller("ProfileController", ProfileController);
 
-    function ProfileController($rootScope,$routeParams, RenterService, ReservationService, $location) {
+    function ProfileController($rootScope, $routeParams, RenterService, ReservationService, $location, DateService) {
         var vm = this;
-        vm.activeUser=$rootScope.user;
-        var renterId=$routeParams.renterId;
+        vm.activeUser = $rootScope.user;
+        var renterId = $routeParams.renterId;
         vm.update = update;
         vm.rowStatus = rowStatus;
         vm.open = open;
         RenterService.findRenterById(renterId)
-            .then(function(renter){
+            .then(function (renter) {
                 console.log(renter);
-                vm.user=renter.data;
+                vm.user = renter.data;
                 ReservationService.findAllReservationsByRenter(vm.user._id)
                     .then(function (res) {
                         vm.reservations = res.data;
                     })
             });
 
-        function update() {
-            RenterService.updateRenter(vm.user._id, vm.user)
-                .then(
-                    RenterService.refresh()
-                        .then(function (res) {
-                            alert("Profile information is successfully updated");
-                        }));
+        function update(user) {
+            user.rentername = vm.activeUser.rentername;
+            user.password = vm.activeUser.password;
+            user.status=vm.activeUser.status;
+            if (user.fullname) {
+                var nameSplit = user.fullname.split(' ');
+                user.firstName = nameSplit[0];
+                user.lastName = nameSplit[1];
+            }
+            RenterService.updateRenter(vm.activeUser._id, user)
+             .then(
+             RenterService.refresh()
+             .then(function (res) {
+             alert("Profile information is successfully updated");
+             }));
         }
 
         function rowStatus(reservation) {

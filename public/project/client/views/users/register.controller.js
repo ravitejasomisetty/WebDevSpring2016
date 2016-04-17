@@ -12,8 +12,7 @@
                     .then(function (res) {
                         RenterService.findRenterByCredentials(vm.user.rentername, vm.user.password)
                             .then(function (loginRes) {
-                                if (loginRes.data.length>0) {
-                                    console.log(loginRes.data);
+                                if (loginRes.data) {
                                     $rootScope.user = loginRes.data;
                                     alert("Welcome to GrabACar");
                                     $location.url("/profile/"+loginRes.data._id);

@@ -8,59 +8,60 @@
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <h1 class="page-header">Profile</h1>
-    <form class="form-horizontal" ng-show="model.activeUser.rentername">
-        <div class="form-group">
-            <label for="inputUsername" class="col-sm-2 control-label">Username</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" ng-model="model.user.username" id="inputUsername"
-                       placeholder="Username">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="inputPassword" class="col-sm-2 control-label">Password</label>
-            <div class="col-sm-10">
-                <input type="password" class="form-control" id="inputPassword" ng-model="model.user.password"
-                       placeholder="Password">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="inputFName" class="col-sm-2 control-label">First Name</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputFName" ng-model="model.user.firstName"
-                       placeholder="First Name">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="inputLName" class="col-sm-2 control-label">Last Name</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputLName" ng-model="model.user.lastName"
-                       placeholder="Last Name">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-            <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputEmail" ng-model="model.user.email"
-                       placeholder="Email">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-primary btn-block" ng-click="model.update()">Update</button>
-            </div>
-        </div>
-    </form>
-    <div class="panel panel-default">
+
+    <div class="panel panel-default" ng-show="model.activeUser.rentername">
         <div class="panel panel-body">
             <div class="col-md-6"><img ng-src="../project/client/images/userimage.jpg"
-                                       title="{{model.user.fullName}}">
+                                       title="{{user.firstName}}">
+            </div>
+            <div class="col-md-6 approveUsersList">
+                <dl class="dl-horizontal">
+                    <dt>Full Name</dt>
+                    <dd><input type="text" ng-model="userInfo.fullname" class="form-control"
+                               ng-value="model.activeUser.firstName"></dd>
+                    <dt>BirthDate</dt>
+                    <dd ng-if="model.activeUser.birthdate">{{model.activeUser.birthdate | date:'MM/dd/yyyy'}}</dd>
+                    <dd ng-hide="model.activeUser.birthdate"><input type="date" ng-model="model.activeUser.birthdate"
+                                                                    class="form-control"></dd>
+                    <dt>Email</dt>
+                    <dd><input type="email" ng-model="model.activeUser.email" class="form-control"></dd>
+                    <dt>DrivingLicense#</dt>
+                    <dd ng-if="model.activeUser.licenseNumber">{{model.activeUser.licenseNumber}}</dd>
+                    <dd ng-hide="model.activeUser.licenseNumber"><input type="text"
+                                                                        ng-model="model.activeUser.licenseNumber"
+                                                                        class="form-control"></dd>
+                    <dt>Country Issued</dt>
+                    <dd ng-if="model.activeUser.licenseCountry">{{model.activeUser.licenseCountry}}</dd>
+                    <dd ng-hide="model.activeUser.licenseCountry"><input type="text"
+                                                                         ng-model="model.activeUser.licenseCountry"
+                                                                         class="form-control"></dd>
+                    <dt>Status</dt>
+                    <dd>{{model.activeUser.status}}</dd>
+                </dl>
+            </div>
+            <div class="row text-nowrap">
+                <div class="pull-left">
+                    <button type="submit" ng-click="model.update(userInfo)" class="btn btn-warning"
+                            title="Update info">Update
+                    </button>
+                </div>
+                <div class="pull-right"><a href="">Change password?</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default" ng-show="model.activeUser.username">
+        <div class="panel panel-body">
+            <div class="col-md-6"><img ng-src="../project/client/images/userimage.jpg"
+                                       title="{{model.user.firstName}}">
             </div>
             <div class="col-md-6 approveUsersList">
                 <dl class="dl-horizontal">
                     <dt>Name</dt>
-                    <dd>{{model.user.firstName}}</dd>
+                    <dd>{{model.user.firstName}} {{model.user.lastName}}</dd>
                     <dt>BirthDate</dt>
-                    <dd>{{model.user.birthdate}}</dd>
+                    <dd>{{model.user.birthdate | date:'MM/dd/yyyy'}}</dd>
+                    <dt>Email</dt>
+                    <dd>{{model.user.email}}</dd>
                     <dt>DrivingLicense#</dt>
                     <dd>{{model.user.licenseNumber}}</dd>
                     <dt>Issued</dt>
@@ -71,9 +72,10 @@
             </div>
         </div>
     </div>
-    <hr />
-    <h3 class="page-header">Reservations History</h3>
-    <div class="table-responsive hidden-xs">
+    <hr/>
+    <h3 class="page-header">Reservations</h3>
+    <label ng-if="model.reservations.length==0">No history found</label>
+    <div class="table-responsive hidden-xs" ng-if="model.reservations.length>0">
         <table class="table table-hover">
             <tr class="text-nowrap">
                 <th>PlateNumber</th>

@@ -179,10 +179,9 @@ module.exports = function (app, renterModel) {
     }
 
     function findRenterByCredentials(req, res) {
-        var rentername = req.query.rentername;
+        var rentername = req.query.username;
         var password = req.query.password;
-        console.log(req.query.rentername);
-        if (req.query.rentername) {
+        if (req.query.username) {
             renterModel.findRenterByCredentials({rentername: rentername, password: password})
                 .then(
                     function (doc) {

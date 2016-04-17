@@ -66,9 +66,7 @@ module.exports = function (mongoose,db,uuid) {
     //TBF
     function findAllReservationsByRenter(renterid) {
         var deferred = q.defer();
-        console.log("in model")
         ReservationModel.find({renterid:renterid},function(err,docs){
-           console.log(docs)
             deferred.resolve(docs);
         });
         return deferred.promise;

@@ -10,14 +10,14 @@
             if (vm.user.renter) {
                 RenterService.findRenterByCredentials(vm.user.username, vm.user.password)
                     .then(function (res) {
-                        if (res.data.length > 0 && res.data.status.indexOf("Declined") < 0) {
+                        if (res.data.status && res.data.status.indexOf("Declined") < 0) {
                             $rootScope.user = res.data;
-                            $location.url("/profile/" + res.data.rentername);
+                            $location.url("/profile/" + res.data._id);
                         }
                         else {
                             alert("Unable to log you in because of the possible reason(s):\n" +
                                 "1. Insufficient or invalid credentials\n" +
-                                "2. You're not a registered user yet" +
+                                "2. You're not a registered user yet\n" +
                                 "3. Your membership had been declined");
                         }
                     }, function (err) {
