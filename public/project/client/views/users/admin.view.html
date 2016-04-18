@@ -18,9 +18,9 @@
                         <div class="col-md-6 approveUsersList">
                             <dl class="dl-horizontal">
                                 <dt>Name</dt>
-                                <dd>{{user.firstName}}</dd>
+                                <dd><a href="#/profile/{{user._id}}">{{user.firstName}}</a></dd>
                                 <dt>BirthDate</dt>
-                                <dd>{{user.birthdate}}</dd>
+                                <dd>{{user.birthdate | date:'medium'}}</dd>
                                 <dt>DrivingLicense#</dt>
                                 <dd>{{user.licenseNumber}}</dd>
                                 <dt>Issued</dt>

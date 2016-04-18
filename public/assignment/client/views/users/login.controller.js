@@ -6,7 +6,7 @@
     function LoginController(UserService, $location) {
         var vm=this;
         vm.login = function () {
-            UserService.findUserByCredentials(vm.user.username, vm.user.password)
+            UserService.findUserByCredentials(vm.user.username, vm.user.password,vm.user)
                 .then(function (res) {
                 if (res.data) {
                     UserService.setCurrentUser(res.data);

@@ -16,12 +16,12 @@ module.exports = function (app, rentModel) {
     function cancelRent(req, res) {
         var rentid = req.params.rentid;
         rentModel.cancelRent(rentid)
-            .then(function(cancelledRent){
+            .then(function (cancelledRent) {
                     res.json(cancelledRent);
                 },
-            function(err){
-                res.status(400).send(err);
-            })
+                function (err) {
+                    res.status(400).send(err);
+                })
     }
 
     function recentRent(req, res) {
@@ -42,14 +42,22 @@ module.exports = function (app, rentModel) {
 
     function findAllRentsByTeller(req, res) {
         var employeeid = req.params.employeeid;
-        var rents = rentModel.findAllRentsByTeller(employeeid);
-        res.json(rents);
+        rentModel.findAllRentsByTeller(employeeid)
+            .then(function (rents) {
+                res.json(rents);
+            }, function (err) {
+                res.status(400).send(err);
+            })
     }
 
     function findAllRentsByRenter(req, res) {
         var renterid = req.params.renterid;
-        var rents = rentModel.findAllRentsByRenter(renterid);
-        res.json(rents);
+        rentModel.findAllRentsByRenter(renterid)
+            .then(function (rents) {
+                res.json(rents);
+            }, function (err) {
+                res.status(400).send(err);
+            })
     }
 
     function rentVehicle(req, res) {

@@ -6,7 +6,7 @@
     angular
         .module("GrabACar")
         .controller("TellerAccountController", TellerAccountController);
-    function TellerAccountController($routeParams, TellerService, $location) {
+    function TellerAccountController($routeParams, TellerService, $location, RentService) {
         var vm = this;
         var tellerid = $routeParams.id;
         vm.viewRents = viewRents;
@@ -15,13 +15,24 @@
 
         TellerService.viewTeller(tellerid)
             .then(function (teller) {
-                vm.user = teller.data;
+                vm.activeUser = teller.data;
+                RentService.findAllRentsByTeller(teller.data._id)
+                    .then(function (res) {
+                        vm.viewRentersTable = false;
+                        vm.viewRentsTable = true;
+                        vm.rents = res.data;
+                    });
+            }, function (err) {
+                $location.url("/home");
             });
 
         function viewRents(user) {
-            vm.viewRentersTable = false;
-            vm.viewRentsTable = true;
-            vm.rents = user.rentsApproved;
+            RentService.findAllRentsByTeller(user._id)
+                .then(function (res) {
+                    vm.viewRentersTable = false;
+                    vm.viewRentsTable = true;
+                    vm.rents = res.data;
+                })
         }
 
         function viewRenters(user) {

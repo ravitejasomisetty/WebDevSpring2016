@@ -12,19 +12,24 @@
             <li>
                 <div class="panel panel-default">
                     <div class="panel panel-body">
-                        <div class="col-md-6"><img ng-src="../project/client/images/userimage.jpg"
+                        <div class="row">
+                        <div class="col-md-6"><img ng-src="{{rent.carimage}}"
                                                    title="{{rent.platenumber}}">
                         </div>
-                        <div class="col-md-6 approveUsersList">
+                        <div class="col-md-6 ">
                             <dl class="dl-horizontal">
                                 <dt>PlateNumber</dt>
                                 <dd>{{rent.platenumber}}</dd>
                                 <dt>RentDate</dt>
-                                <dd>{{rent.rentdate}}</dd>
+                                <dd>{{rent.rentdate | date:"MM/dd/yyyy"}}</dd>
                                 <dt>DailyRentFee</dt>
-                                <dd>{{rent.dailyrentfee}}</dd>
+                                <dd>{{rent.dailyrentfee | currency}}</dd>
                                 <dt>DownPayment</dt>
-                                <dd>{{rent.downpayment}}</dd>
+                                <dd><input type="text" ng-model="rent.downpayment" class="form-control"></dd>
+                                <dt>Refund</dt>
+                                <dd><input type="text" ng-model="rent.refund" class="form-control"></dd>
+                                <dt>TotalPrice</dt>
+                                <dd><input type="text" ng-model="rent.totalprice" class="form-control"></dd>
                                 <dt>Status</dt>
                                 <dd>{{rent.status}}</dd>
                                 <dt>Updated By</dt>
@@ -42,6 +47,7 @@
                                 ng-show="rent.status.indexOf('RESERVED') >= 0"
                                 title="Update info">Update
                         </button>
+                        </div>
                     </div>
                 </div>
             </li>

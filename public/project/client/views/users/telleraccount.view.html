@@ -6,22 +6,40 @@
 </head>
 <body ng-controller="TellerAccountController">
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
-    <div class="panel panel-default col-xs-4">
-        <div class="panel panel-body text-nowrap">
-            <div class="">
+    <div class="panel panel-default">
+        <div class="panel panel-body ">
+            <div class="col-md-6">
                 <img ng-src="../project/client/images/userimage.jpg"
-                     title="{{user.fullname}}">
+                     title="{{model.user.fullname}}">
             </div>
-            <div class="">
-                <button class="btn btn-primary" ng-click="model.viewRents(user)">View Rents Activity</button>
-            </div>
-            <div class="">
-                <button class="btn btn-primary" ng-click="model.viewRenters(user)">View Renters Activity</button>
+            <div class="col-md-6 approveUsersList">
+                <dl class="dl-horizontal">
+                    <dt>Full Name</dt>
+                    <dd>{{model.activeUser.fullname}}</dd>
+                    <dt>Address</dt>
+                    <dd>{{model.activeUser.address}}</dd>
+                    <dt>Manager</dt>
+                    <dd><a href="#telleraccount/{{model.activeUser.managerid}}">{{model.activeUser.managerid}}</a></dd>
+                    <dt>
+                        <button class="btn btn-primary" ng-click="model.viewRents(model.activeUser)">View Rents
+                            Activity
+                        </button>
+                    </dt>
+                    <dd>
+                        <button class="btn btn-primary" ng-click="model.viewRenters(model.activeUser)">View Renters
+                            Activity
+                        </button>
+                    </dd>
+                </dl>
             </div>
         </div>
     </div>
-    <div ng-show="model.viewRentsTable" class="col-xs-8">
-        <div class="table-responsive">
+    <hr/>
+    <h3 ng-show="model.viewRentsTable" class="page-header">Rents approved by me</h3>
+    <label ng-show="model.viewRentsTable" ng-if="model.rents.length==0">No history found</label>
+
+    <div ng-show="model.viewRentsTable">
+        <div class="container-fluid table-responsive visible-lg">
             <table class="table table-striped">
                 <tr class="text-nowrap">
                     <th>Renter</th>
@@ -31,22 +49,39 @@
                     <th>Rent info</th>
                 </tr>
                 <tr ng-repeat="rent in model.rents">
-                    <td><a href="#profile/{{rent.renterid}}"> {{rent.renterid}}</a></td>
-                    <td>{{rent.rentdate}}</td>
-                    <td>{{rent.returndate}}</td>
-                    <td>{{rent.dailyrent}}</td>
-                    <td>
-                        <button ng-click="model.open('/details/'+rent.platenumber)" class="btn btn-success"
-                                title="Click to view details">
-                            <span class="glyphicon glyphicon-new-window"></span> {{rent.status}}
-                        </button>
-                    </td>
+                    <td><a href="#profile/{{rent.renterid}}"> View Profile</a></td>
+                    <td>{{rent.rentdate | date:"MM/dd/yyyy"}}</td>
+                    <td>{{rent.returndate | date:"MM/dd/yyyy"}}</td>
+                    <td>{{rent.dailyrentfee|currency}}</td>
+                    <td>{{rent.status}}</td>
                 </tr>
             </table>
         </div>
     </div>
-    <div ng-show="model.viewRentersTable" class="col-xs-8">
-        <div class="table-responsive">
+    <div ng-show="model.viewRentsTable" class="panel panel-default visible-xs">
+        <div class="panel panel-body" ng-repeat="rent in model.rents">
+            <div class="col-md-6">
+            </div>
+            <div class="col-md-6 approveUsersList">
+                <dl class="dl-horizontal">
+                    <dt>Renter</dt>
+                    <dd><a href="#profile/{{rent.renterid}}"> View Profile</a></dd>
+                    <dt>Rent Date</dt>
+                    <dd>{{rent.rentdate | date:"MM/dd/yyyy"}}</dd>
+                    <dt>Return Date</dt>
+                    <dd>{{rent.returndate  | date:'MM/dd/yyyy'}}</dd>
+                    <dt>Daily Rent</dt>
+                    <dd>{{rent.dailyrentfee|currency}}</dd>
+                    <dt>Status</dt>
+                    <dd>{{rent.status}}</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <h3 ng-show="model.viewRentersTable" class="page-header">Renters approved/declined by me</h3>
+    <label ng-show="model.viewRentersTable" ng-if="model.renters.length==0">No history found</label>
+    <div ng-show="model.viewRentersTable">
+        <div class="table-responsive visible-lg">
             <table class="table table-striped">
                 <tr class="text-nowrap">
                     <th>Renter</th>
@@ -55,12 +90,31 @@
                     <th>Status</th>
                 </tr>
                 <tr ng-repeat="renter in model.renters">
-                    <td><a href="#profile/{{renter._id}}">{{renter._id}}</a></td>
+                    <td><a href="#profile/{{renter._id}}">View Profile</a></td>
                     <td>{{renter.firstName}}</td>
                     <td>{{renter.lastName}}</td>
                     <td>{{renter.status}}</td>
                 </tr>
             </table>
+        </div>
+    </div>
+
+    <div ng-show="model.viewRentersTable" class="panel panel-default visible-xs">
+        <div class="panel panel-body" ng-repeat="renter in model.renters">
+            <div class="col-md-6">
+            </div>
+            <div class="col-md-6 approveUsersList">
+                <dl class="dl-horizontal">
+                    <dt>Renter</dt>
+                    <dd><a href="#profile/{{renter._id}}">View Profile</a></dd>
+                    <dt>First Name</dt>
+                    <dd>{{renter.firstName}}</dd>
+                    <dt>Last Name</dt>
+                    <dd>{{renter.lastName}}</dd>
+                    <dt>Status</dt>
+                    <dd>{{renter.status}}</dd>
+                </dl>
+            </div>
         </div>
     </div>
 </div>

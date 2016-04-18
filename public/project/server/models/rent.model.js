@@ -5,87 +5,7 @@ module.exports = function (mongoose, db, uuid) {
     var q = require("q");
     var RentSchema = require('./rent.schema.server.js')(mongoose);
     var RentModel = mongoose.model("RentModel", RentSchema);
-    var rents = [{
-        "platenumber": "4HS821",
-        "rentdate": "3/19/2016",
-        "returndate": "3/21/2016",
-        "totalrentday": "30",
-        "dailyrentfee": "10",
-        "pickuptime": "09:00",
-        "returntime": "18:30",
-        "carimage": "https://ak-secure.hotwirestatic.com/x/static/images/car/cartypes/181x82/US/compact.png",
-        "subtotal": "101.34",
-        "taxesandfees": "20",
-        "totalprice": "121.34",
-        "cartypecode": "CCAR",
-        "cartypename": "Compact Car",
-        "locationdescription": "Boston Airport",
-        "mileagedescription": "21",
-        "pickupairport": "LOGAN",
-        "fuelprovidedby": "RENTER",
-        "fuelcharge": "10.10",
-        "downpayment": "20",
-        "totalpaid": "30",
-        "refund": "10",
-        "status": "SUCCESS",
-        "rentid": "123",
-        "renterid": "123",
-        "employeeid": "111"
-    },
-        {
-            "platenumber": "F62BGM",
-            "rentdate": "3/31/2016",
-            "returndate": "4/6/2016",
-            "totalrentday": "30",
-            "dailyrentfee": "19",
-            "pickuptime": "09:00",
-            "returntime": "18:30",
-            "carimage": "https://ak-secure.hotwirestatic.com/x/static/images/car/cartypes/181x82/US/compact.png",
-            "subtotal": "101.34",
-            "taxesandfees": "20",
-            "totalprice": "121.34",
-            "cartypecode": "CCAR",
-            "cartypename": "Compact Car",
-            "locationdescription": "Boston Airport",
-            "mileagedescription": "21",
-            "pickupairport": "LOGAN",
-            "fuelprovidedby": "RENTER",
-            "fuelcharge": "10.10",
-            "downpayment": "20",
-            "totalpaid": "30",
-            "refund": "10",
-            "status": "RESERVED",
-            "rentid": "345",
-            "renterid": "123",
-            "employeeid": "111"
-        },
-        {
-            "platenumber": "AHEIWP",
-            "rentdate": "3/29/2016",
-            "returndate": "4/2/2016",
-            "totalrentday": "30",
-            "dailyrentfee": "10",
-            "pickuptime": "09:00",
-            "returntime": "18:30",
-            "carimage": "https://ak-secure.hotwirestatic.com/x/static/images/car/cartypes/181x82/US/compact.png",
-            "subtotal": "101.34",
-            "taxesandfees": "20",
-            "totalprice": "121.34",
-            "cartypecode": "CCAR",
-            "cartypename": "Compact Car",
-            "locationdescription": "SFO Airport",
-            "mileagedescription": "21",
-            "pickupairport": "LOGAN",
-            "fuelprovidedby": "RENTER",
-            "fuelcharge": "10.10",
-            "downpayment": "20",
-            "totalpaid": "30",
-            "refund": "10",
-            "status": "CANCEL",
-            "rentid": "567",
-            "renterid": "123",
-            "employeeid": "111"
-        }];
+
     var recentRentJSON;
     return {
         viewRent: viewRent,
@@ -142,21 +62,27 @@ module.exports = function (mongoose, db, uuid) {
     }
 
     function findAllRentsByTeller(employeeid) {
-        var rentsByTeller = [];
-        for (var i = 0; i < rents.length; i++) {
-            if (rents[i].employeeid == employeeid)
-                rentsByTeller.push(rents[i]);
-        }
-        return rentsByTeller;
+        var deferred = q.defer();
+        RentModel.find({employeeid:employeeid},function (err, rents) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(rents);
+            }
+        });
+        return deferred.promise;
     }
 
     function findAllRentsByRenter(renterid) {
-        var rentsByRenter = [];
-        for (var i = 0; i < rents.length; i++) {
-            if (rents[i].renterid == renterid)
-                rentsByRenter.push(rents[i]);
-        }
-        return rentsByRenter;
+        var deferred = q.defer();
+        RentModel.find({renterid:renterid},function (err, rents) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(rents);
+            }
+        });
+        return deferred.promise;
     }
 
     function findAllRents() {

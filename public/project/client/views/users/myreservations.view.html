@@ -19,8 +19,8 @@
     <div id="dailyrate">${{model.instance.dailyrentfee}} / day</div>
 
     <div id="carimg"><img ng-src="{{model.instance.carimage}}"></div>
-    <div id="pickup">PickUp: {{model.instance.rentdate}}, {{model.instance.pickuptime}}</div>
-    <div id="dropoff">DropOff: {{model.instance.returndate}}, {{model.instance.returntime}}</div>
+    <div id="pickup">PickUp: {{model.instance.rentdate | date:"MM/dd/yyyy"}}, {{model.instance.pickuptime}}</div>
+    <div id="dropoff">DropOff: {{model.instance.returndate | date:'MM/dd/yyyy'}}, {{model.instance.returntime}}</div>
 
     <div class="search-form">
         <div class="panel panel-warning">

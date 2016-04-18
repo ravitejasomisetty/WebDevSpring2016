@@ -31,7 +31,7 @@
         }
 
         function findAllRentsByTeller(employeeid){
-            var rents=$http.get("/api/grabacar/teller/"+tellerid+"/rentsApproved");
+            var rents=$http.get("/api/grabacar/teller/"+employeeid+"/rentsApproved");
             return rents;
         }
 

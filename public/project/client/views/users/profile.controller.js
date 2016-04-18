@@ -13,29 +13,29 @@
         vm.open = open;
         RenterService.findRenterById(renterId)
             .then(function (renter) {
-                console.log(renter);
                 vm.user = renter.data;
                 ReservationService.findAllReservationsByRenter(vm.user._id)
                     .then(function (res) {
                         vm.reservations = res.data;
                     })
             });
-
-        function update(user) {
-            user.rentername = vm.activeUser.rentername;
-            user.password = vm.activeUser.password;
-            user.status=vm.activeUser.status;
-            if (user.fullname) {
-                var nameSplit = user.fullname.split(' ');
-                user.firstName = nameSplit[0];
-                user.lastName = nameSplit[1];
+        function update(userInfo) {
+            if (userInfo) {
+                if (userInfo.birthdate)
+                    vm.activeUser.birthdate = DateService.obtainDate(userInfo.birthdate);
+                if (userInfo.licenseCountry) {
+                    vm.activeUser.licenseCountry = userInfo.licenseCountry;
+                }
+                if (userInfo.licenseNumber) {
+                    vm.activeUser.licenseNumber = userInfo.licenseNumber;
+                }
             }
-            RenterService.updateRenter(vm.activeUser._id, user)
-             .then(
-             RenterService.refresh()
-             .then(function (res) {
-             alert("Profile information is successfully updated");
-             }));
+            RenterService.updateRenter(vm.activeUser._id, vm.activeUser)
+                .then(
+                    RenterService.refresh()
+                        .then(function (res) {
+                            alert("Profile information is successfully updated");
+                        }));
         }
 
         function rowStatus(reservation) {

@@ -30,7 +30,7 @@
                 <li>
                     <a href="#/login" ng-click="model.logout()" ng-show="user"> Logout </a></li>
             </ul>
-            <div class="col-sm-3 col-md-3 pull-right">
+            <div class="col-sm-3 col-md-3 pull-right" ng-show="user.username">
                 <form class="navbar-form" role="search">
                     <div class="input-group">
                         <input type="text" class="form-control" ng-model="model.searchRentername" placeholder="Search"

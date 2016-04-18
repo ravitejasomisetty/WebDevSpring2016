@@ -16,36 +16,38 @@
             </div>
             <div class="col-md-6 approveUsersList">
                 <dl class="dl-horizontal">
-                    <dt>Full Name</dt>
-                    <dd><input type="text" ng-model="userInfo.fullname" class="form-control"
-                               ng-value="model.activeUser.firstName"></dd>
+                    <dt>First Name</dt>
+                    <dd><input type="text" ng-model="model.activeUser.firstName" class="form-control"></dd>
+                    <dt>Last Name</dt>
+                    <dd><input type="text" ng-model="model.activeUser.lastName" class="form-control"></dd>
                     <dt>BirthDate</dt>
                     <dd ng-if="model.activeUser.birthdate">{{model.activeUser.birthdate | date:'MM/dd/yyyy'}}</dd>
-                    <dd ng-hide="model.activeUser.birthdate"><input type="date" ng-model="model.activeUser.birthdate"
+                    <dd ng-hide="model.activeUser.birthdate"><input type="date" ng-model="userInfo.birthdate"
                                                                     class="form-control"></dd>
                     <dt>Email</dt>
                     <dd><input type="email" ng-model="model.activeUser.email" class="form-control"></dd>
                     <dt>DrivingLicense#</dt>
                     <dd ng-if="model.activeUser.licenseNumber">{{model.activeUser.licenseNumber}}</dd>
                     <dd ng-hide="model.activeUser.licenseNumber"><input type="text"
-                                                                        ng-model="model.activeUser.licenseNumber"
+                                                                        ng-model="userInfo.licenseNumber"
                                                                         class="form-control"></dd>
                     <dt>Country Issued</dt>
                     <dd ng-if="model.activeUser.licenseCountry">{{model.activeUser.licenseCountry}}</dd>
                     <dd ng-hide="model.activeUser.licenseCountry"><input type="text"
-                                                                         ng-model="model.activeUser.licenseCountry"
+                                                                         ng-model="userInfo.licenseCountry"
                                                                          class="form-control"></dd>
                     <dt>Status</dt>
                     <dd>{{model.activeUser.status}}</dd>
                 </dl>
             </div>
             <div class="row text-nowrap">
-                <div class="pull-left">
+                <div class="col-md-4"></div>
+                <div class="col-md-5">
                     <button type="submit" ng-click="model.update(userInfo)" class="btn btn-warning"
                             title="Update info">Update
                     </button>
                 </div>
-                <div class="pull-right"><a href="">Change password?</a></div>
+                <div class="col-md-3"><a href="">Change password?</a></div>
             </div>
         </div>
     </div>
@@ -75,28 +77,52 @@
     <hr/>
     <h3 class="page-header">Reservations</h3>
     <label ng-if="model.reservations.length==0">No history found</label>
-    <div class="table-responsive hidden-xs" ng-if="model.reservations.length>0">
+    <div class="container-fluid table-responsive hidden-xs" ng-if="model.reservations.length>0">
         <table class="table table-hover">
             <tr class="text-nowrap">
                 <th>PlateNumber</th>
                 <th>Pick up Date</th>
                 <th>Return Date</th>
                 <th>Reservation Date</th>
-                <th>Rent info</th>
+                <th>Status</th>
             </tr>
             <tr ng-repeat="reservation in model.reservations" ng-class="model.rowStatus(reservation)">
                 <td>{{reservation.platenumber}}</td>
-                <td>{{reservation.pickupdate}}</td>
-                <td>{{reservation.returndate}}</td>
-                <td>{{reservation.reservationdate}}</td>
+                <td>{{reservation.pickupdate | date:'MM/dd/yyyy'}}</td>
+                <td>{{reservation.returndate | date:'MM/dd/yyyy'}}</td>
+                <td>{{reservation.reservationdate | date:'MM/dd/yyyy'}}</td>
                 <td>
-                    <button ng-click="model.open('/myReservations/'+reservation.rentid)" class="btn btn-success"
-                            title="Click to view details">
+                    <a href="" ng-click="model.open('/myReservations/'+reservation.rentid)"
+                       title="Click to view details">
                         <span class="glyphicon glyphicon-new-window"></span> {{reservation.status}}
-                    </button>
+                    </a>
                 </td>
             </tr>
         </table>
+    </div>
+
+    <div class="panel panel-default visible-xs">
+        <div class="panel panel-body" ng-repeat="reservation in model.reservations">
+            <div class="col-md-6">
+            </div>
+            <div class="col-md-6 approveUsersList">
+                <dl class="dl-horizontal">
+                    <dt>PlateNumber</dt>
+                    <dd>{{reservation.platenumber}}</dd>
+                    <dt>Pickup Date</dt>
+                    <dd>{{reservation.pickupdate | date:'MM/dd/yyyy'}}</dd>
+                    <dt>Return Date</dt>
+                    <dd>{{reservation.returndate  | date:'MM/dd/yyyy'}}</dd>
+                    <dt>Reservation Date</dt>
+                    <dd>{{reservation.reservationdate | date:'MM/dd/yyyy'}}</dd>
+                    <dt>Status</dt>
+                    <dd><a href="" ng-click="model.open('/myReservations/'+reservation.rentid)"
+                           title="Click to view details">
+                        <span class="glyphicon glyphicon-new-window"></span> {{reservation.status}}
+                    </a></dd>
+                </dl>
+            </div>
+        </div>
     </div>
 </div>
 

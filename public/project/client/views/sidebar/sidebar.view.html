@@ -8,17 +8,19 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li ng-class="{'active': $location.url()=='/search'}">
+                <li ng-class="{'active': $location.url()=='/search'}" ng-show="user.status.indexOf('Approved')==0 || user.username">
                     <a href="#/search"> Find cars</a></li>
                 <li ng-class="{'active': $location.url()=='/admin'}">
-                    <a href="#/admin" ng-show="user.roles.indexOf('admin') >= 0"> Approve New Renters </a></li>
+                    <a href="#/admin" ng-show="user.username"> Approve New Renters </a></li>
+                <li ng-class="{'active': $location.url()=='/vehicle'}" ng-show="user.username">
+                    <a href="#/vehicle">Register Vehicle </a></li>
+                <li ng-class="{'active': $location.url()=='/approverents'}">
+                    <a href="#/approverents" ng-show="user.username"> Approve Rents </a></li>
                 <li ng-class="{'active' : $location.url()=='/renter'}"><a href="#/renter"> Renter </a></li>
                 <li ng-class="{'active': $location.url()=='/teller'}">
                     <a href="#/teller">Teller</a></li>
                 <li ng-class="{'active': $location.url()=='/reservation'}">
                     <a href="#/reservation"> Reservation </a></li>
-                <li ng-class="{'active': $location.url()=='/vehicle'}">
-                    <a href="#/vehicle"> Vehicle </a></li>
             </ul>
         </div>
     </div>

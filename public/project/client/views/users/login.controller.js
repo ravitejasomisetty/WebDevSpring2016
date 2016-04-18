@@ -27,7 +27,7 @@
             else if (vm.user.teller) {
                 TellerService.findTellerByCredentials(vm.user.username, vm.user.password)
                     .then(function (res) {
-                        if (res.data.length > 0) {
+                        if (res.data) {
                             $rootScope.user = res.data;
                             $location.url("/admin");
                         }
