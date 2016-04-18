@@ -8,7 +8,7 @@
         vm.login = login;
         function login() {
             if (vm.user.renter) {
-                RenterService.findRenterByCredentials(vm.user.username, vm.user.password)
+                RenterService.findRenterByCredentials(vm.user.username, vm.user.password,vm.user)
                     .then(function (res) {
                         if (res.data.status && res.data.status.indexOf("Declined") < 0) {
                             $rootScope.user = res.data;

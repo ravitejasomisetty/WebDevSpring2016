@@ -143,6 +143,7 @@
             .getCurrentUser()
             .then(function (response) {
                 var currentUser = response.data;
+                console.log(currentUser);
                 if (currentUser) {
                     RenterService.setCurrentUser(currentUser);
                     deferred.resolve();
