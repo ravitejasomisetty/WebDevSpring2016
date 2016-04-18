@@ -15,12 +15,12 @@ module.exports = function (app, renterModel) {
     app.get("/api/grabacar/renter/isYoungDriver/:id", isYoungDriver);
     app.post("/api/grabacar/renter", createRenter);
     app.post("/api/grabacar/renter/login", passport.authenticate('grabacar'), login);
-    app.get("/api/grabacar/renters", auth, findAllRenters);
-    app.get("/api/grabacar/renter/:id", auth, findRenterById);
-    app.get("/api/grabacar/renterByFirstName/:firstName", auth, findRentersByFirstName);
+    app.get("/api/grabacar/renters",auth,  findAllRenters);
+    app.get("/api/grabacar/renter/:id",  findRenterById);
+    app.get("/api/grabacar/renterByFirstName/:firstName",auth,  findRentersByFirstName);
     app.get("/api/grabacar/renter?rentername=rentername", findRenterByRentername);
-    app.put("/api/grabacar/renter/:id", auth, updateRenter);
-    app.delete("/api/grabacar/renter/:id", auth, deleteRenter);
+    app.put("/api/grabacar/renter/:id", updateRenter);
+    app.delete("/api/grabacar/renter/:id",  deleteRenter);
     app.get("/api/grabacar/rentersession/loggedin", loggedin);
     app.post("/api/grabacar/rentersession/logout", logout);
     app.get("/api/grabacar/rentersession/refresh", refreshSession);

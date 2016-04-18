@@ -2,7 +2,7 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require("bcrypt-nodejs");
-module.exports = function (app, userModel,renterModel) {
+module.exports = function (app, userModel,renterModel,tellerModel) {
 
     var auth = authorized;
 
@@ -93,10 +93,21 @@ module.exports = function (app, userModel,renterModel) {
                         done(err, null);
                     }
                 );}
-        else if(user.rentername=="r"){
-            console.log("deserialize");
+        else if(user.rentername){
             renterModel
                 .FindById(user._id)
+                .then(
+                    function (user) {
+                        done(null, user);
+                    },
+                    function (err) {
+                        done(err, null);
+                    }
+                );
+        }
+        else if(user.username){
+            tellerModel
+                .viewTeller(user._id)
                 .then(
                     function (user) {
                         done(null, user);

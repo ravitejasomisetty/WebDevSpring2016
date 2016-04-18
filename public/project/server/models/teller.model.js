@@ -12,8 +12,22 @@ module.exports = function (mongoose,db,uuid) {
         updateTeller:updateTeller,
         deleteTeller:deleteTeller,
         findAllTellers:findAllTellers,
-        findTellerByCredentials:findTellerByCredentials
+        findTellerByCredentials:findTellerByCredentials,
+        findTellerByTellerName:findTellerByTellerName
     }
+
+    function findTellerByTellerName(tellername) {
+        var deferred = q.defer();
+        TellerModel.findOne({username: tellername}, function (err, teller) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(teller);
+            }
+        });
+        return deferred.promise;
+    }
+
     function findTellerByCredentials(credentials) {
         var deferred = q.defer();
         TellerModel.findOne({username: credentials.username, password: credentials.password}, function (err, teller) {

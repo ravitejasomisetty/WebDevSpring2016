@@ -4,7 +4,7 @@
 
 
 module.exports = function (app,mongoose,db,uuid) {
-    //var renterModel = require("./models/renter.model.js")(mongoose,db,uuid);
+    /*//var renterModel = require("./models/renter.model.js")(mongoose,db,uuid);
     var vehicleModel = require("./models/vehicle.model.js")(mongoose,db,uuid);
     var rentModel = require("./models/rent.model.js")(mongoose,db,uuid);
     var tellerModel = require("./models/teller.model.js")(mongoose,db,uuid);
@@ -19,7 +19,7 @@ module.exports = function (app,mongoose,db,uuid) {
     require("./services/teller.service.server.js")(app, tellerModel);
     require("./services/reservation.service.server.js")(app, reservationModel);
     require("./services/vlocation.service.server.js")(app, vlocationModel);
-    require("./services/location.service.server.js")(app, locationModel);
+    require("./services/location.service.server.js")(app, locationModel);*/
     //require("./services/form.service.server.js")(app, formModel);
     //require("./services/field.service.server.js")(app, formModel);
 }

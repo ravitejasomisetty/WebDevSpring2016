@@ -25,7 +25,7 @@
                     });
             }
             else if (vm.user.teller) {
-                TellerService.findTellerByCredentials(vm.user.username, vm.user.password)
+                TellerService.findTellerByCredentials(vm.user.username, vm.user.password,vm.user)
                     .then(function (res) {
                         if (res.data) {
                             $rootScope.user = res.data;

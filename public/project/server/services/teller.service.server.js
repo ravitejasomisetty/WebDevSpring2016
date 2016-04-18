@@ -2,24 +2,69 @@
  * Created by ravit on 3/23/2016.
  */
 "use strict";
+
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var bcrypt = require("bcrypt-nodejs");
 module.exports = function (app, tellerModel) {
 
+    var auth = authorized;
+    passport.use('grabacarTeller', new LocalStrategy(grabacarLocalStrategy));
+    passport.serializeUser(serializeUser);
+
     app.post("/api/grabacar/teller", newTeller);
-    app.get("/api/grabacar/teller", findTellerByCredentials);
+    //app.get("/api/grabacar/teller", findTellerByCredentials);
+    app.post("/api/grabacar/teller/login",passport.authenticate('grabacarTeller'), login);
     app.get("/api/grabacar/teller", findAllTellers);
     app.get("/api/grabacar/teller/:employeeid", viewTeller);
     app.put("/api/grabacar/teller/:employeeid",  updateTeller);
     app.delete("/api/grabacar/teller/:employeeid", deleteTeller);
     app.get("/api/grabacar/tellersession/loggedin", loggedin);
     app.post("/api/grabacar/tellersession/logout", logout);
+
+    function serializeUser(user, done) {
+        done(null, user);
+    }
+
+    function grabacarLocalStrategy(username, password, done) {
+        tellerModel
+            .findTellerByTellerName(username)
+            .then(
+                function (user) {
+                    if (user && password== user.password) {
+                        return done(null, user);
+                    } else {
+                        return done(null, false);
+                    }
+                },
+                function (err) {
+                    if (err) {
+                        return done(err);
+                    }
+                }
+            );
+    }
+    function authorized(req, res, next) {
+        if (!req.isAuthenticated()) {
+            res.send(401);
+        } else {
+            next();
+        }
+    }
+    function login(req, res) {
+        var user = req.user;
+        req.session.user = user;
+        res.json(user);
+    }
+
     function logout(req, res) {
         req.session.destroy();
         res.send(200);
     }
 
     function loggedin(req, res) {
-        //res.json(req.isAuthenticated() ? req.session.user : null);
-         res.json(req.session.user);
+        res.json(req.isAuthenticated() ? req.session.user : null);
+        // res.json(req.session.user);
     }
 
     function findTellerByCredentials(req, res) {

@@ -31,7 +31,8 @@
         }
 
         function findTellerByCredentials(username, password, teller) {
-            var teller = $http.get("/api/grabacar/teller?username=" + username + "&password=" + password);
+            //var teller = $http.get("/api/grabacar/teller?username=" + username + "&password=" + password);
+            var teller = $http.post("/api/grabacar/teller/login",teller);
             return teller;
         };
 
