@@ -6,7 +6,7 @@
 <body>
 <div class="container-fluid" ng-controller="SidebarController">
     <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
+        <div class="col-sm-3 col-md-2 sidebar" ng-show="user">
             <ul class="nav nav-sidebar">
                 <li ng-class="{'active': $location.url()=='/search'}" ng-show="user.status.indexOf('Approved')==0 || user.username">
                     <a href="#/search"> Find cars</a></li>
@@ -16,11 +16,6 @@
                     <a href="#/vehicle">Register Vehicle </a></li>
                 <li ng-class="{'active': $location.url()=='/approverents'}">
                     <a href="#/approverents" ng-show="user.username"> Approve Rents </a></li>
-                <li ng-class="{'active' : $location.url()=='/renter'}"><a href="#/renter"> Renter </a></li>
-                <li ng-class="{'active': $location.url()=='/teller'}">
-                    <a href="#/teller">Teller</a></li>
-                <li ng-class="{'active': $location.url()=='/reservation'}">
-                    <a href="#/reservation"> Reservation </a></li>
             </ul>
         </div>
     </div>
