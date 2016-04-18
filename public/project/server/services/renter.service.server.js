@@ -121,9 +121,10 @@ module.exports = function (app, renterModel) {
 
     function createRenter(req, res) {
         var newRenter = req.body;
+        newRenter.rentername=newRenter.username;
         newRenter.password = bcrypt.hashSync(newRenter.password);
         renterModel
-            .findRenterByRentername(newRenter.username)
+            .findRenterByRentername(newRenter.rentername)
             .then(
                 function (renter) {
                     if (renter) {

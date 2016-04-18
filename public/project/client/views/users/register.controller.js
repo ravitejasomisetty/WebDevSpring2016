@@ -10,7 +10,7 @@
                 vm.user.status="Waiting for approval";
                 RenterService.createRenter(vm.user)
                     .then(function (res) {
-                        RenterService.findRenterByCredentials(vm.user.rentername, vm.user.password)
+                        RenterService.findRenterByCredentials(vm.user.username, vm.user.password,vm.user)
                             .then(function (loginRes) {
                                 if (loginRes.data) {
                                     $rootScope.user = loginRes.data;
