@@ -7,43 +7,52 @@
 </head>
 <body ng-controller="SearchController">
 <div class="search-form">
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main panel panel-info">
-    <form class="">
-        <div class="form-group">
-            <label for="search-location">Location:</label>
-            <input type="text" id="search-location" ng-model="request.dest" class="form-control" placeholder="Location" googleplace
-                   required>
-        </div>
-        <div class="row">
-            <div class="form-group col-md-6">
-                <label for="pickupDate">Pick up:</label>
-                <input type="date" id="pickupDate" ng-model="request.startdate" data-date-format="MM/DD/YYYY" class="form-control" required>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main panel panel-info">
+        <form class="">
+            <div class="form-group">
+                <label for="search-location">Location:</label>
+                <input type="text" id="search-location" ng-model="request.dest" class="form-control"
+                       placeholder="Location" googleplace
+                       required>
             </div>
-            <div class="form-group col-md-6">
-                <label for="pickupTime">at:</label>
-                <input type="text" id="pickupTime" ng-model="request.pickuptime" class="form-control"
-                       placeholder="HH:MM" required>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="pickupDate">Pick up:</label>
+                    <input type="date" id="pickupDate" ng-model="request.startdate" data-date-format="MM/DD/YYYY"
+                           class="form-control" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="pickupTime">at:</label>
+                    <input type="text" id="pickupTime" ng-model="request.pickuptime" class="form-control"
+                           placeholder="HH:MM" required>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-md-6">
-                <label for="dropOffDate">Drop off:</label>
-                <input type="date" id="dropOffDate" ng-model="request.enddate" data-date-format="MM/DD/YYYY" class="form-control" required>
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="dropOffDate">Drop off:</label>
+                    <input type="date" id="dropOffDate" ng-model="request.enddate" data-date-format="MM/DD/YYYY"
+                           class="form-control" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="dropoffTime">at:</label>
+                    <input type="text" id="dropoffTime" ng-model="request.dropofftime" class="form-control"
+                           placeholder="HH:MM" required>
+                </div>
             </div>
-            <div class="form-group col-md-6">
-                <label for="dropoffTime">at:</label>
-                <input type="text" id="dropoffTime" ng-model="request.dropofftime" class="form-control"
-                       placeholder="HH:MM" required>
-            </div>
-        </div>
-        <button ng-click="model.pingAPI(request)" type="submit" class="form-control btn btn-primary btn-block ng-scope">Find
-            cars
-        </button>
-    </form>
-</div>
+            <button ng-click="model.pingAPI(request)" type="submit"
+                    class="form-control btn btn-primary btn-block ng-scope">Find
+                cars
+            </button>
+
+        </form>
     </div>
+</div>
+
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="SearchController">
-    <div class="transparent-input">
+ <div ng-show="model.spinner" class="text-center"><i style="color:white" class="fa fa-circle-o-notch fa-spin fa-3x margin-bottom"></i></div>
+
+<div class="transparent-input">
         <ul ng-repeat="instance in model.instances" class="list-unstyled">
             <li>
                 <div class="panel panel-default">
@@ -70,7 +79,8 @@
                                 </ul>
                             </ul>
                         </div>
-                        <button ng-click="model.open('/details/'+instance.HWRefNumber,instance)" class="btn btn-success"  title="Click to view details">
+                        <button ng-click="model.open('/details/'+instance.HWRefNumber,instance)" class="btn btn-success"
+                                title="Click to view details">
                             <span class="glyphicon glyphicon-new-window"></span>Select Car
                         </button>
                     </div>

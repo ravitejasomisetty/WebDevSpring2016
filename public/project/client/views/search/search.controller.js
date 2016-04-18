@@ -5,6 +5,7 @@
     function SearchController($rootScope, $http, $location, VehicleService) {
         'use strict';
         var vm = this;
+        vm.spinner=false;
         vm.request = {
             "apikey": "2vq5exzbspp2d33yp327vta8",
             "dest": "",
@@ -60,6 +61,7 @@
             if (request.dest == "" || request.startdate == "" || request.enddate == "" || request.pickuptime == "" || request.dropofftime == "") {//alert("All the fields are required");
             }
             else {
+                vm.spinner=true;
                 var modifiedDate = {"startdate": "", "enddate": ""};
                 modifiedDate.startdate = obtainDate(request.startdate);
                 modifiedDate.enddate = obtainDate(request.enddate);
@@ -96,6 +98,7 @@
                                     response.Result[i].carImage = instance.image;
                                     //response.Result[i].carType=instance.carType;
                                 }
+                                vm.spinner=false;
                                 vm.instances = response.Result;
                             });
 
