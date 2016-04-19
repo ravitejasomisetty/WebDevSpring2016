@@ -16,9 +16,9 @@ module.exports = function (app, tellerModel) {
     //app.get("/api/grabacar/teller", findTellerByCredentials);
     app.post("/api/grabacar/teller/login",passport.authenticate('grabacarTeller'), login);
     app.get("/api/grabacar/teller", findAllTellers);
-    app.get("/api/grabacar/teller/:employeeid", viewTeller);
-    app.put("/api/grabacar/teller/:employeeid",  updateTeller);
-    app.delete("/api/grabacar/teller/:employeeid", deleteTeller);
+    app.get("/api/grabacar/teller/:employeeid",auth, viewTeller);
+    app.put("/api/grabacar/teller/:employeeid",auth,  updateTeller);
+    app.delete("/api/grabacar/teller/:employeeid",auth, deleteTeller);
     app.get("/api/grabacar/tellersession/loggedin", loggedin);
     app.post("/api/grabacar/tellersession/logout", logout);
 
