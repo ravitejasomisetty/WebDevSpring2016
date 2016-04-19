@@ -5,41 +5,6 @@
 
     function configuration($routeProvider) {
         $routeProvider
-            /*.when("/renter", {
-                templateUrl: "client/views/renter/renter.view.html",
-                controller: "RenterController",
-                controllerAs: "model"
-            })
-            .when("/crudvehicle", {
-                templateUrl: "client/views/vehicle/crud.vehicle.view.html",
-                controller: "CRUDVehicleController",
-                controllerAs: "model"
-            })
-            .when("/reservation", {
-                templateUrl: "client/views/reservation/reservation.view.html",
-                controller: "ReservationController",
-                controllerAs: "model"
-            })
-            .when("/teller", {
-                templateUrl: "client/views/teller/teller.view.html",
-                controller: "TellerController",
-                controllerAs: "model"
-            })
-            .when("/rent", {
-                templateUrl: "client/views/rent/rent.view.html",
-                controller: "RentController",
-                controllerAs: "model"
-            })
-            .when("/vlocation", {
-                templateUrl: "client/views/vlocation/vlocation.view.html",
-                controller: "VLocationController",
-                controllerAs: "model"
-            })
-            .when("/location", {
-                templateUrl: "client/views/location/location.view.html",
-                controller: "LocationController",
-                controllerAs: "model"
-            })*/
             .when("/vehicle", {
                 templateUrl: "client/views/vehicle/vehicle.view.html",
                 controller: "VehicleController",
