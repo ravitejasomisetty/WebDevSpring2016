@@ -23,9 +23,9 @@
                 <li ng-class="{'active': model.$location.url()=='/login'}">
                     <a href="#/login" ng-hide="user"> Login </a></li>
 
-                <li ng-class="{'active': model.$location.url()=='/profile'}">
+                <li ng-class="{'active': model.$location.url().indexOf('/profile')>=0}">
                     <a href="#/profile/{{user._id}}" ng-show="user.rentername"> {{user.rentername}} </a></li>
-                <li ng-class="{'active': model.$location.url()=='/telleraccount'}">
+                <li ng-class="{'active': model.$location.url().indexOf('/telleraccount')>=0}">
                     <a href="#/telleraccount/{{user._id}}" ng-show="user.username"> {{user.username}} </a></li>
                 <li>
                     <a href="#/login" ng-click="model.logout()" ng-show="user"> Logout </a></li>
@@ -45,11 +45,11 @@
                 </form>
             </div>
             <ul class="nav navbar-nav navbar-right" ng-show="user.username">
-                <li ng-class="{'active': $location.url()=='/admin'}">
+                <li ng-class="{'active': model.$location.url()=='/admin'}">
                     <a href="#/admin" ng-show="user.username"> Approve New Renters </a></li>
-                <li ng-class="{'active': $location.url()=='/approverents'}">
+                <li ng-class="{'active': model.$location.url()=='/approverents'}">
                     <a href="#/approverents" ng-show="user.username"> Approve Rents </a></li>
-                <li ng-class="{'active': $location.url()=='/vehicle'}" ng-show="user.username">
+                <li ng-class="{'active': model.$location.url()=='/vehicle'}" ng-show="user.username">
                     <a href="#/vehicle">Register Vehicle </a></li>
             </ul>
         </div>
