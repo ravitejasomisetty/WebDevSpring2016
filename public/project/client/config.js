@@ -5,7 +5,7 @@
 
     function configuration($routeProvider) {
         $routeProvider
-            .when("/renter", {
+            /*.when("/renter", {
                 templateUrl: "client/views/renter/renter.view.html",
                 controller: "RenterController",
                 controllerAs: "model"
@@ -39,7 +39,7 @@
                 templateUrl: "client/views/location/location.view.html",
                 controller: "LocationController",
                 controllerAs: "model"
-            })
+            })*/
             .when("/vehicle", {
                 templateUrl: "client/views/vehicle/vehicle.view.html",
                 controller: "VehicleController",
@@ -55,7 +55,7 @@
                 }
             })
             .when("/details/:HWRefNumber", {
-                templateUrl: "client/views/forms/details.view.html",
+                templateUrl: "client/views/details/details.view.html",
                 controller: "DetailsController",
                 controllerAs: "model",
                 resolve: {
@@ -89,16 +89,16 @@
                 }
             })
             .when("/admin/:searchRenterName", {
-                templateUrl: "client/views/users/admin.view.html",
-                controller: "AdminController",
+                templateUrl: "client/views/users/approverenters.view.html",
+                controller: "ApproveRentersController",
                 controllerAs: "model",
                 resolve: {
                     checkTellerLoggedIn: checkTellerLoggedIn
                 }
             })
             .when("/admin", {
-                templateUrl: "client/views/users/admin.view.html",
-                controller: "AdminController",
+                templateUrl: "client/views/users/approverenters.view.html",
+                controller: "ApproveRentersController",
                 controllerAs: "model",
                 resolve: {
                     checkTellerLoggedIn: checkTellerLoggedIn

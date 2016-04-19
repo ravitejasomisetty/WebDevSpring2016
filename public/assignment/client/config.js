@@ -35,8 +35,8 @@ app.config(function ($routeProvider) {
             }
 
         })
-        .when("/forms", {
-            templateUrl: "views/forms/forms.view.html",
+        .when("/details", {
+            templateUrl: "views/forms/details.view.html",
             controller: "FormController",
             resolve: {
                 loggedin: checkLoggedin

@@ -183,8 +183,8 @@ module.exports = function (mongoose, db, uuid) {
         for (var i = 0; i < forms.length; i++) {
             if (forms[i]._id == id) {
                 forms[i].title = form.title;
-                //forms[i].userId = form.userId;
-                //forms[i].fields = form.fields;
+                //details[i].userId = form.userId;
+                //details[i].fields = form.fields;
             }
         }
         return forms;

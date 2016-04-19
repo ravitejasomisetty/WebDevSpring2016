@@ -2,8 +2,8 @@
     'use strict';
     angular
         .module("GrabACar")
-        .controller("AdminController", AdminController);
-    function AdminController($routeParams, $rootScope, RenterService, TellerService) {
+        .controller("ApproveRentersController", ApproveRentersController);
+    function ApproveRentersController($routeParams, $rootScope, RenterService, TellerService) {
         var searchRenterName = $routeParams.searchRenterName;
         var vm = this;
         var teller = $rootScope.user;
