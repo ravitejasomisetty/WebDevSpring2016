@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d66b16b2-8bfc-4f8b-936a-5609f68081fd" name="Default" comment="Restructured public/assignment&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/client/views/users/login.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/users/login.view.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/client/views/users/profile.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/users/profile.view.html" />
     </list>
     <ignored path="OpenShiftRepoDirectory.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,42 +23,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file leaf-file-name="login.view.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/project/client/views/users/login.view.html">
+      <file leaf-file-name="profile.view.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/project/client/views/users/profile.view.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.55172414">
-              <caret line="30" column="16" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="register.view.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project/client/views/users/register.view.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.428572">
-              <caret line="14" column="135" selection-start-line="14" selection-start-column="135" selection-end-line="14" selection-end-column="135" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sidebar.view.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project/client/views/sidebar/sidebar.view.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.642858">
-              <caret line="13" column="34" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="header.view.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project/client/views/header/header.view.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.642857">
-              <caret line="46" column="75" selection-start-line="46" selection-start-column="75" selection-end-line="46" selection-end-column="75" />
-              <folding />
+            <state vertical-scroll-proportion="0.27586207">
+              <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+              <folding>
+                <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -93,7 +64,6 @@
         <option value="$PROJECT_DIR$/public/project/server/models/renter.model.js" />
         <option value="$PROJECT_DIR$/public/project/server/models/reservation.model.js" />
         <option value="$PROJECT_DIR$/public/project/client/views/users/profile.controller.js" />
-        <option value="$PROJECT_DIR$/public/project/client/views/users/profile.view.html" />
         <option value="$PROJECT_DIR$/public/project/client/views/users/myreservations.view.html" />
         <option value="$PROJECT_DIR$/public/project/client/views/users/admin.view.html" />
         <option value="$PROJECT_DIR$/public/project/client/views/users/approverents.view.html" />
@@ -132,6 +102,7 @@
         <option value="$PROJECT_DIR$/public/project/client/views/sidebar/sidebar.view.html" />
         <option value="$PROJECT_DIR$/public/project/client/views/header/header.view.html" />
         <option value="$PROJECT_DIR$/public/project/client/views/users/login.view.html" />
+        <option value="$PROJECT_DIR$/public/project/client/views/users/profile.view.html" />
       </list>
     </option>
   </component>
@@ -617,13 +588,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/client/views/users/profile.view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.77481323">
-          <caret line="125" column="10" selection-start-line="103" selection-start-column="4" selection-end-line="125" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/project/client/views/users/telleraccount.view.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.166667">
@@ -872,9 +836,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/client/views/users/login.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.55172414">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/project/client/views/users/register.view.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.428572">
+        <state vertical-scroll-proportion="0.41379312">
           <caret line="14" column="135" selection-start-line="14" selection-start-column="135" selection-end-line="14" selection-end-column="135" />
           <folding />
         </state>
@@ -882,7 +854,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/project/client/views/sidebar/sidebar.view.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.642858">
+        <state vertical-scroll-proportion="0.42319748">
           <caret line="13" column="34" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
           <folding />
         </state>
@@ -890,17 +862,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/project/client/views/header/header.view.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.642857">
+        <state vertical-scroll-proportion="0.86206895">
           <caret line="46" column="75" selection-start-line="46" selection-start-column="75" selection-end-line="46" selection-end-column="75" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/client/views/users/login.view.html">
+    <entry file="file://$PROJECT_DIR$/public/project/client/views/users/profile.view.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55172414">
-          <caret line="30" column="16" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
-          <folding />
+        <state vertical-scroll-proportion="0.27586207">
+          <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+          <folding>
+            <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
