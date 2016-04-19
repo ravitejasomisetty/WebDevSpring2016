@@ -89,7 +89,6 @@ module.exports = function (app, renterModel) {
 
     function deserializeUser(user, done) {
         if (user.rentername == "r") {
-            console.log("deserialize");
             renterModel
                 .FindById(user._id)
                 .then(
@@ -109,8 +108,6 @@ module.exports = function (app, renterModel) {
     }
 
     function loggedin(req, res) {
-        console.log(req.isAuthenticated());
-
         res.json(req.isAuthenticated() ? req.session.user : null);
     }
 
