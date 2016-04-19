@@ -43,7 +43,8 @@
                     </dl>
                 </div>
                 <div>
-                    <button class="btn btn-success btn-block" ng-click="model.reserve()">Reserve</button>
+                    <button class="btn btn-success btn-block" ng-show="user" ng-click="model.reserve()">Reserve</button>
+                    <a ng-hide="user" href="#/login">Login to continue</a>
                 </div>
             </div>
         </div>
