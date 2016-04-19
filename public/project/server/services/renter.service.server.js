@@ -15,12 +15,12 @@ module.exports = function (app, renterModel) {
     app.get("/api/grabacar/renter/isYoungDriver/:id", isYoungDriver);
     app.post("/api/grabacar/renter", createRenter);
     app.post("/api/grabacar/renter/login", passport.authenticate('grabacar'), login);
-    app.get("/api/grabacar/renters",auth,  findAllRenters);
-    app.get("/api/grabacar/renter/:id",  findRenterById);
-    app.get("/api/grabacar/renterByFirstName/:firstName",auth,  findRentersByFirstName);
+    app.get("/api/grabacar/renters", auth, findAllRenters);
+    app.get("/api/grabacar/renter/:id", findRenterById);
+    app.get("/api/grabacar/renterByFirstName/:firstName", auth, findRentersByFirstName);
     app.get("/api/grabacar/renter?rentername=rentername", findRenterByRentername);
     app.put("/api/grabacar/renter/:id", updateRenter);
-    app.delete("/api/grabacar/renter/:id",  deleteRenter);
+    app.delete("/api/grabacar/renter/:id", deleteRenter);
     app.get("/api/grabacar/rentersession/loggedin", loggedin);
     app.post("/api/grabacar/rentersession/logout", logout);
     app.get("/api/grabacar/rentersession/refresh", refreshSession);
@@ -100,7 +100,8 @@ module.exports = function (app, renterModel) {
                         done(err, null);
                     }
                 );
-        }}
+        }
+    }
 
     function logout(req, res) {
         req.session.destroy();
@@ -121,7 +122,7 @@ module.exports = function (app, renterModel) {
 
     function createRenter(req, res) {
         var newRenter = req.body;
-        newRenter.rentername=newRenter.username;
+        newRenter.rentername = newRenter.username;
         newRenter.password = bcrypt.hashSync(newRenter.password);
         renterModel
             .findRenterByRentername(newRenter.rentername)
@@ -217,7 +218,8 @@ module.exports = function (app, renterModel) {
     function updateRenter(req, res) {
         var id = req.params.id;
         var renter = req.body;
-        renter.password=bcrypt.hashSync(renter.password);
+        if (req.session.user.rentername && req.session.user.password != renter.password)
+            renter.password = bcrypt.hashSync(renter.password);
         var renters = renterModel.Update(id, renter)
             .then(function (doc) {
                     res.json(renter);
