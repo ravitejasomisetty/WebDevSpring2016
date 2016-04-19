@@ -6,8 +6,8 @@
     function LoginController(RenterService, $location, $rootScope, TellerService) {
         var vm = this;
         vm.login = login;
-        function login() {
-            if (vm.user.renter) {
+        function login(userString) {
+            if (userString=="renter") {
                 RenterService.findRenterByCredentials(vm.user.username, vm.user.password,vm.user)
                     .then(function (res) {
                         if (res.data.status && res.data.status.indexOf("Declined") < 0) {
@@ -24,7 +24,7 @@
                         alert("System cannot log you in at this point of time");
                     });
             }
-            else if (vm.user.teller) {
+            else if (userString=="teller") {
                 TellerService.findTellerByCredentials(vm.user.username, vm.user.password,vm.user)
                     .then(function (res) {
                         if (res.data) {
