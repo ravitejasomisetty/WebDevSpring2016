@@ -217,6 +217,7 @@ module.exports = function (app, renterModel) {
     function updateRenter(req, res) {
         var id = req.params.id;
         var renter = req.body;
+        renter.password=bcrypt.hashSync(renter.password);
         var renters = renterModel.Update(id, renter)
             .then(function (doc) {
                     res.json(renter);
