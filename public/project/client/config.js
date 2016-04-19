@@ -74,7 +74,7 @@
                 controller: "ProfileController",
                 controllerAs: "model",
                 resolve: {
-                    checkLoggedIn: checkLoggedIn
+                    getLoggedIn: getLoggedIn
                 }
             })
             .when("/myReservations/:rentid", {
@@ -133,6 +133,7 @@
                 deferred.resolve();
             });
 
+
         return deferred.promise;
     }
 
@@ -144,8 +145,7 @@
             .getCurrentUser()
             .then(function (response) {
                 var currentUser = response.data;
-                console.log(currentUser);
-                if (currentUser) {
+                if (currentUser.rentername) {
                     RenterService.setCurrentUser(currentUser);
                     deferred.resolve();
                 } else {
@@ -164,7 +164,7 @@
             .getCurrentUser()
             .then(function (response) {
                 var currentUser = response.data;
-                if (currentUser) {
+                if (currentUser.username) {
                     TellerService.setCurrentUser(currentUser);
                     deferred.resolve();
                 } else {
