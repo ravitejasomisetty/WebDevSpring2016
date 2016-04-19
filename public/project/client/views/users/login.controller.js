@@ -21,7 +21,10 @@
                                 "3. Your membership had been declined");
                         }
                     }, function (err) {
-                        alert("System cannot log you in at this point of time");
+                        alert("Unable to log you in because of the possible reason(s):\n" +
+                            "1. Insufficient or invalid credentials\n" +
+                            "2. You're not a registered user yet\n" +
+                            "3. Your membership had been declined");
                     });
             }
             else if (userString=="teller") {
@@ -32,27 +35,13 @@
                             $location.url("/admin");
                         }
                         else {
-                            alert("Unable to log you in because of the possible reason(s):\n" +
-                                "1. Insufficient or invalid credentials\n" +
-                                "2. You're not a registered user yet");
+                            alert("Invalid credentials for teller login" );
+
                         }
+                    }, function (err) {
+                        alert("Invalid credentials for teller login" );
                     });
             }
-        }
-
-        function isYoungDriver() {
-            var usid = 111;
-            RenterService.isYoungDriver(usid)
-                .then(function (res) {
-                    if (res) {
-                        $location.url("/profile");
-                    }
-                    else {
-                        alert("Unable to log you in because of the possible reason(s):\n" +
-                            "1. Insufficient or invalid credentials\n" +
-                            "2. You're not a registered user yet");
-                    }
-                });
         }
     }
 })();

@@ -15,12 +15,6 @@
                 controller: "CRUDVehicleController",
                 controllerAs: "model"
             })
-            .when("/vehicle", {
-                templateUrl: "client/views/vehicle/vehicle.view.html",
-                controller: "VehicleController",
-                controllerAs: "model",
-                resolve: {checkTellerLoggedIn: checkTellerLoggedIn}
-            })
             .when("/reservation", {
                 templateUrl: "client/views/reservation/reservation.view.html",
                 controller: "ReservationController",
@@ -29,24 +23,6 @@
             .when("/teller", {
                 templateUrl: "client/views/teller/teller.view.html",
                 controller: "TellerController",
-                controllerAs: "model"
-            })
-            .when("/search", {
-                templateUrl: "client/views/search/search.view.html",
-                controller: "SearchController",
-                controllerAs: "model",
-                resolve: {
-                    getLoggedIn: getLoggedIn
-                }
-            })
-            .when("/details/:HWRefNumber", {
-                templateUrl: "client/views/forms/details.view.html",
-                controller: "DetailsController",
-                controllerAs: "model"
-            })
-            .when("/register", {
-                templateUrl: "client/views/users/register.view.html",
-                controller: "RegisterController",
                 controllerAs: "model"
             })
             .when("/rent", {
@@ -62,6 +38,33 @@
             .when("/location", {
                 templateUrl: "client/views/location/location.view.html",
                 controller: "LocationController",
+                controllerAs: "model"
+            })
+            .when("/vehicle", {
+                templateUrl: "client/views/vehicle/vehicle.view.html",
+                controller: "VehicleController",
+                controllerAs: "model",
+                resolve: {checkTellerLoggedIn: checkTellerLoggedIn}
+            })
+            .when("/search", {
+                templateUrl: "client/views/search/search.view.html",
+                controller: "SearchController",
+                controllerAs: "model",
+                resolve: {
+                    getLoggedIn: getLoggedIn
+                }
+            })
+            .when("/details/:HWRefNumber", {
+                templateUrl: "client/views/forms/details.view.html",
+                controller: "DetailsController",
+                controllerAs: "model",
+                resolve: {
+                    getLoggedIn: getLoggedIn
+                }
+            })
+            .when("/register", {
+                templateUrl: "client/views/users/register.view.html",
+                controller: "RegisterController",
                 controllerAs: "model"
             })
             .when("/login", {
@@ -149,6 +152,7 @@
                     RenterService.setCurrentUser(currentUser);
                     deferred.resolve();
                 } else {
+                    alert('Please login to continue');
                     deferred.reject();
                 }
             });
@@ -168,6 +172,8 @@
                     TellerService.setCurrentUser(currentUser);
                     deferred.resolve();
                 } else {
+                    alert('Access is restricted to private');
+                    $location.url('/home');
                     deferred.reject();
                 }
             });
