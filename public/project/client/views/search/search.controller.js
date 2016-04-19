@@ -76,6 +76,7 @@
                     if (response.StatusCode != 0) {
                         vm.instances = null;
                         vm.errors = response.Errors;
+                        vm.spinner=false;
                     }
                     else {
                         vm.errors = null;

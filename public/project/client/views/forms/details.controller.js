@@ -17,8 +17,8 @@
                     "returndate": vm.instance.DropoffDay,
                     "totalrentday": vm.instance.RentalDays,
                     "dailyrentfee": vm.instance.DailyRate,
-                    "pickuptime":vm.instance.PickupTime,
-                    "returntime":vm.instance.DropoffTime,
+                    "pickuptime": vm.instance.PickupTime,
+                    "returntime": vm.instance.DropoffTime,
                     "carimage": vm.instance.carImage,
                     "subtotal": vm.instance.SubTotal,
                     "taxesandfees": vm.instance.TaxesAndFees,
@@ -32,7 +32,7 @@
                     "downpayment": null,
                     "totalpaid": null,
                     "refund": null,
-                    "status":"RESERVED",
+                    "status": "RESERVED",
                     "rentid": null,
                     "renterid": $rootScope.user._id,
                     "employeeid": null
@@ -42,13 +42,13 @@
                 RentService.rentVehicle(rent)
                     .then(function (res) {
 
-                        var today=DateService.obtainDate(new Date());
+                        var today = DateService.obtainDate(new Date());
                         var reservation = {
                             "platenumber": vm.HWRefNumber,
                             "pickupdate": vm.instance.PickupDay,
                             "returndate": vm.instance.DropoffDay,
                             "reservationdate": today,
-                            "status":"RESERVED",
+                            "status": "RESERVED",
                             "reservationid": null,
                             "renterid": $rootScope.user._id,
                             "rentid": res.data._id
@@ -60,7 +60,10 @@
                     });
 
 
-                $location.url("/profile");
+                if ($rootScope.user.rentername)
+                    $location.url("/profile/" + $rootScope.user._id);
+                else if ($rootScope.user.username)
+                    $location.url("/telleraccount/" + $rootScope.user._id);
             }
         };
     }
