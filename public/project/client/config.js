@@ -18,7 +18,8 @@
             .when("/vehicle", {
                 templateUrl: "client/views/vehicle/vehicle.view.html",
                 controller: "VehicleController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {checkTellerLoggedIn: checkTellerLoggedIn}
             })
             .when("/reservation", {
                 templateUrl: "client/views/reservation/reservation.view.html",
