@@ -29,6 +29,10 @@
                 if (userInfo.licenseNumber) {
                     vm.activeUser.licenseNumber = userInfo.licenseNumber;
                 }
+                console.log(userInfo.password);
+                if (userInfo.password) {
+                    vm.activeUser.password = userInfo.password;
+                }
             }
             RenterService.updateRenter(vm.activeUser._id, vm.activeUser)
                 .then(
