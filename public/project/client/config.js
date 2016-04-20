@@ -54,7 +54,7 @@
                 }
             })
             .when("/admin/:searchRenterName", {
-                templateUrl: "client/views/approverenters/approverenters.view.html",
+                templateUrl: "client/views/teller/approverenters.view.html",
                 controller: "ApproveRentersController",
                 controllerAs: "model",
                 resolve: {
@@ -62,7 +62,7 @@
                 }
             })
             .when("/admin", {
-                templateUrl: "client/views/approverenters/approverenters.view.html",
+                templateUrl: "client/views/teller/approverenters.view.html",
                 controller: "ApproveRentersController",
                 controllerAs: "model",
                 resolve: {
@@ -70,7 +70,7 @@
                 }
             })
             .when("/approverents", {
-                templateUrl: "client/views/approverents/approverents.view.html",
+                templateUrl: "client/views/teller/approverents.view.html",
                 controller: "ApproveRentsController",
                 controllerAs: "model",
                 resolve: {
