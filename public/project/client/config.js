@@ -70,7 +70,7 @@
                 }
             })
             .when("/approverents", {
-                templateUrl: "client/views/users/approverents.view.html",
+                templateUrl: "client/views/approverents/approverents.view.html",
                 controller: "ApproveRentsController",
                 controllerAs: "model",
                 resolve: {
