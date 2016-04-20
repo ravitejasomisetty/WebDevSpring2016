@@ -20,7 +20,7 @@
                 }
             })
             .when("/details/:HWRefNumber", {
-                templateUrl: "client/views/details/details.view.html",
+                templateUrl: "client/views/search/details.view.html",
                 controller: "DetailsController",
                 controllerAs: "model",
                 resolve: {
