@@ -3,6 +3,7 @@
     angular
         .module("GrabACar")
         .controller("MainController", MainController);
-    function MainController($scope) {
+    function MainController() {
+        var vm=this;
     }
 })();
