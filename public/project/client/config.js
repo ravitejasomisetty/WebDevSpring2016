@@ -28,17 +28,17 @@
                 }
             })
             .when("/register", {
-                templateUrl: "client/views/users/register.view.html",
+                templateUrl: "client/views/renter/register.view.html",
                 controller: "RegisterController",
                 controllerAs: "model"
             })
             .when("/login", {
-                templateUrl: "client/views/users/login.view.html",
+                templateUrl: "client/views/renter/login.view.html",
                 controller: "LoginController",
                 controllerAs: "model"
             })
             .when("/profile/:renterId", {
-                templateUrl: "client/views/users/profile.view.html",
+                templateUrl: "client/views/renter/profile.view.html",
                 controller: "ProfileController",
                 controllerAs: "model",
                 resolve: {
@@ -46,7 +46,7 @@
                 }
             })
             .when("/myReservations/:rentid", {
-                templateUrl: "client/views/users/myreservations.view.html",
+                templateUrl: "client/views/renter/myreservations.view.html",
                 controller: "MyReservationsController",
                 controllerAs: "model",
                 resolve: {
@@ -54,7 +54,7 @@
                 }
             })
             .when("/admin/:searchRenterName", {
-                templateUrl: "client/views/users/approverenters.view.html",
+                templateUrl: "client/views/approverenters/approverenters.view.html",
                 controller: "ApproveRentersController",
                 controllerAs: "model",
                 resolve: {
