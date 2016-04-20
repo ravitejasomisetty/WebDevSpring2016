@@ -78,7 +78,7 @@
                 }
             })
             .when("/telleraccount/:id", {
-                templateUrl: "client/views/users/telleraccount.view.html",
+                templateUrl: "client/views/teller/telleraccount.view.html",
                 controller: "TellerAccountController",
                 controllerAs: "model",
                 resolve: {

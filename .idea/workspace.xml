@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d66b16b2-8bfc-4f8b-936a-5609f68081fd" name="Default" comment="Restructured public/assignment&#10;">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/project/client/views/details/jsonresponse.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/client/config.js" afterPath="$PROJECT_DIR$/public/project/client/config.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/index.html" afterPath="$PROJECT_DIR$/public/project/index.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/client/views/users/approverents.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/approverents/approverents.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/client/views/users/approverents.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/approverents/approverents.view.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/client/views/users/telleraccount.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/teller/telleraccount.controller.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/client/views/users/telleraccount.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/teller/telleraccount.view.html" />
     </list>
     <ignored path="OpenShiftRepoDirectory.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,21 +28,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/project/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.39878893">
+            <state vertical-scroll-proportion="-10.976191">
               <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project/client/config.js">
+      <file leaf-file-name="telleraccount.controller.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/project/client/views/teller/telleraccount.controller.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="72" column="55" selection-start-line="72" selection-start-column="55" selection-end-line="72" selection-end-column="55" />
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="telleraccount.view.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/project/client/views/teller/telleraccount.view.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.78571427">
+              <caret line="21" column="92" selection-start-line="21" selection-start-column="92" selection-end-line="21" selection-end-column="92" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/project/client/config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.88146913">
+              <caret line="80" column="49" selection-start-line="80" selection-start-column="49" selection-end-line="80" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -352,36 +373,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OpenShiftRepoDirectory" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OpenShiftRepoDirectory" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="approverents" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -425,11 +416,11 @@
       <recent name="D:\Spring2016\WebDevelopment\OpenShiftRepo\OpenShiftRepoDirectory\public\assignment\server\models" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Spring2016\WebDevelopment\OpenShiftRepo\OpenShiftRepoDirectory\public\project\client\views\teller" />
       <recent name="D:\Spring2016\WebDevelopment\OpenShiftRepo\OpenShiftRepoDirectory\public\project\client\views\approverents" />
       <recent name="D:\Spring2016\WebDevelopment\OpenShiftRepo\OpenShiftRepoDirectory\public\project\client\views\approverenters" />
       <recent name="D:\Spring2016\WebDevelopment\OpenShiftRepo\OpenShiftRepoDirectory\public\home" />
       <recent name="D:\Spring2016\WebDevelopment\OpenShiftRepo\OpenShiftRepoDirectory\public\project\client\views\vehicle" />
-      <recent name="D:\Spring2016\WebDevelopment\OpenShiftRepo\OpenShiftRepoDirectory\public\project\client\views\teller" />
     </key>
   </component>
   <component name="RunManager" selected="Node.js.webdev">
@@ -515,7 +506,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-14" y="-14" width="3028" height="1938" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24839255" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297935" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -653,14 +644,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="64" column="50" selection-start-line="64" selection-start-column="50" selection-end-line="64" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/client/views/users/telleraccount.view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="92" selection-start-line="21" selection-start-column="92" selection-end-line="21" selection-end-column="92" />
           <folding />
         </state>
       </provider>
@@ -929,18 +912,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/client/config.js">
+    <entry file="file://$PROJECT_DIR$/public/project/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="72" column="55" selection-start-line="72" selection-start-column="55" selection-end-line="72" selection-end-column="55" />
+        <state vertical-scroll-proportion="-10.976191">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/index.html">
+    <entry file="file://$PROJECT_DIR$/public/project/client/views/teller/telleraccount.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39878893">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/client/views/teller/telleraccount.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.78571427">
+          <caret line="21" column="92" selection-start-line="21" selection-start-column="92" selection-end-line="21" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/client/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.88146913">
+          <caret line="80" column="49" selection-start-line="80" selection-start-column="49" selection-end-line="80" selection-end-column="49" />
           <folding />
         </state>
       </provider>
