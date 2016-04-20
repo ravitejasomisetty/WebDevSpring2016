@@ -1,9 +1,9 @@
 (function () {
+    'use strict';
     angular
         .module("GrabACar")
         .controller("SearchController", SearchController);
     function SearchController($rootScope, $http, $location, VehicleService) {
-        'use strict';
         var vm = this;
         vm.spinner=false;
         vm.request = {

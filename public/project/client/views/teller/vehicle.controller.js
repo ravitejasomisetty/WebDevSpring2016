@@ -2,6 +2,7 @@
  * Created by ravit on 4/9/2016.
  */
 (function () {
+    'use strict';
     angular
         .module("GrabACar")
         .controller("VehicleController", VehicleController);
