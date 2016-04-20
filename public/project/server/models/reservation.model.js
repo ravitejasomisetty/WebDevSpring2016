@@ -5,36 +5,7 @@ module.exports = function (mongoose,db,uuid) {
     var q = require("q");
     var ReservationSchema = require('./reservation.schema.server.js')(mongoose);
     var ReservationModel = mongoose.model("ReservationModel", ReservationSchema);
-    var reservations = [{
-        "platenumber": "4HS821",
-        "pickupdate": "3/19/2016",
-        "returndate": "3/21/2016",
-        "reservationdate": "3/19/2016",
-        "status": "SUCCESS",
-        "reservationid": "10",
-        "renterid": "123",
-        "rentid": "123"
-    },
-        {
-            "platenumber": "F62BGM",
-            "pickupdate": "3/31/2016",
-            "returndate": "4/6/2016",
-            "reservationdate": "3/19/2016",
-            "status": "RESERVED",
-            "reservationid": "10",
-            "renterid": "123",
-            "rentid": "345"
-        },
-        {
-            "platenumber": "AHEIWP",
-            "pickupdate": "3/29/2016",
-            "returndate": "4/2/2016",
-            "reservationdate": "3/19/2016",
-            "status": "CANCEL",
-            "reservationid": "10",
-            "renterid": "123",
-            "rentid": "456"
-        }];
+
     var recentReservationJSON;
     return {
         viewReservation: viewReservation,

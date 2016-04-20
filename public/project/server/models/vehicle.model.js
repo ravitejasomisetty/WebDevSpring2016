@@ -5,16 +5,7 @@ module.exports = function (mongoose,db,uuid) {
     var q = require("q");
     var VehicleSchema = require('./vehicle.schema.server.js')(mongoose);
     var VehicleModel = mongoose.model("VehicleModel", VehicleSchema);
-    var vehicles = [{
-        "brand": "Toyota",
-        "type": "Economy",
-        "model": "Corolla",
-        "platenumber": "4HS821",
-        "seatquantity": "4",
-        "fueltype": "petrol",
-        "condition": "GOOD",
-        "dailyprice": "30"
-    }];
+
     return {
         viewVehicle: viewVehicle,
         registerVehicle:registerVehicle,

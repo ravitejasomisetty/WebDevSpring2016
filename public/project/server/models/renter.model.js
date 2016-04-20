@@ -7,40 +7,7 @@ module.exports = function (mongoose, db, uuid) {
     var q = require("q");
     var RenterSchema = require('./renter.schema.server.js')(mongoose);
     var RenterModel = mongoose.model("RenterModel", RenterSchema);
-    var renters = [
-        {
-            "_id": 123, "firstName": "Alice", "lastName": "Wonderland", "nationality": "Indian",
-            "city": "Boston", "mobilenumber": "999999999", "birthdate": "6/8/1992",
-            "rentername": "alice", "password": "alice", "email": "alicewonderland@gmail.com", "roles": "admin",
-            "licenseNumber": "ADPHHSPE12",
-            "licenseCountry": "United States",
-            "status": "Waiting for approval"
-        },
-        {
-            "_id": 234, "firstName": "Bob", "lastName": "Hope", "nationality": "American",
-            "city": "Phoenix", "mobilenumber": "999999999", "birthdate": "4/25/1992",
-            "rentername": "bob", "password": "bob", "email": "bobhope@gmail.com",
-            "licenseNumber": "ADPHHSPE12",
-            "licenseCountry": "United States",
-            "status": "Waiting for approval"
-        },
-        {
-            "_id": 345, "firstName": "Charlie", "lastName": "Brown", "nationality": "African",
-            "city": "New Jersey", "mobilenumber": "999999999", "birthdate": "7/6/1992",
-            "rentername": "charlie", "password": "charlie", "email": "charliebrown@gmail.com", "roles": "admin",
-            "licenseNumber": "ADPHHSPE12",
-            "licenseCountry": "United States",
-            "status": "Approved"
-        },
-        {
-            "_id": 456, "firstName": "Dan", "lastName": "Craig", "nationality": "African",
-            "city": "San Diego", "mobilenumber": "999999999", "birthdate": "2/22/1992",
-            "rentername": "dan", "password": "dan", "email": "dancraig@gmail.com",
-            "licenseNumber": "ADPHHSPE12",
-            "licenseCountry": "United States",
-            "status": "Declined"
-        }
-    ];
+
     var api = {
         Create: Create,
         FindAll: FindAll,
