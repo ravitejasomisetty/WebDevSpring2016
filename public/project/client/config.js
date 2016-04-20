@@ -6,7 +6,7 @@
     function configuration($routeProvider) {
         $routeProvider
             .when("/vehicle", {
-                templateUrl: "client/views/vehicle/vehicle.view.html",
+                templateUrl: "client/views/teller/vehicle.view.html",
                 controller: "VehicleController",
                 controllerAs: "model",
                 resolve: {checkTellerLoggedIn: checkTellerLoggedIn}
