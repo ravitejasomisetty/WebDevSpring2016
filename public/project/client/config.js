@@ -62,7 +62,7 @@
                 }
             })
             .when("/admin", {
-                templateUrl: "client/views/users/approverenters.view.html",
+                templateUrl: "client/views/approverenters/approverenters.view.html",
                 controller: "ApproveRentersController",
                 controllerAs: "model",
                 resolve: {
