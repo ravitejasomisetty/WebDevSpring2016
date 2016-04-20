@@ -12,19 +12,22 @@
         vm.viewRents = viewRents;
         vm.open = open;
         vm.viewRenters = viewRenters;
-
-        TellerService.viewTeller(tellerid)
-            .then(function (teller) {
-                vm.activeUser = teller.data;
-                RentService.findAllRentsByTeller(teller.data._id)
-                    .then(function (res) {
-                        vm.viewRentersTable = false;
-                        vm.viewRentsTable = true;
-                        vm.rents = res.data;
-                    });
-            }, function (err) {
-                $location.url("/home");
-            });
+        vm.init = init;
+        init();
+        function init() {
+            TellerService.viewTeller(tellerid)
+                .then(function (teller) {
+                    vm.activeUser = teller.data;
+                    RentService.findAllRentsByTeller(teller.data._id)
+                        .then(function (res) {
+                            vm.viewRentersTable = false;
+                            vm.viewRentsTable = true;
+                            vm.rents = res.data;
+                        });
+                }, function (err) {
+                    $location.url("/home");
+                });
+        }
 
         function viewRents(user) {
             RentService.findAllRentsByTeller(user._id)

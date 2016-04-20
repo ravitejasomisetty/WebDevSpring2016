@@ -11,11 +11,14 @@
         var user = $rootScope.user;
         vm.approve = approve;
         vm.update = update;
-
-        RentService.findAllRents()
-            .then(function (rents) {
-                vm.rents = rents.data;
-            });
+        vm.init = init;
+        init();
+        function init() {
+            RentService.findAllRents()
+                .then(function (rents) {
+                    vm.rents = rents.data;
+                });
+        }
 
         function approve(rent) {
             user.rentsApproved.push({"platenumber": rent.platenumber});

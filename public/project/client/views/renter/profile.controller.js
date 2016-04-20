@@ -11,14 +11,19 @@
         vm.update = update;
         vm.rowStatus = rowStatus;
         vm.open = open;
-        RenterService.findRenterById(renterId)
-            .then(function (renter) {
-                vm.user = renter.data;
-                ReservationService.findAllReservationsByRenter(vm.user._id)
-                    .then(function (res) {
-                        vm.reservations = res.data;
-                    })
-            });
+        vm.init = init;
+        init();
+        function init() {
+            RenterService.findRenterById(renterId)
+                .then(function (renter) {
+                    vm.user = renter.data;
+                    ReservationService.findAllReservationsByRenter(vm.user._id)
+                        .then(function (res) {
+                            vm.reservations = res.data;
+                        })
+                });
+        }
+
         function update(userInfo) {
             if (userInfo) {
                 if (userInfo.birthdate)
