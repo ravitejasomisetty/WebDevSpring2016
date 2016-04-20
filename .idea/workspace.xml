@@ -2,77 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d66b16b2-8bfc-4f8b-936a-5609f68081fd" name="Default" comment="Restructured public/assignment&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/home/css/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/home/css/font-awesome.min.css" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/css/bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/css/font-awesome.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/home/js/bootstrap.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/home/js/jquery.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/index.html" afterPath="$PROJECT_DIR$/public/project/index.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/css/animate.min.css" afterPath="$PROJECT_DIR$/public/home/css/animate.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/css/lightbox.css" afterPath="$PROJECT_DIR$/public/home/css/lightbox.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/css/main.css" afterPath="$PROJECT_DIR$/public/home/css/main.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/css/presets/preset1.css" afterPath="$PROJECT_DIR$/public/home/css/presets/preset1.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/css/presets/preset2.css" afterPath="$PROJECT_DIR$/public/home/css/presets/preset2.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/css/presets/preset3.css" afterPath="$PROJECT_DIR$/public/home/css/presets/preset3.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/css/presets/preset4.css" afterPath="$PROJECT_DIR$/public/home/css/presets/preset4.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/css/presets/preset5.css" afterPath="$PROJECT_DIR$/public/home/css/presets/preset5.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/css/presets/preset6.css" afterPath="$PROJECT_DIR$/public/home/css/presets/preset6.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/css/responsive.css" afterPath="$PROJECT_DIR$/public/home/css/responsive.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/fonts/FontAwesome.otf" afterPath="$PROJECT_DIR$/public/home/fonts/FontAwesome.otf" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/fonts/fontawesome-webfont.eot" afterPath="$PROJECT_DIR$/public/home/fonts/fontawesome-webfont.eot" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/fonts/fontawesome-webfont.svg" afterPath="$PROJECT_DIR$/public/home/fonts/fontawesome-webfont.svg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/fonts/fontawesome-webfont.ttf" afterPath="$PROJECT_DIR$/public/home/fonts/fontawesome-webfont.ttf" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/fonts/fontawesome-webfont.woff" afterPath="$PROJECT_DIR$/public/home/fonts/fontawesome-webfont.woff" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/fonts/fontawesome-webfont.woff2" afterPath="$PROJECT_DIR$/public/home/fonts/fontawesome-webfont.woff2" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/fonts/glyphicons-halflings-regular.eot" afterPath="$PROJECT_DIR$/public/home/fonts/glyphicons-halflings-regular.eot" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/fonts/glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/public/home/fonts/glyphicons-halflings-regular.svg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/fonts/glyphicons-halflings-regular.ttf" afterPath="$PROJECT_DIR$/public/home/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/fonts/glyphicons-halflings-regular.woff" afterPath="$PROJECT_DIR$/public/home/fonts/glyphicons-halflings-regular.woff" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/fonts/glyphicons-halflings-regular.woff2" afterPath="$PROJECT_DIR$/public/home/fonts/glyphicons-halflings-regular.woff2" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/about-bg.jpg" afterPath="$PROJECT_DIR$/public/home/images/about-bg.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/blog/1.jpg" afterPath="$PROJECT_DIR$/public/home/images/blog/1.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/blog/2.jpg" afterPath="$PROJECT_DIR$/public/home/images/blog/2.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/blog/3.jpg" afterPath="$PROJECT_DIR$/public/home/images/blog/3.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/car1.jpg" afterPath="$PROJECT_DIR$/public/home/images/car1.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/car2.jpg" afterPath="$PROJECT_DIR$/public/home/images/car2.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/car3.jpg" afterPath="$PROJECT_DIR$/public/home/images/car3.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/car4.jpg" afterPath="$PROJECT_DIR$/public/home/images/car4.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/car5.jpg" afterPath="$PROJECT_DIR$/public/home/images/car5.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/car6.jpg" afterPath="$PROJECT_DIR$/public/home/images/car6.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/carfavicon.ico" afterPath="$PROJECT_DIR$/public/home/images/carfavicon.ico" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/contact-bg.jpg" afterPath="$PROJECT_DIR$/public/home/images/contact-bg.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/favicon.ico" afterPath="$PROJECT_DIR$/public/home/images/favicon.ico" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/features-bg.jpg" afterPath="$PROJECT_DIR$/public/home/images/features-bg.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/lightbox/close.png" afterPath="$PROJECT_DIR$/public/home/images/lightbox/close.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/lightbox/loading.gif" afterPath="$PROJECT_DIR$/public/home/images/lightbox/loading.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/lightbox/next.png" afterPath="$PROJECT_DIR$/public/home/images/lightbox/next.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/lightbox/prev.png" afterPath="$PROJECT_DIR$/public/home/images/lightbox/prev.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/logo.png" afterPath="$PROJECT_DIR$/public/home/images/logo.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/portfolio/1.jpg" afterPath="$PROJECT_DIR$/public/home/images/portfolio/1.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/portfolio/2.jpg" afterPath="$PROJECT_DIR$/public/home/images/portfolio/2.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/portfolio/3.jpg" afterPath="$PROJECT_DIR$/public/home/images/portfolio/3.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/portfolio/4.jpg" afterPath="$PROJECT_DIR$/public/home/images/portfolio/4.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/portfolio/5.jpg" afterPath="$PROJECT_DIR$/public/home/images/portfolio/5.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/portfolio/6.jpg" afterPath="$PROJECT_DIR$/public/home/images/portfolio/6.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/portfolio/7.jpg" afterPath="$PROJECT_DIR$/public/home/images/portfolio/7.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/portfolio/8.jpg" afterPath="$PROJECT_DIR$/public/home/images/portfolio/8.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/portfolio/portfolio-details.jpg" afterPath="$PROJECT_DIR$/public/home/images/portfolio/portfolio-details.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/slider/1.jpg" afterPath="$PROJECT_DIR$/public/home/images/slider/1.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/slider/2.jpg" afterPath="$PROJECT_DIR$/public/home/images/slider/2.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/slider/3.jpg" afterPath="$PROJECT_DIR$/public/home/images/slider/3.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/somi.jpg" afterPath="$PROJECT_DIR$/public/home/images/somi.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/twitter-bg.jpg" afterPath="$PROJECT_DIR$/public/home/images/twitter-bg.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/bootstrap.min.js" afterPath="$PROJECT_DIR$/public/home/js/bootstrap.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/html5shiv.js" afterPath="$PROJECT_DIR$/public/home/js/html5shiv.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/jquery.countTo.js" afterPath="$PROJECT_DIR$/public/home/js/jquery.countTo.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/jquery.inview.min.js" afterPath="$PROJECT_DIR$/public/home/js/jquery.inview.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/jquery.js" afterPath="$PROJECT_DIR$/public/home/js/jquery.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/lightbox.min.js" afterPath="$PROJECT_DIR$/public/home/js/lightbox.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/main.js" afterPath="$PROJECT_DIR$/public/home/js/main.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/mousescroll.js" afterPath="$PROJECT_DIR$/public/home/js/mousescroll.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/respond.min.js" afterPath="$PROJECT_DIR$/public/home/js/respond.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/smoothscroll.js" afterPath="$PROJECT_DIR$/public/home/js/smoothscroll.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/wow.min.js" afterPath="$PROJECT_DIR$/public/home/js/wow.min.js" />
     </list>
     <ignored path="OpenShiftRepoDirectory.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -93,101 +26,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/home/js/main.js">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.5700692">
+              <caret line="175" column="36" selection-start-line="175" selection-start-column="36" selection-end-line="175" selection-end-column="36" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jquery.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/home/js/jquery.js">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/project/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="wow.min.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/home/js/wow.min.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="html5shiv.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/home/js/html5shiv.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mousescroll.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/home/js/mousescroll.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="respond.min.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/home/js/respond.min.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="lightbox.min.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/home/js/lightbox.min.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="smoothscroll.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/home/js/smoothscroll.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bootstrap.min.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/home/js/bootstrap.min.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="jquery.countTo.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/home/js/jquery.countTo.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="-6.285714">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="10" selection-end-column="95" />
               <folding />
             </state>
           </provider>
@@ -210,7 +65,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/public/project/client/views/header/header.controller.js" />
         <option value="$PROJECT_DIR$/public/project/client/views/users/admin.controller.js" />
         <option value="$PROJECT_DIR$/public/project/server/models/renter.model.js" />
         <option value="$PROJECT_DIR$/public/project/server/models/reservation.model.js" />
@@ -261,6 +115,7 @@
         <option value="$PROJECT_DIR$/public/project/server/services/renter.service.server.js" />
         <option value="$PROJECT_DIR$/public/project/client/config.js" />
         <option value="$PROJECT_DIR$/public/assignment/server/app.js" />
+        <option value="$PROJECT_DIR$/public/index.html" />
       </list>
     </option>
   </component>
@@ -329,6 +184,64 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpenShiftRepoDirectory" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpenShiftRepoDirectory" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpenShiftRepoDirectory" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpenShiftRepoDirectory" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="home" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpenShiftRepoDirectory" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpenShiftRepoDirectory" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="home" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -634,14 +547,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/project/client/views/search/search.view.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -692,6 +597,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -699,14 +605,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.485">
           <caret line="45" column="37" selection-start-line="45" selection-start-column="37" selection-end-line="45" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.833334">
-          <caret line="50" column="61" selection-start-line="50" selection-start-column="61" selection-end-line="50" selection-end-column="61" />
           <folding />
         </state>
       </provider>
@@ -823,14 +721,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/home/js/jquery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/home/js/wow.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -879,7 +769,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/home/js/bootstrap.min.js">
+    <entry file="file://$PROJECT_DIR$/public/home/js/jquery.countTo.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -887,11 +777,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/home/js/jquery.countTo.js">
+    <entry file="file://$PROJECT_DIR$/public/project/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="-6.285714">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="10" selection-end-column="95" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5700692">
+          <caret line="175" column="36" selection-start-line="175" selection-start-column="36" selection-end-line="175" selection-end-column="36" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
