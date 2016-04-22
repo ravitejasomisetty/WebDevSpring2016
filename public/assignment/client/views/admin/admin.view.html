@@ -11,7 +11,10 @@
     <div class="table-responsive">
         <table class="table table-striped user">
             <tr>
-                <th><button ng-click="sortType = 'username' ; sortReverse = !sortReverse"><span class="caret"></span></button>Username</th>
+                <th><a ng-click="model.sortUsername()">
+                    <span ng-show="model.ascending" class="glyphicon glyphicon-triangle-top"></span>
+                    <span ng-hide="model.ascending" class="glyphicon glyphicon-triangle-bottom"></span>
+                </a>Username</th>
                 <th><span class="caret"></span>Password</th>
                 <th><span class="caret"></span>FirstName</th>
                 <th><span class="caret"></span>LastName</th>
@@ -25,25 +28,25 @@
                 <td><input type="password" class="form-control" ng-model="newUser.lastName" placeholder="LastName"></td>
                 <td><input type="text" class="form-control" ng-model="newUser.roles" placeholder="Role1, Role2"></td>
                 <td class="text-nowrap">
-                    <button class="btn btn-primary" ng-click="addUser(newUser)" type="button">
+                    <button class="btn btn-primary" ng-click="model.addUser(newUser)" type="button">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     </button>
-                    <button class="btn btn-success" ng-click="updateUser(newUser)" type="button">
+                    <button class="btn btn-success" ng-click="model.updateUser(newUser)" type="button">
                         <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                     </button>
                 </td>
             </tr>
-            <tr ng-repeat="user in users | orderBy:predicate:reverse" ng-if="user.roles.indexOf('admin')==undefined || user.roles.indexOf('admin') < 0">
+            <tr ng-repeat="user in model.users" ng-if="user.roles.indexOf('admin')==undefined || user.roles.indexOf('admin') < 0">
                 <td><label>{{user.username}}</label></td>
                 <td><label>{{user.password}}</label></td>
                 <td><label>{{user.firstName}}</label></td>
                 <td><label>{{user.lastName}}</label></td>
                 <td class="text no-wrap"><label ng-repeat="role in user.roles">{{role}}{{$last ? '' : ', '}}</label></td>
                 <td class="text-nowrap">
-                    <button class="btn btn-danger" ng-click="deleteUser(user)">
+                    <button class="btn btn-danger" ng-click="model.deleteUser(user)">
                         <span class="glyphicon glyphicon-remove"></span>
                     </button>
-                    <button class="btn btn-warning" ng-click="selectUser($index)">
+                    <button class="btn btn-warning" ng-click="model.selectUser($index)">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </button>
                 </td>

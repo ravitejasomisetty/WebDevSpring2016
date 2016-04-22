@@ -3,26 +3,25 @@
     angular
         .module("FormBuilderApp")
         .controller("AdminController", AdminController);
-    function AdminController(UserService, $scope, $rootScope, $location) {
-        var vm=this;
-        $scope.sortType='username';
-        $scope.sortReverse='false';
+    function AdminController(UserService, $rootScope, $location) {
+        var vm = this;
+        vm.ascending = true;
         if ($rootScope.user) {
             UserService.findAllUsers()
                 .then(function (res) {
-                    $scope.users = res.data;
+                    vm.users = res.data;
                 })
         }
         else {
             alert("Please log in and continue");
             $location.path("/login");
         }
-        $scope.addUser = function (newUser) {
+        vm.addUser = function (newUser) {
             if (newUser) {
                 //newUser.roles = convertToArrOfJSON(newUser.roles);
                 UserService.addUser(newUser)
                     .then(function (res) {
-                        $scope.users = res.data;
+                        vm.users = res.data;
                         newUser = null;
                     }, function (err) {
 
@@ -33,24 +32,49 @@
             }
         }
 
-        $scope.deleteUser = function (user) {
+        vm.sortUsername = sortUsername;
+
+        function sortUsername() {
+            vm.ascending = !vm.ascending;
+            vm.users.sort(function (a, b) {
+                var sortOrder;
+                if (a.username > b.username) {
+                    if (vm.ascending)
+                        sortOrder = 1;
+                    else
+                        sortOrder = -1
+                }
+                else if (a.username === b.username) {
+                    sortOrder = 0;
+                }
+                else {
+                    if (vm.ascending)
+                        sortOrder = -1;
+                    else
+                        sortOrder = 1;
+                }
+                return sortOrder;
+            });
+        }
+
+        vm.deleteUser = function (user) {
             UserService.deleteUserById(user._id)
                 .then(function (res) {
                     UserService.findAllUsers()
                         .then(function (users) {
-                            $scope.users = users.data;
+                            vm.users = users.data;
                         }, function (err) {
 
                         });
                 });
         }
 
-        $scope.selectUser = function (index) {
-            $scope.newUser = {
-                "_id": $scope.users[index]._id,
-                "username": $scope.users[index].username,
-                "password": $scope.users[index].password,
-                "roles": convertToCSV($scope.users[index].roles)
+        vm.selectUser = function (index) {
+            vm.newUser = {
+                "_id": vm.users[index]._id,
+                "username": vm.users[index].username,
+                "password": vm.users[index].password,
+                "roles": convertToCSV(vm.users[index].roles)
             };
         }
 
@@ -71,7 +95,7 @@
             return strSplit;
         }
 
-        $scope.updateUser = function (newUser) {
+        vm.updateUser = function (newUser) {
             if (newUser) {
                 newUser.roles = convertToArrOfJSON(newUser.roles);
                 UserService.updateUser(newUser._id, newUser)
@@ -79,7 +103,7 @@
                         newUser = null;
                         UserService.findAllUsers()
                             .then(function (users) {
-                                $scope.users = users.data;
+                                vm.users = users.data;
                             }, function (err) {
 
                             });
