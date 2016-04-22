@@ -33,6 +33,9 @@
         }
 
         vm.sortUsername = sortUsername;
+        vm.sortPassword = sortPassword;
+        vm.sortFirstName = sortFirstName;
+        vm.sortLastName = sortLastName;
 
         function sortUsername() {
             vm.ascending = !vm.ascending;
@@ -45,6 +48,73 @@
                         sortOrder = -1
                 }
                 else if (a.username === b.username) {
+                    sortOrder = 0;
+                }
+                else {
+                    if (vm.ascending)
+                        sortOrder = -1;
+                    else
+                        sortOrder = 1;
+                }
+                return sortOrder;
+            });
+        }
+
+        function sortPassword() {
+            vm.ascending = !vm.ascending;
+            vm.users.sort(function (a, b) {
+                var sortOrder;
+                if (a.password > b.password) {
+                    if (vm.ascending)
+                        sortOrder = 1;
+                    else
+                        sortOrder = -1
+                }
+                else if (a.password === b.password) {
+                    sortOrder = 0;
+                }
+                else {
+                    if (vm.ascending)
+                        sortOrder = -1;
+                    else
+                        sortOrder = 1;
+                }
+                return sortOrder;
+            });
+        }
+        function sortFirstName() {
+            vm.ascending = !vm.ascending;
+            vm.users.sort(function (a, b) {
+                var sortOrder;
+                if (a.firstName > b.firstName) {
+                    if (vm.ascending)
+                        sortOrder = 1;
+                    else
+                        sortOrder = -1
+                }
+                else if (a.firstName === b.firstName) {
+                    sortOrder = 0;
+                }
+                else {
+                    if (vm.ascending)
+                        sortOrder = -1;
+                    else
+                        sortOrder = 1;
+                }
+                return sortOrder;
+            });
+        }
+        function sortLastName() {
+            vm.ascending = !vm.ascending;
+            vm.users.sort(function (a, b) {
+                var sortOrder;
+                if (a.lastName > b.lastName) {
+                    if (vm.ascending)
+                        sortOrder = 1;
+                    else
+                        sortOrder = -1
+                }
+                else if (a.lastName === b.lastName) {
                     sortOrder = 0;
                 }
                 else {

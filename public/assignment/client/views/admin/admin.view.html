@@ -15,11 +15,23 @@
                     <span ng-show="model.ascending" class="glyphicon glyphicon-triangle-top"></span>
                     <span ng-hide="model.ascending" class="glyphicon glyphicon-triangle-bottom"></span>
                 </a>Username</th>
-                <th><span class="caret"></span>Password</th>
-                <th><span class="caret"></span>FirstName</th>
-                <th><span class="caret"></span>LastName</th>
-                <th><span class="caret"></span>Role</th>
-                <th><span class="caret"></span>Action</th>
+                <th><a ng-click="model.sortPassword()">
+                    <span ng-show="model.ascending" class="glyphicon glyphicon-triangle-top"></span>
+                    <span ng-hide="model.ascending" class="glyphicon glyphicon-triangle-bottom"></span>
+                </a>Password</th>
+                <th><a ng-click="model.sortFirstName()">
+                    <span ng-show="model.ascending" class="glyphicon glyphicon-triangle-top"></span>
+                    <span ng-hide="model.ascending" class="glyphicon glyphicon-triangle-bottom"></span>
+                </a>FirstName</th>
+                <th><a ng-click="model.sortLastName()">
+                    <span ng-show="model.ascending" class="glyphicon glyphicon-triangle-top"></span>
+                    <span ng-hide="model.ascending" class="glyphicon glyphicon-triangle-bottom"></span>
+                </a>LastName</th>
+                <th><a ng-click="model.sortRole()">
+                    <span ng-show="model.ascending" class="glyphicon glyphicon-triangle-top"></span>
+                    <span ng-hide="model.ascending" class="glyphicon glyphicon-triangle-bottom"></span>
+                </a>Role</th>
+                <th>Action</th>
             </tr>
             <tr>
                 <td><input type="text" class="form-control" ng-model="newUser.username" id="username" placeholder="Username"></td>
