@@ -9,16 +9,20 @@
     <h1 class="page-header">Admin</h1>
     <h2 class="page-header">Users</h2>
     <div class="table-responsive">
-        <table class="table table-striped">
+        <table class="table table-striped user">
             <tr>
-                <th><span class="caret"></span>Username</th>
+                <th><button ng-click="sortType = 'username' ; sortReverse = !sortReverse"><span class="caret"></span></button>Username</th>
                 <th><span class="caret"></span>Password</th>
+                <th><span class="caret"></span>FirstName</th>
+                <th><span class="caret"></span>LastName</th>
                 <th><span class="caret"></span>Role</th>
                 <th><span class="caret"></span>Action</th>
             </tr>
             <tr>
                 <td><input type="text" class="form-control" ng-model="newUser.username" id="username" placeholder="Username"></td>
                 <td><input type="password" class="form-control" ng-model="newUser.password" placeholder="Password"></td>
+                <td><input type="password" class="form-control" ng-model="newUser.firstName" placeholder="FirstName"></td>
+                <td><input type="password" class="form-control" ng-model="newUser.lastName" placeholder="LastName"></td>
                 <td><input type="text" class="form-control" ng-model="newUser.roles" placeholder="Role1, Role2"></td>
                 <td class="text-nowrap">
                     <button class="btn btn-primary" ng-click="addUser(newUser)" type="button">
@@ -29,9 +33,11 @@
                     </button>
                 </td>
             </tr>
-            <tr ng-repeat="user in users" ng-if="user.roles.indexOf('admin')==undefined || user.roles.indexOf('admin') < 0">
+            <tr ng-repeat="user in users | orderBy:predicate:reverse" ng-if="user.roles.indexOf('admin')==undefined || user.roles.indexOf('admin') < 0">
                 <td><label>{{user.username}}</label></td>
                 <td><label>{{user.password}}</label></td>
+                <td><label>{{user.firstName}}</label></td>
+                <td><label>{{user.lastName}}</label></td>
                 <td class="text no-wrap"><label ng-repeat="role in user.roles">{{role}}{{$last ? '' : ', '}}</label></td>
                 <td class="text-nowrap">
                     <button class="btn btn-danger" ng-click="deleteUser(user)">

@@ -36,7 +36,12 @@
         function createUser(user) {
             var users = $http.post("/api/assignment/user", user);
             return users;
-        };
+        }
+
+        function addUser(user) {
+            var users = $http.post("/api/assignment/user/add", user);
+            return users;
+        }
 
         function deleteUserById(userId) {
             var users = $http.delete("/api/assignment/user/" + userId);
@@ -58,7 +63,8 @@
             updateUser: updateUser,
             logout: logout,
             getCurrentUser: getCurrentUser,
-            setCurrentUser: setCurrentUser
+            setCurrentUser: setCurrentUser,
+            addUser:addUser
         }
     }
 })();

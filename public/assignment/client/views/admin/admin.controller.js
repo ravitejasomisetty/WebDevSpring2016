@@ -4,6 +4,9 @@
         .module("FormBuilderApp")
         .controller("AdminController", AdminController);
     function AdminController(UserService, $scope, $rootScope, $location) {
+        var vm=this;
+        $scope.sortType='username';
+        $scope.sortReverse='false';
         if ($rootScope.user) {
             UserService.findAllUsers()
                 .then(function (res) {
@@ -16,16 +19,13 @@
         }
         $scope.addUser = function (newUser) {
             if (newUser) {
-                newUser.roles = convertToArrOfJSON(newUser.roles);
-                UserService.createUser(newUser)
+                //newUser.roles = convertToArrOfJSON(newUser.roles);
+                UserService.addUser(newUser)
                     .then(function (res) {
-                        UserService.findAllUsers()
-                            .then(function (users) {
-                                $scope.users = users.data;
-                                newUser = null;
-                            }, function (err) {
+                        $scope.users = res.data;
+                        newUser = null;
+                    }, function (err) {
 
-                            });
                     });
             }
             else {
