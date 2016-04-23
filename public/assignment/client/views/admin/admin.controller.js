@@ -5,11 +5,12 @@
         .controller("AdminController", AdminController);
     function AdminController(UserService, $rootScope, $location) {
         var vm = this;
-        vm.ascending = true;
+        vm.usernameAsc = true;
         if ($rootScope.user) {
             UserService.findAllUsers()
                 .then(function (res) {
                     vm.users = res.data;
+                    return sortUsername();
                 })
         }
         else {
@@ -33,16 +34,15 @@
         }
 
         vm.sortUsername = sortUsername;
-        vm.sortPassword = sortPassword;
         vm.sortFirstName = sortFirstName;
         vm.sortLastName = sortLastName;
 
         function sortUsername() {
-            vm.ascending = !vm.ascending;
+            vm.usernameAsc = !vm.usernameAsc;
             vm.users.sort(function (a, b) {
                 var sortOrder;
                 if (a.username > b.username) {
-                    if (vm.ascending)
+                    if (vm.usernameAsc)
                         sortOrder = 1;
                     else
                         sortOrder = -1
@@ -51,7 +51,7 @@
                     sortOrder = 0;
                 }
                 else {
-                    if (vm.ascending)
+                    if (vm.usernameAsc)
                         sortOrder = -1;
                     else
                         sortOrder = 1;
@@ -60,34 +60,13 @@
             });
         }
 
-        function sortPassword() {
-            vm.ascending = !vm.ascending;
-            vm.users.sort(function (a, b) {
-                var sortOrder;
-                if (a.password > b.password) {
-                    if (vm.ascending)
-                        sortOrder = 1;
-                    else
-                        sortOrder = -1
-                }
-                else if (a.password === b.password) {
-                    sortOrder = 0;
-                }
-                else {
-                    if (vm.ascending)
-                        sortOrder = -1;
-                    else
-                        sortOrder = 1;
-                }
-                return sortOrder;
-            });
-        }
+
         function sortFirstName() {
-            vm.ascending = !vm.ascending;
+            vm.fNameAsc = !vm.fNameAsc;
             vm.users.sort(function (a, b) {
                 var sortOrder;
                 if (a.firstName > b.firstName) {
-                    if (vm.ascending)
+                    if (vm.fNameAsc)
                         sortOrder = 1;
                     else
                         sortOrder = -1
@@ -96,7 +75,7 @@
                     sortOrder = 0;
                 }
                 else {
-                    if (vm.ascending)
+                    if (vm.fNameAsc)
                         sortOrder = -1;
                     else
                         sortOrder = 1;
@@ -105,11 +84,11 @@
             });
         }
         function sortLastName() {
-            vm.ascending = !vm.ascending;
+            vm.lNameAsc = !vm.lNameAsc;
             vm.users.sort(function (a, b) {
                 var sortOrder;
                 if (a.lastName > b.lastName) {
-                    if (vm.ascending)
+                    if (vm.lNameAsc)
                         sortOrder = 1;
                     else
                         sortOrder = -1
@@ -118,7 +97,7 @@
                     sortOrder = 0;
                 }
                 else {
-                    if (vm.ascending)
+                    if (vm.lNameAsc)
                         sortOrder = -1;
                     else
                         sortOrder = 1;

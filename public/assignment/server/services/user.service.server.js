@@ -14,7 +14,7 @@ module.exports = function (app, userModel, renterModel, tellerModel) {
     app.get("/api/assignment/user/loggedin", loggedin);
     app.post("/api/assignment/user/logout", logout);
     app.post("/api/assignment/user", createUser);
-    app.post("/api/assignment/user/add",auth, addUser);
+    app.post("/api/assignment/user/add", auth, addUser);
     app.post("/api/assignment/user/login", passport.authenticate('assignment'), login);
     app.get("/api/assignment/users", auth, findAllUsers);
     app.get("/api/assignment/user/:id", findUserById);
@@ -139,7 +139,7 @@ module.exports = function (app, userModel, renterModel, tellerModel) {
 
     function addUser(req, res) {
         var newUser = req.body;
-        if(newUser.roles && newUser.roles.length > 1) {
+        if (newUser.roles && newUser.roles.length > 1) {
             newUser.roles = newUser.roles.split(",");
         } else {
             newUser.roles = ["student"];
@@ -149,17 +149,17 @@ module.exports = function (app, userModel, renterModel, tellerModel) {
         userModel
             .findUserByUsername(newUser.username)
             .then(
-                function(user){
+                function (user) {
                     // if the user does not already exist
-                    if(user == null) {
+                    if (user == null) {
                         // create a new user
                         return userModel.Create(newUser)
                             .then(
                                 // fetch all the users
-                                function(){
+                                function () {
                                     return userModel.FindAll();
                                 },
-                                function(err){
+                                function (err) {
                                     res.status(400).send(err);
                                 }
                             );
@@ -168,15 +168,15 @@ module.exports = function (app, userModel, renterModel, tellerModel) {
                         return userModel.FindAll();
                     }
                 },
-                function(err){
+                function (err) {
                     res.status(400).send(err);
                 }
             )
             .then(
-                function(users){
+                function (users) {
                     res.json(users);
                 },
-                function(){
+                function () {
                     res.status(400).send(err);
                 }
             )

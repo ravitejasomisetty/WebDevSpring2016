@@ -12,32 +12,26 @@
         <table class="table table-striped user">
             <tr>
                 <th><a ng-click="model.sortUsername()">
-                    <span ng-show="model.ascending" class="glyphicon glyphicon-triangle-top"></span>
-                    <span ng-hide="model.ascending" class="glyphicon glyphicon-triangle-bottom"></span>
+                    <span ng-show="model.usernameAsc" class="glyphicon glyphicon-triangle-top"></span>
+                    <span ng-hide="model.usernameAsc" class="glyphicon glyphicon-triangle-bottom"></span>
                 </a>Username</th>
-                <th><a ng-click="model.sortPassword()">
-                    <span ng-show="model.ascending" class="glyphicon glyphicon-triangle-top"></span>
-                    <span ng-hide="model.ascending" class="glyphicon glyphicon-triangle-bottom"></span>
-                </a>Password</th>
+                <th>Password</th>
                 <th><a ng-click="model.sortFirstName()">
-                    <span ng-show="model.ascending" class="glyphicon glyphicon-triangle-top"></span>
-                    <span ng-hide="model.ascending" class="glyphicon glyphicon-triangle-bottom"></span>
+                    <span ng-show="model.fNameAsc" class="glyphicon glyphicon-triangle-top"></span>
+                    <span ng-hide="model.fNameAsc" class="glyphicon glyphicon-triangle-bottom"></span>
                 </a>FirstName</th>
                 <th><a ng-click="model.sortLastName()">
-                    <span ng-show="model.ascending" class="glyphicon glyphicon-triangle-top"></span>
-                    <span ng-hide="model.ascending" class="glyphicon glyphicon-triangle-bottom"></span>
+                    <span ng-show="model.lNameAsc" class="glyphicon glyphicon-triangle-top"></span>
+                    <span ng-hide="model.lNameAsc" class="glyphicon glyphicon-triangle-bottom"></span>
                 </a>LastName</th>
-                <th><a ng-click="model.sortRole()">
-                    <span ng-show="model.ascending" class="glyphicon glyphicon-triangle-top"></span>
-                    <span ng-hide="model.ascending" class="glyphicon glyphicon-triangle-bottom"></span>
-                </a>Role</th>
+                <th>Role</th>
                 <th>Action</th>
             </tr>
             <tr>
                 <td><input type="text" class="form-control" ng-model="newUser.username" id="username" placeholder="Username"></td>
                 <td><input type="password" class="form-control" ng-model="newUser.password" placeholder="Password"></td>
-                <td><input type="password" class="form-control" ng-model="newUser.firstName" placeholder="FirstName"></td>
-                <td><input type="password" class="form-control" ng-model="newUser.lastName" placeholder="LastName"></td>
+                <td><input type="text" class="form-control" ng-model="newUser.firstName" placeholder="FirstName"></td>
+                <td><input type="text" class="form-control" ng-model="newUser.lastName" placeholder="LastName"></td>
                 <td><input type="text" class="form-control" ng-model="newUser.roles" placeholder="Role1, Role2"></td>
                 <td class="text-nowrap">
                     <button class="btn btn-primary" ng-click="model.addUser(newUser)" type="button">
@@ -50,7 +44,7 @@
             </tr>
             <tr ng-repeat="user in model.users" ng-if="user.roles.indexOf('admin')==undefined || user.roles.indexOf('admin') < 0">
                 <td><label>{{user.username}}</label></td>
-                <td><label>{{user.password}}</label></td>
+                <td></td>
                 <td><label>{{user.firstName}}</label></td>
                 <td><label>{{user.lastName}}</label></td>
                 <td class="text no-wrap"><label ng-repeat="role in user.roles">{{role}}{{$last ? '' : ', '}}</label></td>
