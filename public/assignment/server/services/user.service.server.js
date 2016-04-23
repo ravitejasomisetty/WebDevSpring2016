@@ -50,9 +50,12 @@ module.exports = function (app, userModel, renterModel, tellerModel) {
     }
 
     function isAdmin(user) {
-        if (user.roles.indexOf("admin") > 0) {
+        if (user.roles.indexOf('admin') > 0) {
+            console.log(user.roles);
             return true;
         }
+        console.log(user.roles);
+
         return false;
     }
 
@@ -226,13 +229,18 @@ module.exports = function (app, userModel, renterModel, tellerModel) {
     }
 
     function findAllUsers(req, res) {
-        userModel.FindAll()
-            .then(function (users) {
-                    res.json(users);
-                },
-                function (err) {
-                    res.status(400).send(err);
-                });
+        if (isAdmin(req.session.currentUser)) {
+            userModel.FindAll()
+                .then(function (users) {
+                        res.json(users);
+                    },
+                    function (err) {
+                        res.status(400).send(err);
+                    });
+        }
+        else {
+            res.status(403);
+        }
 
     }
 
